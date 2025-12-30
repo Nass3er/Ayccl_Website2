@@ -1,0 +1,138 @@
+@extends('layouts.app')
+@section('css')
+@endsection
+@section('content')
+    <x-hero title="{{ $page->title }}" description="{{ $page->content }}" img="{{ asset($page->background) }}" />
+
+    <div class="w-[95%] mx-auto " data-aos="fade-up" data-aos-duration="700">
+
+        <div class="min-h-screen flex w-full items-center justify-center p-0 sm:p-6">
+            <div class="card w-full sm:max-w-4xl shadow-2xl bg-base-100">
+                <div class="card-body py-5 p-0 sm:p-8 text-center sm:text-start">
+                    @if (session('status'))
+                        <div id="success-alert" role="alert" class="alert alert-success relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class=" font-18">مرحبا بكم اعزائي</span>
+
+                            <!-- Close Button -->
+                            <button type="button"
+                                onclick="document.getElementById('success-alert').classList.add('hidden')"
+                                class="absolute end-2 p-2 cursor-pointer text-gray-800 hover:text-black hover:bg-gray-100 rounded-4xl transition-all duration-300">
+                                ✕
+                            </button>
+                        </div>
+                    @endif
+                    <h2 class="card-title text-2xl font-bold text-emerald-800">
+                        {{ __('adminlte::landingpage.visitingForm') }}
+                    </h2>
+                    <p class="text-md font-bold text-gray-700">
+                        {{ __('adminlte::landingpage.fillVisitingForm') }}
+                    </p>
+
+                    <form action="{{ localizedRoute('forms.askVisit') }}" method="POST"
+                        class="bg-white rounded-2xl p-2 sm:p-8 space-y-6 w-full mx-auto border border-gray-200">
+                        @csrf
+
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <!-- Full Name -->
+                            <div class="form-control">
+                                <label
+                                    class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.fullName') }}</label>
+                                <input type="text" name="Full-name"
+                                    placeholder="{{ __('adminlte::landingpage.write') . __('adminlte::landingpage.fullName') }}"
+                                    class="input input-bordered w-full" required />
+                            </div>
+                            <!-- Email -->
+                            <div class="form-control">
+                                <label
+                                    class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.email') }}</label>
+                                <input type="email" name="email" placeholder="example@email.com"
+                                    class="input input-bordered w-full" required />
+                            </div>
+                            <!-- Phone -->
+                            <div class="form-control">
+                                <label
+                                    class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.phoneNo') }}</label>
+                                <input type="tel" name="Phone" placeholder="05xxxxxxxx"
+                                    class="input input-bordered w-full" required />
+                            </div>
+                            <!-- City -->
+                            <div class="form-control">
+                                <label
+                                    class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.city') }}</label>
+                                <input type="text" name="city"
+                                    placeholder="{{ __('adminlte::landingpage.writeCity') }}"
+                                    class="input input-bordered w-full" required />
+                            </div>
+                            <!-- institution  -->
+                            <div class="form-control">
+                                <label
+                                    class="  font-semibold text-gray-600 text-clip">{{ __('adminlte::landingpage.CurrentInstitution') }}</label>
+                                <input type="text" name="institution"
+                                    placeholder="{{ __('adminlte::landingpage.write') . __('adminlte::landingpage.institutionName') }}"
+                                    class="input input-bordered w-full" required />
+                            </div>
+
+                            <!-- Date -->
+
+                            <div class="form-control">
+                                <label
+                                    class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.VisitingSuggestedDate') }}</label>
+                                <button type="button" popovertarget="cally-popover1" class="input input-border w-full"
+                                    id="cally1" style="anchor-name:--cally1">
+                                    {{ __('adminlte::landingpage.choosedate') }}
+                                </button>
+                                <div popover id="cally-popover1" class="dropdown bg-base-100 rounded-box shadow-lg"
+                                    style="position-anchor:--cally1">
+                                    <calendar-date class="cally" min="{{ \Carbon\Carbon::now()->toDateString() }}"
+                                        onchange="this.getRootNode().getElementById('cally1').innerText = this.value; this.getRootNode().getElementById('date_input').value = this.value;this.getRootNode().getElementById('cally-popover1').hidePopover();">
+                                        <svg aria-label="Previous" class="fill-current size-4" slot="previous"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                                        </svg>
+                                        <svg aria-label="Next" class="fill-current size-4" slot="next"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                                        </svg>
+                                        <calendar-month></calendar-month>
+                                    </calendar-date>
+                                </div>
+                                <input type="hidden" name="date" id="date_input">
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="form-control">
+                            <label
+                                class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.visitingReasonMessage') }}</label>
+                            <textarea class="textarea textarea-bordered w-full" name="Reason" rows="4"
+                                placeholder="{{ __('adminlte::landingpage.write') . __('adminlte::landingpage.visitingReasonMessage') }}" required></textarea>
+                        </div>
+
+                        <!-- Hidden Fields -->
+                        <input type="hidden" name="_next" value="{{ localizedRoute('customerservice') }}">
+                        {{-- <input type="hidden" name="_subject" value="طلب زيارة / استفسار جديد">
+                        <input type="hidden" name="_autoresponse" value="شكراً لتواصلك معنا، سنرد عليك قريباً"> --}}
+
+                        <!-- Submit -->
+                        <div class="form-control mt-6">
+                            <button class="btn btn-success btn-lg w-full gap-2" type="submit">
+                                <x-heroicon-c-paper-airplane class="w-5 h-5" />
+                                {{ __('adminlte::landingpage.submit') }}
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('jsafter')
+@endsection
