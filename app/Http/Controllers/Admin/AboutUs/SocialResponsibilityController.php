@@ -24,7 +24,7 @@ class SocialResponsibilityController extends Controller
      public $pageId = 25;
      public $route = 'social-reponsibility';
      public $view = 'admin-panel.about-us.social-reponsibility';
- 
+
     public function index()
     {
         try{
@@ -75,7 +75,7 @@ class SocialResponsibilityController extends Controller
             ]
         );
 
-        
+
         try {
             DB::beginTransaction();
             // 1. Create Post
@@ -274,7 +274,7 @@ class SocialResponsibilityController extends Controller
                 ]
         );
 
-        
+
         try {
             $post = Post::findOrFail($id);
             DB::beginTransaction();
@@ -310,7 +310,7 @@ class SocialResponsibilityController extends Controller
             // Force Spatie/Image to use GD instead of Imagick
 
             // 3) Upload Media (if provided)
-            if ($request->hasFile('files')) 
+            if ($request->hasFile('files'))
             {
                 $files = is_array($request->file('files')) ? $request->file('files') : [$request->file('files')];
 
@@ -435,7 +435,7 @@ class SocialResponsibilityController extends Controller
                 throw new \Exception(__('adminlte::adminlte.files_required')    );
             }
             DB::commit();
-            
+
             return redirect()->route("$this->route.index", app()->getLocale())
                 ->with(['success' => __('adminlte::adminlte.succEdit')]);
         } catch (\Exception $e) {

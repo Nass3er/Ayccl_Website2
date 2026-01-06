@@ -14,9 +14,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // ... other bindings
-        // echo app()->getLocale();
-        Route::bind('post', function ($value) {
+
+        /*  Route::bind('post', function ($value) {
             $locale = app()->getLocale();
             $lang_no = ($locale === 'ar' ? 1 : 2);
 
@@ -32,11 +31,24 @@ class RouteServiceProvider extends ServiceProvider
             return Page::where('slug', $value)
                 ->where('lang_no', $lang_no)
                 ->firstOrFail();
-        });
+        });  */
 
 
-        // $this->routes(function () {
-        //     // ...
-        // });
+        if (!app()->runningInConsole()) {
+            Route::bind('post', function ($value) {
+                $locale = app()->getLocale();
+                $lang_no = ($locale === 'ar' ? 1 : 2);
+                return Post::where('slug', $value)->where('lang_no', $lang_no)->firstOrFail();
+            });
+
+            Route::bind('page', function ($value) {
+                $locale = app()->getLocale();
+                $lang_no = ($locale === 'ar' ? 1 : 2);
+                return Page::where('slug', $value)->where('lang_no', $lang_no)->firstOrFail();
+            });
+        }
+
+
+
     }
 }

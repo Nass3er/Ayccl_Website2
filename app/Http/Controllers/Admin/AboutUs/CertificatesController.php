@@ -32,20 +32,20 @@ class CertificatesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view("$this->view.index", compact('posts'));
+        return view($this->view.'index', compact('posts'));
     }
 
     public function show($locale, $id)
     {
         $media = Media::findOrFail($id);
-    
+
         // Full path to file
         $path = public_path($media->link);
-    
+
         if (!file_exists($path)) {
             abort(404, 'File not found.');
         }
-    
+
         return response()->file($path, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="' . basename($path) . '"'
@@ -67,7 +67,7 @@ class CertificatesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view("$this->view.create", compact( 'categories'));
+        return view($this->view.'create', compact( 'categories'));
     }
 
     /**
@@ -94,7 +94,7 @@ class CertificatesController extends Controller
             ]
         );
 
-        
+
         try {
             DB::beginTransaction();
             // 1. Create Post
@@ -231,14 +231,14 @@ class CertificatesController extends Controller
                 $file = $filearr[0];
                 // 1) Get the original file name from the UploadedFile object
                 $originalFileName = Media::getAlt($file->getClientOriginalName());
-                
+
                 // 2) Define paths based on your requirements
                 $pdfPath = "files/$this->route/{$post->id}/{$originalFileName}";
                 $destinationPath = public_path("files/$this->route/{$post->id}");
-                
+
                 // 3) Create the directory if it doesn't exist
                 File::makeDirectory($destinationPath, 0755, true, true);
-                
+
                 // 4) Move the file to the correct location using its original name
                 $file->move($destinationPath, $originalFileName);
             }
@@ -253,7 +253,7 @@ class CertificatesController extends Controller
             $media->media_able_id  = $post->id;
             $media->media_able_type = Post::class;
             $media->save();
-            // Commit after processing all files 
+            // Commit after processing all files
             DB::commit();
 
             return redirect()->route("$this->route.index", app()->getLocale())
@@ -276,7 +276,7 @@ class CertificatesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view("$this->view.edit", compact(  'post'));
+        return view($this->view.'edit', compact(  'post'));
     }
 
     /**
@@ -310,7 +310,7 @@ class CertificatesController extends Controller
                 ]
         );
 
-        
+
         try {
             $post = Post::findOrFail($id);
             DB::beginTransaction();
@@ -346,7 +346,7 @@ class CertificatesController extends Controller
             // Force Spatie/Image to use GD instead of Imagick
             $media                 = Media::findOrNew($post->mediaOne->id ?? null);
             // 3) Upload Media (if provided)
-            if ($request->hasFile('files')) 
+            if ($request->hasFile('files'))
             {
                 $files = is_array($request->file('files')) ? $request->file('files') : [$request->file('files')];
 
@@ -461,7 +461,7 @@ class CertificatesController extends Controller
                 $file = $filearr[0];
                 // 1) Get the original file name from the UploadedFile object
                 $originalFileName = Media::getAlt($file->getClientOriginalName());
-                
+
                 // 2) Define paths based on your requirements
                 $pdfPath = "files/$this->route/{$post->id}/{$originalFileName}";
                 $destinationPath = public_path("files/$this->route/{$post->id}");
@@ -473,12 +473,12 @@ class CertificatesController extends Controller
                 }
                 // 3) Create the directory if it doesn't exist
                 File::makeDirectory($destinationPath, 0755, true, true);
-                
+
                 // 4) Move the file to the correct location using its original name
                 $file->move($destinationPath, $originalFileName);
-                
+
             }
-            
+
             $media = Media::where('media_able_id', $post->id)->count();
             if ($media == 0) {
                 throw new \Exception(__('adminlte::adminlte.files_required')    );
@@ -493,9 +493,9 @@ class CertificatesController extends Controller
             $media->media_able_id  = $post->id;
             $media->media_able_type = Post::class;
             $media->save();
-            // Commit after processing all files 
+            // Commit after processing all files
             DB::commit();
-            
+
             return redirect()->route("$this->route.index", app()->getLocale())
                 ->with(['success' => __('adminlte::adminlte.succEdit')]);
         } catch (\Exception $e) {
@@ -534,7 +534,7 @@ class CertificatesController extends Controller
 
             DB::commit();
 
-            return redirect()->route("$this->route.index", app()->getLocale())->with(['success' => __('adminlte::adminlte.succDelete')]);
+            return redirect()->route($this->route.'index', app()->getLocale())->with(['success' => __('adminlte::adminlte.succDelete')]);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with(['error' => $e->getMessage()]);

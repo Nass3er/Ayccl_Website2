@@ -38,25 +38,25 @@ class AboutCompanyController extends Controller
         try{
         $path = base_path('vendor/blade-ui-kit/blade-heroicons/resources/svg');
             $files = File::allFiles($path);
-        
+
             $icons = [];
             foreach ($files as $file) {
                 // Get filename only: o-shield-check.svg
                 $filename = $file->getFilename();
-        
+
                 // Remove .svg extension
                 $name = str_replace('.svg', '', $filename);
-        
+
                 // Blade UI name requires heroicon- prefix
                 $icons[] = [
                     'value' => 'heroicon-' . $name, // e.g., heroicon-o-shield-check
                     'label' => $name,               // for display: o-shield-check
                 ];
             }
-        
+
             // Optional: sort alphabetically
             usort($icons, fn($a, $b) => strcmp($a['label'], $b['label']));
-        
+
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -140,28 +140,28 @@ class AboutCompanyController extends Controller
     {
         try {
             $post = Post::findOrFail($id);
-        
+
             $path = base_path('vendor/blade-ui-kit/blade-heroicons/resources/svg');
             $files = File::allFiles($path);
-        
+
             $icons = [];
             foreach ($files as $file) {
                 // Get filename only: o-shield-check.svg
                 $filename = $file->getFilename();
-        
+
                 // Remove .svg extension
                 $name = str_replace('.svg', '', $filename);
-        
+
                 // Blade UI name requires heroicon- prefix
                 $icons[] = [
                     'value' => 'heroicon-' . $name, // e.g., heroicon-o-shield-check
                     'label' => $name,               // for display: o-shield-check
                 ];
             }
-        
+
             // Optional: sort alphabetically
             usort($icons, fn($a, $b) => strcmp($a['label'], $b['label']));
-        
+
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
