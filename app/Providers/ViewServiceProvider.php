@@ -21,7 +21,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $address = Post::where("page_id", 7)
+      /*  $address = Post::where("page_id", 7)
                         ->where('order', 1)
                         ->where('active', true)
                         ->with(relations: "postDetailOne")->first();
@@ -63,6 +63,6 @@ class ViewServiceProvider extends ServiceProvider
         });
         View::composer('daisyUI.social-media', function ($view) use ($socialMediaPages ) {
             $view->with('socialMediaPages', $socialMediaPages );
-        });
+        }); */
     }
 }
