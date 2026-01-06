@@ -20,9 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (!app()->runningInConsole()) {
         $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $locale = app()->getLocale();
-    
+
             // Decide which language to show
             if ($locale === 'en') {
                 $langItem = [
@@ -44,25 +45,10 @@ class AppServiceProvider extends ServiceProvider
                     'topnav_right' => true,
                 ];
             }
-    
-            // Insert right after fullscreen widget
-            // $menu = config('adminlte.menu');
-            // $newMenu = [];
-    
-            // foreach ($menu as $item) {
-            //     $newMenu[] = $item;
-            //     if (($item['key'] ?? null) === 'fullscreen-widget') {
-            //         $newMenu[] = $langItem;
-            //     }
-            // }
-    
-            // $event->menu->add(...$newMenu);
+
             $event->menu->add($langItem);
         });
-        // if (!function_exists('localized_route')) {
-        //     function localized_route($name, $parameters = [], $absolute = true) {
-        //         return route($name, array_merge(['locale' => app()->getLocale()], $parameters), $absolute);
-        //     }
-        // }
+    }
+
     }
 }

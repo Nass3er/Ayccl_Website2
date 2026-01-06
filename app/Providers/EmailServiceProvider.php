@@ -21,6 +21,7 @@ class EmailServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (!app()->runningInConsole()) {
         if (Schema::hasTable('settings')) {
             $pairs = Setting::query()
                 ->whereIn('para', [
@@ -73,5 +74,6 @@ class EmailServiceProvider extends ServiceProvider
                 }
             }
         }
+    }
     }
 }
