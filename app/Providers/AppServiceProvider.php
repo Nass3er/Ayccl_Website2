@@ -4,7 +4,7 @@ namespace App\Providers;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (app()->environment('production')) {
+        URL::forceScheme('https');
+    }
         if (!app()->runningInConsole()) {
         $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $locale = app()->getLocale();
