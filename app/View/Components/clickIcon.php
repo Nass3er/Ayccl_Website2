@@ -24,4 +24,5 @@ class ClickIcon extends Component
     {
         return view('components.click-icon');
     }
+    
 }
