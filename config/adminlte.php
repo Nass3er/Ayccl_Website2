@@ -349,7 +349,7 @@ return [
         //     'route' => 'home',
         //     'topnav_right' => true,
         // ],
-        //     ], 
+        //     ],
         // ],
 
         // Sidebar items:
@@ -380,6 +380,7 @@ return [
             'text' => 'dashboard',
             'icon' => '	fas fa-tachometer-alt',
             'route' => 'home',
+            // 'route'  => ['home', ['locale' => app()->getLocale()]],
             'active' => ['dashboard*'],
         ],
         [
@@ -417,7 +418,7 @@ return [
         //         ],
         //     ],
         // ],
-        
+
         [
             'text' => 'users_management',
             'icon' => 'fas fa-user-cog',

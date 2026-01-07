@@ -7,7 +7,13 @@ export default defineConfig({
     plugins: [
         laravel({
             //input: ["resources/sass/app.scss", "resources/js/app.js"],
-            input: ["resources/css/app.css", "resources/js/app.js"],
+            //input: ["resources/css/app.css", "resources/js/app.js"],
+            input: [
+                "resources/css/app.css",
+                "resources/js/app.js",
+                "resources/css/adminlte.css",     // أضف هذا السطر
+                "resources/css/adminlte-rtl.css"  // وأضف هذا السطر أيضاً
+            ],
             refresh: true,
         }),
         {
