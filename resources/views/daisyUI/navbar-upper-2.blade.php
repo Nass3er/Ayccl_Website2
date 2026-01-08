@@ -1,5 +1,5 @@
 {{-- <div class="navbar fixed top-0 z-[997] w-1/2 mx-auto bg-base-100 rounded-2xl " > --}}
-<div id="navbar" class="navbar fixed top-0 z-[997] text-white 
+<div id="navbar" class="navbar fixed top-0 z-[997] text-white
     {{-- border-b-5 border-emerald-900 --}}
 {{-- rounded-2xl border-b-4 border-green-900 --}}
  ">
@@ -27,7 +27,7 @@
         <ul
             class="menu menu-horizontal dropdown-content z-1
             {{-- border-b-4 border-green-900 rounded-2xl rounded-box --}}
-            justify-center-safe items-center-safe 
+            justify-center-safe items-center-safe
             ">
             {{-- <li><a class="nav-parent" href='/'>{{ __('adminlte::landingpage.home') }}</a></li> --}}
 
@@ -88,7 +88,7 @@
                             class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
                     {{-- <li><a href={{ localizedRoute('suggestionsandcomplaints') }}
                             class="nav-child">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a></li> --}}
-                            
+
                     {{-- sub sub menu --}}
                     {{-- <li class="relative group/submain">
                         <!-- Dropdown submain menu  -->

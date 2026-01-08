@@ -1,6 +1,6 @@
 {{-- <div class="navbar fixed top-0 z-[997] w-1/2 mx-auto bg-base-100 rounded-2xl " > --}}
 <div
-    class="navbar fixed top-0 z-[997] left-1/2 transform -translate-x-1/2 lg:w-[85%] bg-transparent lg:bg-base-100 
+    class="navbar fixed top-0 z-[997] left-1/2 transform -translate-x-1/2 lg:w-[85%] bg-transparent lg:bg-base-100
 {{-- rounded-2xl border-b-4 border-green-900 --}}
  ">
 
@@ -23,16 +23,17 @@
 
     <div class="navbar-center">
         <a href="/">
-            <img src="./images/logo.png" alt="Logo" class="h-auto w-auto ">
+            {{-- <img src="./images/logo.png" alt="Logo" class="h-auto w-auto "> --}}
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-auto w-auto">
         </a>
     </div>
 
     <div class="navbar-end top-0 z-[998] relative">
 
         <ul
-            class="menu menu-horizontal dropdown-content z-1 
+            class="menu menu-horizontal dropdown-content z-1
             {{-- border-b-4 border-green-900 rounded-2xl rounded-box --}}
-            justify-center-safe items-center-safe 
+            justify-center-safe items-center-safe
             ">
             {{-- <li><a class="nav-parent" href='/'>{{ __('adminlte::landingpage.home') }}</a></li> --}}
 
