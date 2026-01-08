@@ -49,11 +49,12 @@ use App\Http\Controllers\FormSubmissionController;
 
 use Laravel\Pail\ValueObjects\Origin\Console;
 
+if (! function_exists('localizedRoute')) {
 function localizedRoute($name, $parameters = [], $absolute = true)
 {
     $locale = app()->getLocale();
 
-    // Convert string parameters to array 
+    // Convert string parameters to array
     if (is_string($parameters)) {
         $parameters = [$parameters];
     }
@@ -71,6 +72,7 @@ function localizedRoute($name, $parameters = [], $absolute = true)
     $parameters = array_merge(['locale' => $locale], $parameters);
     return route($name, $parameters, $absolute);
 }
+}
 
 // Default route to redirect to a specific locale
 Route::get('/', function () {
@@ -86,7 +88,7 @@ Route::group([
     Route::prefix('Admin-Panel')->group(function () {
         Auth::routes();
     });
-    
+
             Route::prefix('Admin-Panel')->middleware(['auth'])->group(function () {
 
                 Route::get('/Dashboard', [HomeController::class, 'index'])->name('home');
@@ -123,7 +125,7 @@ Route::group([
                     Route::resource('ask-for-visit', VisitController::class);
                     Route::resource('internship-request',InternshipRequestController::class);
                 });
-                
+
                 Route::resource('home-page', StartUpController::class);
                 Route::resource('contactus-page', ContactUsAdminController::class);
                 Route::resource('external-links', ExternalLinksController::class);
@@ -131,11 +133,11 @@ Route::group([
                     Route::resource('users-management', UsersManagementtController::class);
                     Route::put('users-management/{users_management}/toggle-active', [UsersManagementtController::class, 'toggleActive'])->name('users-management.toggleActive');
                 });
-                
+
                 Route::put('pages/{id}', [PagesController::class, 'update'])->name('pages.update');
                 Route::get('/change-password', [UsersManagementtController::class, 'changePasswordIndex'])->name('change-password.index');
                 Route::post('change-password', [UsersManagementtController::class, 'changePassword'])->name('change-password');
-                
+
                 // Route::prefix('/users-management')->middleware(['auth'])->group(function () {
                 //     Route::resource('users-data', UsersManagementController::class);
                 //     Route::resource('users-privileges', UsersManagementController::class);
@@ -156,7 +158,7 @@ Route::group([
                     Route::get('/media-center', [ContentManagementController::class, 'index'])->name('content.mediaCenter');
                     Route::get('/contact-us', [ContentManagementController::class, 'index'])->name('content.contactUs');
                 });
-                
+
             });
 
 
@@ -173,7 +175,7 @@ Route::group([
     Route::get('/socialresponsibility', [AboutUsController::class, 'socialResponsibilityIndex'])->name('socialresponsibility');
     Route::get('/certificates', [AboutUsController::class, 'certificatesIndex'])->name('certificates');
 
-    //  التسويق والمبيعات 
+    //  التسويق والمبيعات
     Route::get('/hadrami', [SalesController::class, 'hadramiIndex'])->name('hadrami');
     Route::get('/products', [SalesController::class, 'productsIndex'])->name('products');
     Route::get('/customerservice', [SalesController::class, 'customerserviceIndex'])->name('customerservice');
