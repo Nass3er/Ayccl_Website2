@@ -236,7 +236,7 @@ class MediaSeeder extends Seeder
                 ],
             ]
         );
-        
+
         //      News and Activities
         $i += 1;
         $post_id = $i + 32;
@@ -743,7 +743,8 @@ class MediaSeeder extends Seeder
                     "thumbnailpath" => "",
                     "filepath" => "images/news/slideshow1.png",
                     "alt" => "",
-                    "link" => "http://127.0.0.1:8000/ar/products",
+                    // "link" => "http://127.0.0.1:8000/ar/products",
+                    "link" => url(app()->getLocale() . '/products'),
                     "media_able_id" => $post_id++,
                     "media_able_type" => "App\Models\Post",
                     'created_at' => Carbon::now(),
@@ -754,7 +755,8 @@ class MediaSeeder extends Seeder
                     "thumbnailpath" => "",
                     "filepath" => "images/news/slideshow2.png",
                     "alt" => "",
-                    "link" => "http://127.0.0.1:8000/ar/contactus",
+                    // "link" => "http://127.0.0.1:8000/ar/contactus",
+                    "link" => url(app()->getLocale() . '/contactus'),
                     "media_able_id" => $post_id++,
                     "media_able_type" => "App\Models\Post",
                     'created_at' => Carbon::now(),
