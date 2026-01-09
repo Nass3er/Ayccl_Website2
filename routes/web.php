@@ -49,29 +49,47 @@ use App\Http\Controllers\FormSubmissionController;
 
 use Laravel\Pail\ValueObjects\Origin\Console;
 
+// if (! function_exists('localizedRoute')) {
+// function localizedRoute($name, $parameters = [], $absolute = true)
+// {
+//     $locale = app()->getLocale();
+
+//     // Convert string parameters to array
+//     if (is_string($parameters)) {
+//         $parameters = [$parameters];
+//     }
+
+//     // For lang.switch route, we need both locale and lang parameters
+//     if ($name === 'lang.switch') {
+
+//         if (isset($parameters['lang'])) {
+//             $langParam = $parameters['lang'];
+//         } else {
+//             $langParam = 'ar';
+//         }
+//         return route($name, ['locale' => $locale, 'lang' => $langParam], $absolute);
+//     }
+//     $parameters = array_merge(['locale' => $locale], $parameters);
+//     return route($name, $parameters, $absolute);
+// }
+// }
+
 if (! function_exists('localizedRoute')) {
-function localizedRoute($name, $parameters = [], $absolute = true)
-{
-    $locale = app()->getLocale();
 
-    // Convert string parameters to array
-    if (is_string($parameters)) {
-        $parameters = [$parameters];
-    }
-
-    // For lang.switch route, we need both locale and lang parameters
-    if ($name === 'lang.switch') {
-
-        if (isset($parameters['lang'])) {
-            $langParam = $parameters['lang'];
-        } else {
-            $langParam = 'ar';
+    function localizedRoute($name, $parameters = [], $absolute = true)
+    {
+        //// إذا كان الاسم هو بالفعل رابط كامل (يبدأ بـ http)، أرجعه كما هو
+        if (str_starts_with($name, 'http')) {
+            return $name;
         }
-        return route($name, ['locale' => $locale, 'lang' => $langParam], $absolute);
+        try {
+           // // بفضل URL::defaults، لارافل سيضيف {locale} تلقائياً
+            return route($name, $parameters, $absolute);
+        } catch (\Exception $e) {
+            //// حل احتياطي في حال فشل التعرف على المسار
+            return url(app()->getLocale() . '/' . ltrim($name, '/'));
+        }
     }
-    $parameters = array_merge(['locale' => $locale], $parameters);
-    return route($name, $parameters, $absolute);
-}
 }
 
 // Default route to redirect to a specific locale
