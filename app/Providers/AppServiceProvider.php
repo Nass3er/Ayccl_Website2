@@ -22,8 +22,13 @@ class AppServiceProvider extends ServiceProvider
     {
         if (app()->environment('production')) {
         URL::forceScheme('https');
-       // URL::forceRootUrl(config('app.url'));
-    }
+        URL::forceRootUrl(config('app.url'));
+      }
+      
+      \Illuminate\Support\Facades\URL::defaults([
+        'locale' => app()->getLocale()
+    ]);
+
         if (!app()->runningInConsole()) {
         $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $locale = app()->getLocale();
