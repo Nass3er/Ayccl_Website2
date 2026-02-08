@@ -1,5 +1,6 @@
 {{-- <div class="navbar fixed top-0 z-[997] w-1/2 mx-auto bg-base-100 rounded-2xl " > --}}
 <div id="navbar" class="navbar fixed top-0 z-[997] text-white
+    bg-emerald-700
     {{-- border-b-5 border-emerald-900 --}}
 {{-- rounded-2xl border-b-4 border-green-900 --}}
  ">
@@ -8,7 +9,7 @@
         @include('daisyUI.navbar-mobile')
         <div class="hidden lg:flex">
             <a href="/">
-                <img src={{ asset('images/logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
             </a>
         </div>
     </div>
@@ -18,7 +19,7 @@
     <div class="navbar-center flex lg:hidden ">
         <div class="">
             <a href="/">
-                <img src={{ asset('images/logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
             </a>
         </div>
     </div>
@@ -86,30 +87,7 @@
                             class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
                     <li> <a href={{ localizedRoute('customerservice') }}
                             class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
-                    {{-- <li><a href={{ localizedRoute('suggestionsandcomplaints') }}
-                            class="nav-child">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a></li> --}}
 
-                    {{-- sub sub menu --}}
-                    {{-- <li class="relative group/submain">
-                        <!-- Dropdown submain menu  -->
-                        <div class="nav-subparent ">
-                            {{ __('adminlte::landingpage.branches') }}
-                            <svg class="ml-2 w-4 h-4 transform group-hover/submain:rtl:rotate-90 group-hover/submain:ltr:-rotate-90 transition-transform duration-200"
-                                fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.194l3.71-3.965a.75.75 0 111.08 1.04l-4.25 4.54a.75.75 0 01-1.08 0l-4.25-4.54a.75.75 0 01.02-1.06z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-
-                        <!-- Sub submain menu -->
-                        <ul class="navsubmenu">
-                            <li><a href="/branches/north" class="nav-child">فرع 1</a></li>
-                            <li><a href="/branches/south" class="nav-child">فرع 2</a></li>
-                            <li><a href="/branches/east" class="nav-child">فرع 3</a></li>
-                            <li><a href="/branches/west" class="nav-child">فرع 4</a></li>
-                        </ul>
-                    </li> --}}
 
                 </ul>
             </li>

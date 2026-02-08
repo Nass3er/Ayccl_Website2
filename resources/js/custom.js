@@ -13,6 +13,8 @@ function updateNavbar() {
       navbar.classList.remove('bg-base-100', 'shadow-lg', 'text-black', 'nav-light');
       navbar.classList.add('bg-transparent', 'text-white', 'nav-dark');
   }
+
+
 }
 
 // --- Floating Button State Update (using opacity for smooth fade) ---

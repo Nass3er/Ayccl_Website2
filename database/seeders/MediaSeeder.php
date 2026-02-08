@@ -733,7 +733,7 @@ class MediaSeeder extends Seeder
             ]
         );
 
-        //      Welcome
+        //      Welcome (Slider)
         $i += 3;
         $post_id = $i + 48;
         Media::insert(
@@ -741,8 +741,8 @@ class MediaSeeder extends Seeder
                 [
                     "media_type_id" => 1,
                     "thumbnailpath" => "",
-                    "filepath" => "images/news/slideshow1.png",
-                    "alt" => "",
+                    "filepath" => "images/slids/slide1.jpeg",
+                    "alt" => "اسمنت حضرموت",
                     // "link" => "http://127.0.0.1:8000/ar/products",
                     "link" => url(app()->getLocale() . '/products'),
                     "media_able_id" => $post_id++,
@@ -753,8 +753,8 @@ class MediaSeeder extends Seeder
                 [
                     "media_type_id" => 1,
                     "thumbnailpath" => "",
-                    "filepath" => "images/news/slideshow2.png",
-                    "alt" => "",
+                    "filepath" => "images/slids/slide2.png",
+                    "alt" => "قوة البناء",
                     // "link" => "http://127.0.0.1:8000/ar/contactus",
                     "link" => url(app()->getLocale() . '/contactus'),
                     "media_able_id" => $post_id++,
@@ -765,8 +765,8 @@ class MediaSeeder extends Seeder
                 [
                     "media_type_id" => 1,
                     "thumbnailpath" => "",
-                    "filepath" => "images/news/DXB.png",
-                    "alt" => "",
+                    "filepath" => "images/slids/slide3.png",
+                    "alt" => "فخر الصناعة",
                     "link" => null,
                     "media_able_id" => $post_id++,
                     "media_able_type" => "App\Models\Post",
