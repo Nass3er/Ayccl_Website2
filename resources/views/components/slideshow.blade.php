@@ -745,7 +745,7 @@
                     </p>
 
                     <div class="opacity-100">
-                        <a href="'.url($link).'" class="btn bg-brand-green hover:bg-white hover:text-white border-none text-black px-6 rounded-none font-bold transition-all duration-300 shadow-2xl">
+                        <a href="'.url($link).'" class="btn bg-brand-green hover:bg-white hover:text-white border-none text-black px-3 rounded-none font-bold transition-all duration-300 shadow-2xl">
                            '. __("adminlte::adminlte.showmore") .'
                         </a>
                     </div>
