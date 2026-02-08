@@ -121,7 +121,7 @@ return array(
                             ● Make sure all parameters are the same in pictures.
                             ● Press Get Code, then go to iframe tab
                             ● Copy src url between the double qutation as in image provided, and paste it here.',
-    
+
     'getYouTubeId' =>  '● First go to channel options.
                         ● Go to settings, then go to Advance Settings.
                         ● Copy Channel ID as in image provided.',
@@ -151,4 +151,5 @@ return array(
     'background' => 'Background',
     'editPageBackgroundAndDesc' => 'Edit Page Background And Description',
     'emailSentSuccessfully' => 'Email was Sent Successfully',
+    'showmore' => 'Show more',
 );

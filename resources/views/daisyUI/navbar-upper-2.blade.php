@@ -1,9 +1,11 @@
 {{-- <div class="navbar fixed top-0 z-[997] w-1/2 mx-auto bg-base-100 rounded-2xl " > --}}
 <div id="navbar" class="navbar fixed top-0 z-[997] text-white
-    bg-emerald-700
+    {{-- bg-emerald-700 --}}
     {{-- border-b-5 border-emerald-900 --}}
 {{-- rounded-2xl border-b-4 border-green-900 --}}
- ">
+ "
+ {{-- style="background-color: #2d843d;" --}}
+ >
 
     <div class="navbar-start">
         @include('daisyUI.navbar-mobile')

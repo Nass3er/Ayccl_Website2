@@ -10,37 +10,53 @@ use Illuminate\Support\Facades\Redirect;
 
 class LanguageController extends Controller
 {
-    public function switchLang($lang)
+    public function switchLang($routeLocale, $targetLang = null)
     {
-        // Validate the language
-        // if (!array_key_exists($lang, Config::get('languages'))) {
-            //     return redirect()->back();
-            // }
-            // echo "lang =  $lang\\\\\ ";
-            // Get the previous URL
-            $previousUrl = url()->previous();
-            
-            // Extract the path from the previous URL
-            $path = parse_url($previousUrl, PHP_URL_PATH);
-            $segments = explode('/', trim($path, '/'));
-            
-            // Replace the first segment (current locale) with the new locale
-            $pastlang = Session::get("locale");
-            $lang = $pastlang == 'en'? 'ar':'en';
+        // If the route parameter is missing or we only got one argument
+        if ($targetLang === null) {
+            // Fallback: Toggle based on current locale
+            $targetLang = $routeLocale == 'en' ? 'ar' : 'en';
+        }
 
+        $lang = $targetLang;
+        
+        // Validate language
+        if (!in_array($lang, ['en', 'ar'])) {
+            $lang = 'ar';
+        }
 
-            Session::put('locale', $lang);
-            if (!empty($segments)) {
+        Session::put('locale', $lang);
+        App::setLocale($lang);
+
+        $previousUrl = url()->previous();
+        
+        // If previous URL was the login page or something that shouldn't imply language change loop, handle it.
+        // But mainly we just want to replace the first segment.
+        
+        $path = parse_url($previousUrl, PHP_URL_PATH);
+        $attributes = parse_url($previousUrl, PHP_URL_QUERY);
+        
+        $segments = explode('/', trim($path, '/'));
+
+        if (!empty($segments)) {
+            // Ensure we are replacing the locale segment
+            if (in_array($segments[0], ['ar', 'en'])) {
                 $segments[0] = $lang;
             } else {
-                $segments = [$lang];
+                // Prepend if missing (though middleware should have handled this)
+                array_unshift($segments, $lang);
+            }
+        } else {
+            $segments = [$lang];
         }
-        
+
         // Build the new URL with the new locale
         $newUrl = '/' . implode('/', $segments);
         
-        // Redirect to the same page with new locale
-        // echo $newUrl;
+        if($attributes){
+            $newUrl = $newUrl . '?'. $attributes;
+        }
+
         return redirect($newUrl);
     }
     public function switchLang2($lang)
