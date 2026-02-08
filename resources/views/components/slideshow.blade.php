@@ -734,18 +734,18 @@
                 $link = $slideshow->mediaOne->link ?? '#';
 
                 $textContent = '
-                <div class="flex flex-col items-center text-center pb-30 sm:pb-54">
-                    <h2 class="text-3xl md:text-6xl font-extrabold mb-1 flex flex-wrap justify-center gap-x-6 drop-shadow-2xl leading-tight">
+                <div class="flex flex-col items-center text-center pb-20 sm:pb-44">
+                    <h2 class="text-3xl md:text-6xl font-extrabold mb-1 flex flex-wrap justify-center gap-x-2 drop-shadow-2xl leading-tight">
                         <span class="text-brand-green">'.$firstWord.'</span>
                         <span class="text-black-custom">'.$remainingTitle.'</span>
                     </h2>
 
-                    <p class="text-white text-xl md:text-3xl mb-3 font-normal max-w-4xl mx-auto drop-shadow-md">
+                    <p class="text-white text-xl md:text-2xl mb-5 font-normal max-w-4xl mx-auto drop-shadow-md">
                         '.($slideshow->postDetailOne->content .'...' ?? 'أسسها صح...').'
                     </p>
 
                     <div class="opacity-100">
-                        <a href="'.url($link).'" class="btn bg-brand-green hover:bg-white hover:text-white border-none text-black px-9 rounded-none font-bold transition-all duration-300 shadow-2xl">
+                        <a href="'.url($link).'" class="btn bg-brand-green hover:bg-white hover:text-white border-none text-black px-6 rounded-none font-bold transition-all duration-300 shadow-2xl">
                            '. __("adminlte::adminlte.showmore") .'
                         </a>
                     </div>
