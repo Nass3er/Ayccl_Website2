@@ -146,6 +146,64 @@ class CategorySeeder extends Seeder
                     'updated_at' => Carbon::now(),
                 ],
 
+                //added by nasser
+                [
+                    //  17
+                    "name" => "مشاريع",
+                    "name_en" => "Projects",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  18
+                    "name" => "البيئة",
+                    "name_en" => "Environment",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  19
+                    "name" => "مدونة اسمنتية",
+                    "name_en" => "Cement Blog",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  20
+                    "name" => "قوى عاملة",
+                    "name_en" => "Employees",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  21
+                    "name" => "ضيوفنا",
+                    "name_en" => "Our Guests",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  22
+                    "name" => "شهادات الفحص",
+                    "name_en" => "Inspection Certificates",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    //  23
+                    "name" => "المواصفات",
+                    "name_en" => "Specifications",
+                    "type" => 8,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+
 
             ]
         );

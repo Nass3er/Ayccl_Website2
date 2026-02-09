@@ -26,13 +26,21 @@ class PageSeeder extends Seeder
             "خطط-مستقبلية"          => ["slug_en" => "future-plans", "title_en" => "Future Plans", "content_en" => null],
             "المسئولية-الإجتماعية"  => ["slug_en" => "social-responsibility", "title_en" => "Social Responsibility", "content_en" => null],
             "الجوائز-والشهائد"      => ["slug_en" => "awards-and-certificates", "title_en" => "Awards and Certificates", "content_en" => null],
+            "مشاريعنا"               => ["slug_en" => "our-projects", "title_en" => "Our Projects", "content_en" => null],
+            "البيئة"                => ["slug_en" => "environment", "title_en" => "Environment", "content_en" => null],
+            "مدونة-اسمنتية"        => ["slug_en" => "cement-blog", "title_en" => "Cement Blog", "content_en" => null],
             "التسويق-والمبيعات"     => ["slug_en" => "sales-and-marketing", "title_en" => "Sales and Marketing", "content_en" => "Marketing and Sales"],
             "100%-حضرمي"            => ["slug_en" => "100-hadrami", "title_en" => "100% Hadrami", "content_en" => "Highlighted Projects that AYCCL did"],
             "المنتجات"              => ["slug_en" => "products", "title_en" => "Products", "content_en" => null],
             "خدمة-العملاء"          => ["slug_en" => "customer-service", "title_en" => "Customer Service", "content_en" => null],
             "الاقتراحات-والشكاوى"   => ["slug_en" => "suggestions-and-complaints", "title_en" => "Suggestions and Complaints", "content_en" => null],
             "الموارد-البشرية"       => ["slug_en" => "human-resources", "title_en" => "Human Resources", "content_en" => null],
+            "القوى-العاملة"       => ["slug_en" => "employees", "title_en" => "Employees", "content_en" => null],
+            "ضيوفنا"               => ["slug_en" => "ourguests", "title_en" => "Our Guests", "content_en" => null],
+            "شهادات-الفحص"          => ["slug_en" => "inspection-certificates", "title_en" => "Inspection certificates", "content_en" => null],
+            "المواصفات"          => ["slug_en" => "specifications", "title_en" => "Specifications", "content_en" => null],
             "مميزات-العاملين"       => ["slug_en" => "employee-benefits", "title_en" => "Employee Benefits", "content_en" => "The Yemeni Arabian Cement Company aims to provide necessary care for its employees, considering them the most important element in the company's progress and advancement. Recognizing this role, it has been keen to provide many benefits to its employees to overcome life's difficulties, making them put all their efforts into providing the best to complete their tasks. The company is still striving to provide more that motivates its employees and increases their productivity."],
+            "الخدمات-الإلكترونية"       => ["slug_en" => "electronic-services", "title_en" => "Electronic Services", "content_en" => "The Yemeni Arabian Cement Company aims to provide necessary care for its employees, considering them the most important element in the company's progress and advancement. Recognizing this role, it has been keen to provide many benefits to its employees to overcome life's difficulties, making them put all their efforts into providing the best to complete their tasks. The company is still striving to provide more that motivates its employees and increases their productivity."],
             "طلب-التوظيف"           => ["slug_en" => "job-application", "title_en" => "Job Application", "content_en" => "The Yemeni Arabian Cement Company seeks to attract experienced and qualified local personnel to fill available job vacancies. It also works on honing and developing their skills in various fields by integrating them with foreign experts working at the company, as well as providing them with internal and external training courses. From this perspective, the Yemeni Arabian Cement Company has made the nationalization of jobs one of its goals, and to achieve this, its human resources department is making a great effort to attract and retain qualified local talent."],
             "طلب-زيارة"             => ["slug_en" => "request-a-visit", "title_en" => "Request a Visit", "content_en" => null],
             "طلب-التدريب"           => ["slug_en" => "training-request", "title_en" => "Training Request", "content_en" => null],
@@ -57,10 +65,12 @@ class PageSeeder extends Seeder
                 [ "id" => 24, "slug" => "خطط-مستقبلية", "title" => "خطط مستقبلية", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 25, "slug" => "المسئولية-الإجتماعية", "title" => "المسئولية الإجتماعية", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 26, "slug" => "الجوائز-والشهائد", "title" => "الجوائز والشهائد", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 27, "slug" => "مشاريعنا", "title" => "مشاريعنا", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 28, "slug" => "البيئة", "title" => "البيئة", "background" => "images/hero/news1.png", "content" => "" ],
             ],
             [
                 [ "id" => 3, "slug" => "التسويق-والمبيعات", "title" => "التسويق والمبيعات", "background" => "images/hero/news1.png", "content" => "التسويق والمبيعات" ],
-                [ "id" => 31, "slug" => "100%-حضرمي", "title" => "100% حضرمي", "background" => "images/hero/news1.png", "content" => "أبرز المشاريع التي قامت بها الشركة العربية اليمنية للاسمنت المحدودة" ],
+                [ "id" => 31, "slug" => "100%-حضرمي", "title" => "100% اسمنت حضرموت", "background" => "images/hero/news1.png", "content" => "أبرز المشاريع التي قامت بها الشركة العربية اليمنية للاسمنت المحدودة" ],
                 [ "id" => 32, "slug" => "المنتجات", "title" => "المنتجات", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 33, "slug" => "خدمة-العملاء", "title" => "خدمة العملاء", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 34, "slug" => "الاقتراحات-والشكاوى", "title" => "الاقتراحات والشكاوى", "background" => "images/hero/news1.png", "content" => "" ],
@@ -68,9 +78,15 @@ class PageSeeder extends Seeder
             [
                 [ "id" => 4, "slug" => "الموارد-البشرية", "title" => "الموارد البشرية", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 41, "slug" => "مميزات-العاملين", "title" => "مميزات العاملين", "background" => "images/hero/news1.png", "content" => "تهدف الشركة العربيَّة اليمنيَّة للأسمنت المحدودة إلى تقديم العناية اللَّازمة لموظَّفيها باعتبارهم العنصر الأهم في تقدُّم الشركة ورقيِّها، واستشعاراً منها بذلك الدور حرصت على توفير مزايا كثيرة لموظَّفيها تذلِّل أمامهم صعاب الحياة، لتجعلهم يبذلون كل جهدهم في سبيل تقديم الأفضل لإنجاز مهامهم، وما زالت الشركة ساعية لتقديم المزيد ممَّا يحفِّز موظَّفيها ويزيد من إنتاجيتهم." ],
-                [ "id" => 42, "slug" => "طلب-التوظيف", "title" => "طلب التوظيف", "background" => "images/hero/news1.png", "content" => "تسعى الشركة العربيَّة اليمنيَّة للأسمنت المحدودة لاستقطاب ذوي الخبرات من الكادر المحلِّي المؤهَّل لشغل الخانات الوظيفيَّة المتاحة، كما تقوم بالعمل على صقل مهاراتهم وتطويرها في مجالات شتَّى من خلال دمجهم بالخبرات الأجنبيَّة العاملة بالشركة، كذلك تقديم الدورات التدريبيَّة الداخليَّة والخارجيَّة لهم. ومن هذا المنطلق فقد جعلت الشركة العربيَّة اليمنيَّة للأسمنت المحدودة من ضمن أهدافها يمننة الوظائف، وفي سبيل تحقيق هذا الهدف تبذل إدارة مواردها البشريَّة الكثير من الجهد لجذب الكوادر المحليَّة المؤهَّلة إليها والمحافظة عليها." ],
-                [ "id" => 43, "slug" => "طلب-زيارة", "title" => "طلب زيارة", "background" => "images/hero/news1.png", "content" => "" ],
-                [ "id" => 44, "slug" => "طلب-التدريب", "title" => "طلب التدريب", "background" => "images/hero/news1.png", "content" => "" ],
+
+                // [ "id" => 42, "slug" => "طلب-التوظيف", "title" => "طلب التوظيف", "background" => "images/hero/news1.png", "content" => "تسعى الشركة العربيَّة اليمنيَّة للأسمنت المحدودة لاستقطاب ذوي الخبرات من الكادر المحلِّي المؤهَّل لشغل الخانات الوظيفيَّة المتاحة، كما تقوم بالعمل على صقل مهاراتهم وتطويرها في مجالات شتَّى من خلال دمجهم بالخبرات الأجنبيَّة العاملة بالشركة، كذلك تقديم الدورات التدريبيَّة الداخليَّة والخارجيَّة لهم. ومن هذا المنطلق فقد جعلت الشركة العربيَّة اليمنيَّة للأسمنت المحدودة من ضمن أهدافها يمننة الوظائف، وفي سبيل تحقيق هذا الهدف تبذل إدارة مواردها البشريَّة الكثير من الجهد لجذب الكوادر المحليَّة المؤهَّلة إليها والمحافظة عليها." ],
+                // [ "id" => 43, "slug" => "طلب-زيارة", "title" => "طلب زيارة", "background" => "images/hero/news1.png", "content" => "" ],
+                // [ "id" => 44, "slug" => "طلب-التدريب", "title" => "طلب التدريب", "background" => "images/hero/news1.png", "content" => "" ],
+
+                [ "id" => 45, "slug" => "القوى-العاملة", "title" => "القوى العاملة", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 46, "slug" => "ضيوفنا", "title" => "ضيوفنا", "background" => "images/hero/news1.png", "content" => "" ],
+
+
             ],
             [
                 [ "id" => 5, "slug" => "المركز-الإعلامي", "title" => "المركز الإعلامي", "background" => "images/hero/news1.png", "content" => "" ],
@@ -78,11 +94,23 @@ class PageSeeder extends Seeder
                 [ "id" => 52, "slug" => "معرض-الصور", "title" => "معرض الصور", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 53, "slug" => "الفيديوهات", "title" => "الفيديوهات", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 54, "slug" => "وثائق-ومستندات", "title" => "وثائق ومستندات", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 55, "slug" => "شهادات-الفحص", "title" => "شهادات الفحص", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 56, "slug" => "مواصفات", "title" => "مواصفات", "background" => "images/hero/news1.png", "content" => "" ],
             ],
             [
                 [ "id" => 6, "slug" => "التنمية-المستدامة", "title" => "التنمية المستدامة", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 7, "slug" => "تواصل-معنا", "title" => "تواصل معنا", "background" => "images/hero/news1.png", "content" => "" ],
                 [ "id" => 8, "slug" => "", "title" => "روابط خارجية", "background" => "", "content" => "" ],
+            ],
+             [
+                [ "id" => 9, "slug" => "مدونة-اسمنتية", "title" => "Cement Blog", "background" => "images/hero/news1.png", "content" => "" ],
+            ],
+            [
+                [ "id" => 10, "slug" => "خدمات إلكترونية", "title" => "Electronic Services", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 101, "slug" => "طلب-التوظيف", "title" => "طلب التوظيف", "background" => "images/hero/news1.png", "content" => "تسعى الشركة العربيَّة اليمنيَّة للأسمنت المحدودة لاستقطاب ذوي الخبرات من الكادر المحلِّي المؤهَّل لشغل الخانات الوظيفيَّة المتاحة، كما تقوم بالعمل على صقل مهاراتهم وتطويرها في مجالات شتَّى من خلال دمجهم بالخبرات الأجنبيَّة العاملة بالشركة، كذلك تقديم الدورات التدريبيَّة الداخليَّة والخارجيَّة لهم. ومن هذا المنطلق فقد جعلت الشركة العربيَّة اليمنيَّة للأسمنت المحدودة من ضمن أهدافها يمننة الوظائف، وفي سبيل تحقيق هذا الهدف تبذل إدارة مواردها البشريَّة الكثير من الجهد لجذب الكوادر المحليَّة المؤهَّلة إليها والمحافظة عليها." ],
+                [ "id" => 102, "slug" => "طلب-زيارة", "title" => "طلب زيارة", "background" => "images/hero/news1.png", "content" => "" ],
+                [ "id" => 103, "slug" => "طلب-التدريب", "title" => "طلب التدريب", "background" => "images/hero/news1.png", "content" => "" ],
+
             ]
         );
 
@@ -92,7 +120,7 @@ class PageSeeder extends Seeder
             $page['slug_en'] = $translationMap[$key]['slug_en'] ?? Str::slug($page['slug']);
             $page['title_en'] = $translationMap[$key]['title_en'] ?? $page['title'];
             $page['content_en'] = $translationMap[$key]['content_en'] ?? null;
-            
+
             // Add timestamps
             $page['created_at'] = Carbon::now();
             $page['updated_at'] = Carbon::now();

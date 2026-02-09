@@ -29,7 +29,9 @@ use App\Http\Controllers\StartPage;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\CementBlogController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ElectronicServiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HumanResourcesController;
 use App\Http\Controllers\MediaCenterController;
@@ -192,6 +194,8 @@ Route::group([
     Route::get('/futureplans', [AboutUsController::class, 'futurePlansIndex'])->name('futureplans');
     Route::get('/socialresponsibility', [AboutUsController::class, 'socialResponsibilityIndex'])->name('socialresponsibility');
     Route::get('/certificates', [AboutUsController::class, 'certificatesIndex'])->name('certificates');
+    Route::get('/ourprojects', [AboutUsController::class, 'ourProjectsIndex'])->name('ourprojects');
+    Route::get('/environment', [AboutUsController::class, 'environmentIndex'])->name('environment');
 
     //  التسويق والمبيعات
     Route::get('/hadrami', [SalesController::class, 'hadramiIndex'])->name('hadrami');
@@ -214,12 +218,16 @@ Route::group([
     // Route::get('/view-pdf/{filename}', [SalesController::class, 'viewPdf'])->name('view.pdf');
 
 
+    //  مدونة اسمنتية
+    Route::get('/cementBlog', [CementBlogController::class, 'index'])->name('cementBlog');
 
     // الموارد البشرية
     Route::get('/employeesAdvantages', [HumanResourcesController::class, 'employeesAdvantagesIndex'])->name('employeesAdvantages');
     Route::get('/jobApplication', [HumanResourcesController::class, 'jobApplicationIndex'])->name('jobApplication');
     Route::get('/askForVisit', [HumanResourcesController::class, 'askForVisitIndex'])->name('askForVisit');
     Route::get('/Internship-Request', [HumanResourcesController::class, 'askForTrainingIndex'])->name('askForTraining');
+    Route::get('/employees', [HumanResourcesController::class, 'employeesIndex'])->name('employees');
+    Route::get('/our-guests', [HumanResourcesController::class, 'ourGuestsIndex'])->name('ourGuests');
 
 
 
@@ -229,12 +237,21 @@ Route::group([
     Route::get('/photosGalary', [MediaCenterController::class, 'photosGalaryIndex'])->name('photosGalary');
     Route::get('/videos', [MediaCenterController::class, 'videosIndex'])->name('videos');
     Route::get('/documents', [MediaCenterController::class, 'documentsIndex'])->name('documents');
+    Route::get('/inspection-certificates', [MediaCenterController::class, 'inspectionCertificatesIndex'])->name('inspectionCertificates');
+    Route::get('/documents', [MediaCenterController::class, 'specificationsIndex'])->name('specifications');
 
     //  التنمية المستدامة
     // Route::get('/sustainableDevelopment', [SustainableDevelopmentController::class, 'index'])->name('sustainableDevelopment');
 
     //  تواصل بنا
     Route::get('/contactus', [ContactUsController::class, 'index'])->name('contactus');
+
+
+    //الخدمات الإلكترونية
+    Route::get('/jobApplication', [ElectronicServiceController::class, 'jobApplicationIndex'])->name('jobApplication');
+    Route::get('/askForVisit', [ElectronicServiceController::class, 'askForVisitIndex'])->name('askForVisit');
+    Route::get('/Internship-Request', [ElectronicServiceController::class, 'askForTrainingIndex'])->name('askForTraining');
+
 
     // Public form submissions (emails)
     Route::post('/forms/ask-visit', [FormSubmissionController::class, 'submitVisit'])->name('forms.askVisit');

@@ -632,8 +632,8 @@
         font-family: 'Changa', sans-serif;
     }
 
-    .text-brand-green { color: #2D843D; }
-    .bg-brand-green { background-color: #2D843D; }
+    .text-brand-green { color: #006b36; }
+    .bg-brand-green { background-color: #006b36; }
 
     .text-black-custom {
         color: #000000;
@@ -662,7 +662,7 @@
         right: 40px;
         font-size: 1.25rem;
         font-weight: 700;
-        color: #2D843D;
+        color: #006b36;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         z-index: 30;
         direction: rtl;
@@ -688,7 +688,7 @@
         display: inline-block;
         width: 3px;
         height: 1.2em;
-        background-color: #2D843D;
+        background-color: #006b36;
         margin-right: 5px;
         animation: blink 0.7s infinite;
     }
@@ -718,7 +718,7 @@
 
     .fill-black { fill: #000000; }
     .fill-white { fill: #ffffff; }
-    .fill-brand-green { fill: #2D843D; }
+    .fill-brand-green { fill: #006b36; }
 </style>
 
 <section class="relative group flex flex-col mt-24 sm:mt-0 h-100 sm:h-screen w-full justify-center items-center overflow-hidden select-none"

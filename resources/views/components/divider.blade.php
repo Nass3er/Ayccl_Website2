@@ -19,10 +19,10 @@
         border-radius: 2px;
     }
     .cement-divider::before {
-        background: linear-gradient(to left, #2D843D, transparent);
+        background: linear-gradient(to left, #006b36, transparent);
     }
     .cement-divider::after {
-        background: linear-gradient(to right, #2D843D, transparent);
+        background: linear-gradient(to right, #006b36, transparent);
     }
     .divider-content {
         padding: 0 20px;
@@ -32,7 +32,7 @@
     }
     .divider-tag {
         background: #000;
-        color: #2D843D;
+        color: #006b36;
         font-size: 0.7rem;
         padding: 2px 12px;
         border-radius: 50px;

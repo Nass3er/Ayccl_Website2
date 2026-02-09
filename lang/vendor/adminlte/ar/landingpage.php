@@ -16,33 +16,43 @@ return array (
   'css' => 'نظام الخدمة الذاتية للعملاء',
   'ess' => 'نظام الخدمة الذاتية للموظفين',
   'latestnews' => 'اخر الاخبار',
-  
+
   //  من نحن
   'aboutus' => 'من نحن',
   'aboutcompany' => 'نبذة عن الشركة',
   'futurePlans' => 'خطط مستقبلية',
   'prizesAndCertificates' => 'الجوائز والشهائد',
   'socialResponsibility' => 'المسئولية الاجتماعية',
-  
-  //  المبيعات والتسويق 
+  'ourprojects' => 'مشاريعنا',
+  'environment' => 'البيئة',
+  'cementblog' => 'مدونة اسمنتية',
+
+
+  //  المبيعات والتسويق
   'salesAndMarketing' => 'التسويق والمبيعات',
-  '100hadrami' => '100% حضرمي',
+  '100hadrami' => '100% اسمنت حضرموت',
   'products' => 'المنتجات',
   'customerservice' => 'خدمة العملاء',
   'suggestionsAndComplaints' => 'الاقتراحات والشكاوى',
   'branches' => 'الفروع',
-  
+
   'sustainableDevelopment' => 'التنمية المستدامة',
-  
-  
+
+
   // الموارد البشرية
   'humanResources' => 'الموارد البشرية',
+  'employees' => 'القوى العاملة',
   'employeesAdvantages' => 'مميزات العاملين',
   'jobApplication' => 'طلب التوظيف',
   'askForVisit' => 'طلب زيارة',
   'askForTraining' => 'طلب تدريب',
-  
-  
+  'electronicServices' => 'الخدمات الإلكترونية',
+  'ourguests' =>  'ضيوفنا',
+  'whatsapp' =>   'واتساب',
+  'inspectionCertificates' =>   'شهادات الفحص',
+  'specifications' =>   'المواصفات',
+
+
   // '' => 'Media Center',
   'mediaCenter' => 'المركز الإعلامي',
   'newsAndActivities' => 'الأخبار والفعاليات',
@@ -50,10 +60,10 @@ return array (
   'documents' => 'وثائق ومستندات',
   'activities' => 'الفعاليات',
   'news' => 'الأخبار',
-  
+
   //  مجلس الادارة
   'managementspeach' => 'كلمة رئيس مجلس الإدارة',
-  
+
   //  تواصل معنا
   'contactdetails' => 'معلومات التواصل',
   'address' => 'العنوان',

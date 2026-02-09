@@ -34,7 +34,7 @@ class MediaCenterController extends Controller
         $posts = Post::where("page_id", $page->id)
         ->where('active', true)
         ->with(['postDetail', 'media'])->get();
-        
+
         return view($this->path . "news-activities", compact('posts', 'page'));
     }
     public function newsShowIndex($locale, $id, $slug)
@@ -83,4 +83,26 @@ class MediaCenterController extends Controller
         $posts = Post::where("page_id", $page->id)->where('active', true)->with(['postDetail', 'mediaOne'])->get();
         return view($this->path . "documents", compact('posts', 'page'));
     }
+    public function inspectionCertificatesIndex()
+    {
+        $pageId = 55;
+         $page = Page::findOrFail($pageId);
+        $posts = Post::where("page_id", $page->id)
+        ->where('active', true)
+        ->with(['postDetail', 'media'])->get();
+        return view($this->path . "inspection-certificates", compact('posts', 'page'));
+    }
+
+    public function specificationsIndex()
+    {
+        $pageId = 56;
+        $page = Page::findOrFail($pageId);
+        $posts = Post::where("page_id", $page->id)
+        ->where('active', true)
+        ->with(['postDetail', 'media'])->get();
+
+        return view($this->path . "specifications", compact('posts', 'page'));
+    }
+
+
 }

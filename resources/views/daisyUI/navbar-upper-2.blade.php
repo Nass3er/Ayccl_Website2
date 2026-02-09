@@ -1,19 +1,28 @@
+<style>
+    .slug{
+        font-style: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 16px;
+        color: #006b36;;
+    }
+</style>
+
 {{-- <div class="navbar fixed top-0 z-[997] w-1/2 mx-auto bg-base-100 rounded-2xl " > --}}
 <div id="navbar" class="navbar fixed top-0 z-[997] text-white
     {{-- bg-emerald-700 --}}
     {{-- border-b-5 border-emerald-900 --}}
 {{-- rounded-2xl border-b-4 border-green-900 --}}
- "
- {{-- style="background-color: #2d843d;" --}}
- >
+ ">
 
-    <div class="navbar-start">
+    {{-- <div class="navbar-start">
         @include('daisyUI.navbar-mobile')
         <div class="hidden lg:flex">
             <a href="/">
                 <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
             </a>
+
         </div>
+
     </div>
 
 
@@ -21,10 +30,35 @@
     <div class="navbar-center flex lg:hidden ">
         <div class="">
             <a href="/">
-                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%]">
             </a>
         </div>
+    </div> --}}
+
+        <div class="navbar-start">
+        @include('daisyUI.navbar-mobile')
+        <div class="hidden lg:flex flex-col items-center">
+            <a href="/">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%] ">
+                {{-- <img src={{ asset('images/settings/AYCCL.png') }} alt="Logo" class="h-[100%] w-[100%] "> --}}
+            </a>
+            <span class="text-green-500 font-bold text-sm mt-1 slug">معاً نبني اليمن</span>
+        </div>
+
     </div>
+
+
+
+    <div class="navbar-center flex lg:hidden ">
+        <div class="flex flex-col items-center">
+            <a href="/">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[50%]">
+            </a>
+            <span class="text-green-500 font-bold text-xs mt-1 slug">معاً نبني اليمن</span>
+        </div>
+    </div>
+
+
     <div class="navbar-center hidden lg:flex mb-0 ">
         {{-- <ul class="menu menu-horizontal px-1"> --}}
         <ul
@@ -67,6 +101,14 @@
                     <li><a class="nav-child"
                             href={{ localizedRoute('certificates') }}>{{ __('adminlte::landingpage.prizesAndCertificates') }}</a>
                     </li>
+
+                    {{-- added by nasser --}}
+                    <li><a class="nav-child"
+                            href={{ localizedRoute('ourprojects') }}>{{ __('adminlte::landingpage.ourprojects') }}</a>
+                    </li>
+                    <li><a class="nav-child"
+                            href={{ localizedRoute('environment') }}>{{ __('adminlte::landingpage.environment') }}</a>
+                    </li>
                 </ul>
             </li>
 
@@ -95,6 +137,10 @@
             </li>
 
 
+            {{-- cement blogs --}}
+            <li><a class="nav-parent"
+                    href={{ localizedRoute('cementBlog') }}>{{ __('adminlte::landingpage.cementblog') }}</a>
+            </li>
 
             {{-- human resources --}}
             <li class="relative group/main font-bold ">
@@ -109,16 +155,14 @@
                 </div>
 
                 <ul class="navmenu">
+                    <li> <a href={{ localizedRoute('employees') }}
+                            class="nav-child">{{ __('adminlte::landingpage.employees') }}</a> </li>
+                    <li> <a href={{ localizedRoute('ess') }}
+                            class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+                     <li> <a href={{ localizedRoute('ourGuests') }}
+                            class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
                     <li> <a href={{ localizedRoute('employeesAdvantages') }}
                             class="nav-child">{{ __('adminlte::landingpage.employeesAdvantages') }}</a> </li>
-                    <li> <a href={{ localizedRoute('jobApplication') }}
-                            class="nav-child">{{ __('adminlte::landingpage.jobApplication') }}</a>
-                    </li>
-                    <li> <a href={{ localizedRoute('askForVisit') }}
-                            class="nav-child">{{ __('adminlte::landingpage.askForVisit') }}</a> </li>
-                    <li> <a href={{ localizedRoute('askForTraining') }}
-                            class="nav-child">{{ __('adminlte::landingpage.askForTraining') }}</a>
-                    </li>
                 </ul>
             </li>
 
@@ -147,15 +191,42 @@
                             class="nav-child">{{ __('adminlte::landingpage.videos') }}</a> </li>
                     <li> <a href={{ localizedRoute('documents') }}
                             class="nav-child">{{ __('adminlte::landingpage.documents') }}</a> </li>
+                    <li> <a href={{ localizedRoute('inspectionCertificates') }}
+                            class="nav-child">{{ __('adminlte::landingpage.inspectionCertificates') }}</a> </li>
+                    <li> <a href={{ localizedRoute('specifications') }}
+                            class="nav-child">{{ __('adminlte::landingpage.specifications') }}</a> </li>
                 </ul>
             </li>
             {{-- contact us --}}
-            {{-- <li>
-                <a class="nav-parent"
-                    href={{ localizedRoute('sustainableDevelopment') }}>{{ __('adminlte::landingpage.sustainableDevelopment') }}</a>
-            </li> --}}
-            <li><a class="nav-parent"
-                    href={{ localizedRoute('contactus') }}>{{ __('adminlte::landingpage.contactus') }}</a></li>
+            {{-- <li><a class="nav-parent"
+                    href={{ localizedRoute('contactus') }}>{{ __('adminlte::landingpage.contactus') }}</a></li> --}}
+
+
+            {{-- electeronic services --}}
+             <li class="relative group/main font-bold ">
+                <div class="nav-parent">
+                    {{ __('adminlte::landingpage.electronicServices') }}
+                    <svg class="w-4 h-4 transform group-hover/main:rotate-180 transition-transform duration-200"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.194l3.71-3.965a.75.75 0 111.08 1.04l-4.25 4.54a.75.75 0 01-1.08 0l-4.25-4.54a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <ul class="navmenu">
+                <li> <a href={{ localizedRoute('jobApplication') }}
+                            class="nav-child">{{ __('adminlte::landingpage.jobApplication') }}</a>
+                    </li>
+                    <li> <a href={{ localizedRoute('askForVisit') }}
+                            class="nav-child">{{ __('adminlte::landingpage.askForVisit') }}</a> </li>
+                    <li> <a href={{ localizedRoute('askForTraining') }}
+                            class="nav-child">{{ __('adminlte::landingpage.askForTraining') }}</a>
+                    </li>
+                    <li> <a href={{ localizedRoute('whatsapp') }}
+                            class="nav-child">{{ __('adminlte::landingpage.whatsapp') }}</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 

@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .accordion-header:focus {
-    outline: 2px solid #10b981;
+    outline: 2px solid #006b36;
     outline-offset: 2px;
 }
 

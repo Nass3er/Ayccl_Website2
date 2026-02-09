@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\isNull;
 
-class HumanResourcesController extends Controller
+class ElectronicServiceController extends Controller
 {
    /**
      * Create a new controller instance.
@@ -20,31 +20,18 @@ class HumanResourcesController extends Controller
     {
         // $this->middleware('auth');
     }
-    private $pageId = 2;
-     private $path = "landingPage.human-resources.";
+    private $pageId = 10;
+     private $path = "landingPage.electronic-services.";
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function employeesAdvantagesIndex()
-    {
-         // $pageId = app()->getlocale() =='ar' ? 23 : 123 ;
-
-         try{
-            $pageId = 41;
-            $page = Page::findOrFail($pageId);
-            $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
-        }catch(Exception $e){
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
-         return view($this->path."employees-advantages", compact('posts', 'page'));
-    }
 
      public function jobApplicationIndex()
     {
         try{
-            $pageId = 42;
+            $pageId = 101;
             $page = Page::findOrFail($pageId);
             $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
         }catch(Exception $e){
@@ -56,7 +43,7 @@ class HumanResourcesController extends Controller
     public function askForVisitIndex ()
     {
         try{
-            $pageId = 43;
+            $pageId = 102;
             $page = Page::findOrFail($pageId);
             $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
         }catch(Exception $e){
@@ -67,36 +54,12 @@ class HumanResourcesController extends Controller
     public function askForTrainingIndex ()
     {
         try{
-            $pageId = 44;
+            $pageId = 103;
             $page = Page::findOrFail($pageId);
             $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
         }catch(Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
          return view($this->path."ask-training", compact('posts', 'page'));
-    }
-
-    public function employeesIndex ()
-    {
-        try{
-            $pageId = 45;
-            $page = Page::findOrFail($pageId);
-            $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
-        }catch(Exception $e){
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
-         return view($this->path."employees", compact('posts', 'page'));
-    }
-
-    public function ourGuestsIndex ()
-    {
-        try{
-            $pageId = 46;
-            $page = Page::findOrFail($pageId);
-            $posts = Post::where("page_id", $page->id)->where('active',true)->with(['postDetail', 'mediaOne'])->get();
-        }catch(Exception $e){
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
-         return view($this->path."our-guests", compact('posts', 'page'));
     }
 }

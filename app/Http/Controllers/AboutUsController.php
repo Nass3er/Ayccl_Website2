@@ -55,7 +55,7 @@ class AboutUsController extends Controller
         $pageId = 22;
         $page = Page::findOrFail($pageId);
         $posts = Post::where("page_id", $page->id)->with('mediaOne')->where('active', true)->get();
-        
+
 
         return view($this->path."management-board", compact('posts', 'page'));
     }
@@ -66,7 +66,7 @@ class AboutUsController extends Controller
         $page = Page::findOrFail($pageId);
         $posts = Post::where("page_id", $page->id)->where('active', true)->get();
          // $posts = Post::where("page_id", $page->id)->where('active', true)->get();
- 
+
 
          return view($this->path."vision-message", compact('posts', 'page'));
     }
@@ -78,7 +78,7 @@ class AboutUsController extends Controller
         $page = Page::findOrFail($pageId);
         $posts = Post::where("page_id", $page->id)->where('active', true)->get();
          // $posts = Post::where("page_id", $page->id)->where('active', true)->get();
- 
+
          return view($this->path."future-plans", compact('posts', 'page'));
     }
     public function socialResponsibilityIndex()
@@ -99,6 +99,26 @@ class AboutUsController extends Controller
         $posts = Post::where("page_id", $page->id)->with('postDetail','Media')->where('active', true)->get();
 
         return view($this->path."prizes-certificates", compact('posts', 'page'));
+    }
+
+    public function ourProjectsIndex()
+    {
+         // $pageId = app()->getlocale() =='ar' ? 23 : 123 ;
+        $pageId = 27;
+        $page = Page::findOrFail($pageId);
+        $posts = Post::where("page_id", $page->id)->with('postDetail','Media')->where('active', true)->get();
+
+        return view($this->path."our-projects", compact('posts', 'page'));
+    }
+
+    public function environmentIndex()
+    {
+         // $pageId = app()->getlocale() =='ar' ? 23 : 123 ;
+        $pageId = 28;
+        $page = Page::findOrFail($pageId);
+        $posts = Post::where("page_id", $page->id)->with('postDetail','Media')->where('active', true)->get();
+
+        return view($this->path."environment", compact('posts', 'page'));
     }
 
 
