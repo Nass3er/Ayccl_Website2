@@ -3,7 +3,7 @@
         font-style: bold;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-size: 16px;
-        color: #006b36;;
+        color: #006b36;
     }
 </style>
 
@@ -49,12 +49,21 @@
 
 
 
-    <div class="navbar-center flex lg:hidden ">
+    <!-- <div class="navbar-center flex lg:hidden ">
         <div class="flex flex-col items-center">
             <a href="/">
-                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[50%]">
+                <img src={{ asset('images/Logo.png') }} alt="Logo" class="h-[100%] w-[100%]">
             </a>
             <span class="text-green-500 font-bold text-xs mt-1 slug">معاً نبني اليمن</span>
+        </div>
+    </div> -->
+
+    <div class="navbar-center flex lg:hidden">
+        <div class="flex flex-col items-center justify-center">
+            <a href="/" class="flex h-12 w-auto items-center">
+                <img src="{{ asset('images/Logo.png') }}" alt="Logo" class="h-full w-auto object-contain">
+            </a>
+            <span class="text-green-500 font-bold text-[10px] mt-0.5 slug">معاً نبني اليمن</span>
         </div>
     </div>
 
@@ -222,7 +231,7 @@
                     <li> <a href={{ localizedRoute('askForTraining') }}
                             class="nav-child">{{ __('adminlte::landingpage.askForTraining') }}</a>
                     </li>
-                    <li> <a href={{ localizedRoute('whatsapp') }}
+                    <li> <a href="https://wa.me/{{ $floatingButtons[1]->mediaOne->link ?? $floatingButtons[1]->postDetailOne->content }}"
                             class="nav-child">{{ __('adminlte::landingpage.whatsapp') }}</a>
                     </li>
                 </ul>

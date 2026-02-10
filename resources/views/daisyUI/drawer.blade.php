@@ -3,7 +3,7 @@
 
     <!-- Drawer Trigger -->
     <div class="drawer-content">
-        <label for="my-drawer" class="btn bg-green-800/75 border-0 text-white drawer-button">☰</label>
+        <label for="my-drawer" class="btn border-0 text-white drawer-button" style="background-color: #006b36;">☰</label>
     </div>
 
     <!-- Drawer Side -->
@@ -67,6 +67,13 @@
                             <li><a
                                     href="{{ localizedRoute('certificates') }}">{{ __('adminlte::landingpage.prizesAndCertificates') }}</a>
                             </li>
+                            {{-- added by nasser --}}
+                            <li><a class="nav-child"
+                                    href={{ localizedRoute('ourprojects') }}>{{ __('adminlte::landingpage.ourprojects') }}</a>
+                            </li>
+                            <li><a class="nav-child"
+                                    href={{ localizedRoute('environment') }}>{{ __('adminlte::landingpage.environment') }}</a>
+                            </li>
                         </ul>
                     </details>
                 </li>
@@ -75,15 +82,13 @@
                     <details class="details-group group/drawer">
                         <summary>{{ __('adminlte::landingpage.salesAndMarketing') }}</summary>
                         <ul class="border-s-4 border-s-emerald-800">
-                            <li><a
-                                    href="{{ localizedRoute('hadrami') }}">{{ __('adminlte::landingpage.100hadrami') }}</a>
-                            </li>
-                            <li><a
-                                    href="{{ localizedRoute('products') }}">{{ __('adminlte::landingpage.products') }}</a>
-                            </li>
-                            <li><a
-                                    href="{{ localizedRoute('customerservice') }}">{{ __('adminlte::landingpage.customerservice') }}</a>
-                            </li>
+                             <li> <a href={{ localizedRoute('hadrami') }}
+                            class="nav-child">{{ __('adminlte::landingpage.100hadrami') }}</a> </li>
+                            <li> <a href={{ localizedRoute('products') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
+                            <li> <a href={{ localizedRoute('customerservice') }}
+                            class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
+
                             {{-- <li><a
                                     href="{{ localizedRoute('suggestionsandcomplaints') }}">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a>
                             </li> --}}
@@ -91,20 +96,24 @@
                     </details>
                 </li>
 
+                 {{-- cement blogs --}}
+                <li><a class="nav-parent"
+                        href={{ localizedRoute('cementBlog') }}>{{ __('adminlte::landingpage.cementblog') }}</a>
+                </li>
+
                 <li>
                     <details class="details-group group/drawer">
                         <summary>{{ __('adminlte::landingpage.humanResources') }}</summary>
                         <ul class="border-s-4 border-s-emerald-800">
+                            <li> <a href={{ localizedRoute('employees') }}
+                            class="nav-child">{{ __('adminlte::landingpage.employees') }}</a> </li>
+                            <li> <a href={{ localizedRoute('ess') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+                            <li> <a href={{ localizedRoute('ourGuests') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
                             <li> <a href={{ localizedRoute('employeesAdvantages') }}
-                                    >{{ __('adminlte::landingpage.employeesAdvantages') }}</a> </li>
-                            <li> <a href={{ localizedRoute('jobApplication') }}
-                                    >{{ __('adminlte::landingpage.jobApplication') }}</a>
-                            </li>
-                            <li> <a href={{ localizedRoute('askForVisit') }}
-                                    >{{ __('adminlte::landingpage.askForVisit') }}</a> </li>
-                            <li> <a href={{ localizedRoute('askForTraining') }}
-                                    >{{ __('adminlte::landingpage.askForTraining') }}</a>
-                            </li>
+                            class="nav-child">{{ __('adminlte::landingpage.employeesAdvantages') }}</a> </li>
+
                         </ul>
                     </details>
                 </li>
@@ -113,29 +122,53 @@
                     <details class="details-group group/drawer">
                         <summary>{{ __('adminlte::landingpage.mediaCenter') }}</summary>
                         <ul class="border-s-4 border-s-emerald-800">
-                            <li> <a href={{ localizedRoute('newsAndActivities') }}
-                                    >{{ __('adminlte::landingpage.newsAndActivities') }}</a> </li>
+                             <li> <a href={{ localizedRoute('newsAndActivities') }}
+                            class="nav-child">{{ __('adminlte::landingpage.newsAndActivities') }}</a> </li>
                             <li> <a href={{ localizedRoute('photosGalary') }}
-                                    >{{ __('adminlte::landingpage.photosGalary') }}</a> </li>
+                                    class="nav-child">{{ __('adminlte::landingpage.photosGalary') }}</a> </li>
                             <li> <a href={{ localizedRoute('videos') }}
-                                    >{{ __('adminlte::landingpage.videos') }}</a> </li>
+                                    class="nav-child">{{ __('adminlte::landingpage.videos') }}</a> </li>
                             <li> <a href={{ localizedRoute('documents') }}
-                                    >{{ __('adminlte::landingpage.documents') }}</a> </li>
+                                    class="nav-child">{{ __('adminlte::landingpage.documents') }}</a> </li>
+                            <li> <a href={{ localizedRoute('inspectionCertificates') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.inspectionCertificates') }}</a> </li>
+                            <li> <a href={{ localizedRoute('specifications') }}
+                            class="nav-child">{{ __('adminlte::landingpage.specifications') }}</a> </li>
                         </ul>
                     </details>
                 </li>
+                <li>
+                    <details class="details-group group/drawer">
+                        <summary>  {{ __('adminlte::landingpage.electronicServices') }}</summary>
+                        <ul class="border-s-4 border-s-emerald-800">
+                            <li> <a href={{ localizedRoute('jobApplication') }}
+                            class="nav-child">{{ __('adminlte::landingpage.jobApplication') }}</a>
+                            </li>
+                            <li> <a href={{ localizedRoute('askForVisit') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.askForVisit') }}</a> </li>
+                            <li> <a href={{ localizedRoute('askForTraining') }}
+                                    class="nav-child">{{ __('adminlte::landingpage.askForTraining') }}</a>
+                            </li>
+                            <li> <a href="https://wa.me/{{ $floatingButtons[1]->mediaOne->link ?? $floatingButtons[1]->postDetailOne->content }}"
+                                    class="nav-child">{{ __('adminlte::landingpage.whatsapp') }}</a>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+
+
                 {{-- <li>
                     <a
                         href={{ localizedRoute('sustainableDevelopment') }}>{{ __('adminlte::landingpage.sustainableDevelopment') }}</a>
                 </li> --}}
-                <li>
+                {{-- <li>
                     <a href={{ localizedRoute('contactus') }}>{{ __('adminlte::landingpage.contactus') }}</a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Bottom Icons -->
             <div class="flex justify-center items-center gap-4 p-4 w-full">
-                
+
                 @foreach ($systems as $system)
                 <a href="{{ $system->postDetailOne->content }}" target="_blank">
                     <img src="{{ asset($system->mediaOne->thumbnailpath) }}"

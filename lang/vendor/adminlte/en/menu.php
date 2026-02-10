@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'blog' => 'Blog',
     'pages' => 'Pages',
     'account_settings' => 'ACCOUNT SETTINGS',
@@ -49,6 +49,8 @@ return [
 'futurePlans' => 'Future Plans',
 'socialReponsibility' => 'Social Responsibility',
 'prizedAndCertificates' => 'Awards and Certificates',
+'ourProjects' =>  'Our Projects',
+'environment' =>   'Environment',
 
 '100Hadrami' => '100% Hadrami', // This is a proper name/slogan
 'products' => 'Products',
@@ -64,4 +66,6 @@ return [
 'password_change' => 'Change Password',
 'dashboard' => 'Dashboard',
 
+'cementBlogs' => 'Cement Blogs',
+'blog' => 'Blog',
 ];

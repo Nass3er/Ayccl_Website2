@@ -29,7 +29,10 @@ use App\Http\Controllers\StartPage;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\CementBlogController;
+use App\Http\Controllers\Admin\CementBlog\CementBlogController;
+use App\Http\Controllers\Admin\AboutUs\EnvironmentController;
+use App\Http\Controllers\Admin\AboutUs\OurProjectController;
+use App\Http\Controllers\CementBlogControllerWeb;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ElectronicServiceController;
 use App\Http\Controllers\HomeController;
@@ -133,6 +136,8 @@ Route::group([
                     Route::resource('future-plans',FuturePlansController::class);
                     Route::resource('social-reponsibility', SocialResponsibilityController::class);
                     Route::resource('prizes-and-certificates', CertificatesController::class);
+                    Route::resource('our-projects', OurProjectController::class);
+                    Route::resource('environments', EnvironmentController::class);
                 });
                 Route::prefix('/Sales-And-Marketing')->middleware(['auth'])->group(function () {
                     Route::resource('hadhrami', HadhramiController::class);
@@ -144,6 +149,11 @@ Route::group([
                     Route::resource('job-application', JobApplicaitonController::class);
                     Route::resource('ask-for-visit', VisitController::class);
                     Route::resource('internship-request',InternshipRequestController::class);
+                });
+
+                // cement-blogs
+                Route::prefix('/Blogs')->middleware(['auth'])->group(function () {
+                    Route::resource('cement-blogs', CementBlogController::class);
                 });
 
                 Route::resource('home-page', StartUpController::class);
@@ -176,6 +186,7 @@ Route::group([
                     Route::get('/sales-and-marketing', [ContentManagementController::class, 'index'])->name('content.salesAndManagement');
                     Route::get('/human-resources', [ContentManagementController::class, 'index'])->name('content.humanResources');
                     Route::get('/media-center', [ContentManagementController::class, 'index'])->name('content.mediaCenter');
+                    Route::get('/blogs', [ContentManagementController::class, 'index'])->name('content.blogs');
                     Route::get('/contact-us', [ContentManagementController::class, 'index'])->name('content.contactUs');
                 });
 
@@ -219,7 +230,7 @@ Route::group([
 
 
     //  مدونة اسمنتية
-    Route::get('/cementBlog', [CementBlogController::class, 'index'])->name('cementBlog');
+    Route::get('/cementBlog', [CementBlogControllerWeb::class, 'index'])->name('cementBlog');
 
     // الموارد البشرية
     Route::get('/employeesAdvantages', [HumanResourcesController::class, 'employeesAdvantagesIndex'])->name('employeesAdvantages');

@@ -160,4 +160,8 @@ return array(
     'editPageBackgroundAndDesc' => 'تعديل وصف وخلفية الصفحة',
     'emailSentSuccessfully' => 'تم إرسال الإيميل بنجاح.',
     'showmore' => 'إعرف أكثر',
+
+    
+
+
 );

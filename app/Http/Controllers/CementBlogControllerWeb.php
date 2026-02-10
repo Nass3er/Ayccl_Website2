@@ -7,7 +7,7 @@ use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
 
-class CementBlogController extends Controller
+class CementBlogControllerWeb extends Controller
 {
     /**
      * Create a new controller instance.

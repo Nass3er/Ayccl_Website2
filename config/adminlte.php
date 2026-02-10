@@ -481,7 +481,33 @@ return [
                             'route' => 'prizes-and-certificates.index',
                             'active' => ['*About-Us/prizes-and-certificates*'],
                         ],
+                        [
+                            'icon'=>'fas fa-project-diagram',
+                            'text' => 'ourProjects',
+                            'route' => 'our-projects.index',
+                            'active' => ['*About-Us/our-projects*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-leaf',
+                            'text' => 'environment',
+                            'route' => 'environments.index',
+                            'active' => ['*About-Us/environment*'],
+                        ],
                     ],
+                ],
+                [
+                    'icon'=>'fas fa-blog',
+                    'text' => 'blog',
+                    'route' => 'content.blogs',
+                    'active' => ['*Blog*'],
+                    'submenu' => [
+                        [
+                            'icon'=>'fas fa-cement',
+                            'text' => 'cementBlogs',
+                            'route' => 'cement-blogs.index',
+                            'active' => ['*Blog/cement-blogs*'],
+                        ],
+                    ]
                 ],
                 [
                     'icon'=>'fas fa-money-bill',

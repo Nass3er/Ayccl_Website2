@@ -14,8 +14,8 @@ return [
     'important' => 'Important',
     'warning' => 'Warning',
     'information' => 'Information',
-    
-    
+
+
     'account_settings' => 'إعدادات الحساب',
     'system_management' => 'إدارة النظام',
     'users_management' => 'إدارة المستخدمين',
@@ -25,7 +25,7 @@ return [
     'website_management' => 'إدارة الموقع',
     'website_variables' => 'متغيرات الموقع',
     'website_logs' => 'رقابة الموقع',
-    
+
     'content_management' => 'إدارة المحتوى',
     'home' => 'الرئيسية',
     'aboutUs' => 'من نحن',
@@ -33,7 +33,7 @@ return [
     'humanResources' => 'الموارد البشرية',
     'mediaCenter' => 'المركز الاعلامي',
     'contactUs' => 'تواصل معنا',
-    
+
     'newsAndActivities' => 'الأخبار والفعاليات',
 'photosGalary' => 'معرض الصور',
 'videos' => 'الفيديوهات',
@@ -45,6 +45,8 @@ return [
 'futurePlans' => 'خطط مستقبلية',
 'socialReponsibility' => 'المسئولية الاجتماعية',
 'prizedAndCertificates' => 'الجوائز والشهائد',
+'ourProjects' => 'مشاريعنا',
+'environment' => 'البيئة',
 
 '100Hadrami' => '100% حضرمي',
 'products' => 'المنتجات',
@@ -60,5 +62,7 @@ return [
 'password_change' => 'تغيير كلمة المرور',
 'dashboard' => 'لوحة التحكم',
 
-    
+'cementBlogs' => 'مدونة اسمنتية',
+'blog' => 'المدونة',
+
 ];

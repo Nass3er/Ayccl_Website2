@@ -13,9 +13,9 @@
     <div class="row mt-3">
         <!-- Total Users Card -->
         <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['total_users'] }}" 
-                text="{{ __('adminlte::adminlte.totalUsers') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['total_users'] }}"
+                text="{{ __('adminlte::adminlte.totalUsers') }}"
                 icon="fas fa-users"
                 theme="gradient-teal"
                 icon-theme="white"/>
@@ -23,9 +23,9 @@
 
         <!-- Active Users Card -->
         {{-- <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['active_users'] }}" 
-                text="{{ __('adminlte::adminlte.activeUsers') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['active_users'] }}"
+                text="{{ __('adminlte::adminlte.activeUsers') }}"
                 icon="fas fa-user-check"
                 theme="gradient-success"
                 icon-theme="white"/>
@@ -33,9 +33,9 @@
 
         <!-- Total Posts Card -->
         <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['total_posts'] }}" 
-                text="{{ __('adminlte::adminlte.totalPosts') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['total_posts'] }}"     
+                text="{{ __('adminlte::adminlte.totalPosts') }}"
                 icon="fas fa-newspaper"
                 theme="gradient-primary"
                 icon-theme="white"/>
@@ -43,9 +43,9 @@
 
         <!-- Active Posts Card -->
         {{-- <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['active_posts'] }}" 
-                text="{{ __('adminlte::adminlte.activePosts') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['active_posts'] }}"
+                text="{{ __('adminlte::adminlte.activePosts') }}"
                 icon="fas fa-check-circle"
                 theme="gradient-info"
                 icon-theme="white"/>
@@ -53,9 +53,9 @@
 
         <!-- Total Media Card -->
         <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['total_media'] }}" 
-                text="{{ __('adminlte::adminlte.totalMedia') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['total_media'] }}"
+                text="{{ __('adminlte::adminlte.totalMedia') }}"
                 icon="fas fa-images"
                 theme="gradient-warning"
                 icon-theme="white"/>
@@ -63,9 +63,9 @@
 
         <!-- Total Pages Card -->
         {{-- <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['total_pages'] }}" 
-                text="{{ __('adminlte::adminlte.totalPages') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['total_pages'] }}"
+                text="{{ __('adminlte::adminlte.totalPages') }}"
                 icon="fas fa-file-alt"
                 theme="gradient-purple"
                 icon-theme="white"/>
@@ -73,9 +73,9 @@
 
         {{-- <!-- Total Categories Card -->
         <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ $stats['total_categories'] }}" 
-                text="{{ __('adminlte::adminlte.totalCategories') }}" 
+            <x-adminlte-info-box
+                title="{{ $stats['total_categories'] }}"
+                text="{{ __('adminlte::adminlte.totalCategories') }}"
                 icon="fas fa-tags"
                 theme="gradient-pink"
                 icon-theme="white"/>
@@ -83,9 +83,9 @@
 
         <!-- Total Media Files -->
         <div class="col-lg-3 col-6">
-            <x-adminlte-info-box 
-                title="{{ array_sum($mediaCenter) }}" 
-                text="{{ __('adminlte::adminlte.mediaCenter') }}" 
+            <x-adminlte-info-box
+                title="{{ array_sum($mediaCenter) }}"
+                text="{{ __('adminlte::adminlte.mediaCenter') }}"
                 icon="fas fa-broadcast-tower"
                 theme="gradient-danger"
                 icon-theme="white"/>
@@ -254,17 +254,17 @@
     .hover-shadow {
         transition: all 0.3s ease;
     }
-    
+
     .hover-shadow:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
-    
+
     .card-body h3 {
         font-size: 2rem;
         font-weight: bold;
     }
-    
+
     .opacity-50 {
         opacity: 0.5;
     }
