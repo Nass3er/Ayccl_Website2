@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', __('adminlte::menu.cementBlogs'))
+@section('title', __('adminlte::menu.inspectionCertificates'))
 
 @section('content_header')
-    <h1>{{ __('adminlte::menu.cementBlogs') }}</h1>
+    <h1>{{ __('adminlte::menu.inspectionCertificates') }}</h1>
 @stop
 
 
@@ -12,7 +12,7 @@
 
 
     <div class="container mx-0  mb-5">
-        <a href="{{ route('cement-blogs.create', ['locale', app()->getLocale()]) }}">
+        <a href="{{ route('inspection-certificates.create', ['locale', app()->getLocale()]) }}">
             <x-adminlte-button class="btn-lg mb-10" type="reset" label="{{ __('adminlte::adminlte.createNewPost') }}" theme="outline-success" icon="fas fa-file-far fa-plus-square	"/>
         </a>
     @include('admin-panel.general.pages.edit')
@@ -55,7 +55,7 @@
 
             $btnEdit =
                 '<a href="' .
-                route('cement-blogs.edit', ['cement_blog' => $post->id, 'locale' => app()->getLocale()]) .
+                route('inspection-certificates.edit', ['inspection_certificate' => $post->id, 'locale' => app()->getLocale()]) .
                 '" class="btn btn-warning " data-toggle="tooltip" title=' .
                 __('adminlte::adminlte.edit') .
                 '><i class="	fas fa-edit"></i>'.
@@ -97,7 +97,7 @@
             'pagingType' => 'full_numbers',
             // 'serverSide' => true,
             // 'processing' => true,
-            // 'ajax' => "{{ localizedRoute('environments.index') }}",
+            // 'ajax' => "{{ localizedRoute('social-reponsibility.index') }}",
             'language' => [
                 'search' => __('adminlte::adminlte.search'),
                 'paginate' => [
@@ -169,7 +169,7 @@
 
                 // Set action for the Delete form
                 var deleteAction =
-                    '{{ route('cement-blogs.destroy', ['locale' => app()->getLocale(), 'cement_blog' => '__ID__']) }}';
+                    '{{ route('inspection-certificates.destroy', ['locale' => app()->getLocale(), 'inspection_certificate' => '__ID__']) }}';
                 deleteAction = deleteAction.replace('__ID__', postId);
                 $('#formDelete').attr('action', deleteAction);
 
@@ -182,7 +182,7 @@
             $('#modalActivate').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 var postId = button.data('id'); // Extract info from data-* attributes
-                // Assuming 'environments.activate' is a route for activating environments. Adjust as needed.
+                // Assuming 'social-reponsibility.activate' is a route for activating social-reponsibility. Adjust as needed.
                 var action =
                     '{{ localizedRoute('post.activation', ['id' => '__ID__']) }}'; // Use update route for activation
                 action = action.replace('__ID__', postId);

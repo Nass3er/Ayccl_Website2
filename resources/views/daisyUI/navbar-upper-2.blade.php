@@ -166,8 +166,11 @@
                 <ul class="navmenu">
                     <li> <a href={{ localizedRoute('employees') }}
                             class="nav-child">{{ __('adminlte::landingpage.employees') }}</a> </li>
-                    <li> <a href={{ localizedRoute('ess') }}
+
+
+                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXESS"
                             class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+
                      <li> <a href={{ localizedRoute('ourGuests') }}
                             class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
                     <li> <a href={{ localizedRoute('employeesAdvantages') }}

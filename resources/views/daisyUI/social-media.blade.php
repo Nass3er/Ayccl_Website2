@@ -14,7 +14,7 @@
                 <i class="fa-brands fa-facebook-square text-4xl text-white"></i>
             </summary>
             <div class="p-0 sm:p-2 transition-all duration-500">
-                
+
                 <iframe
                     src="{{ $socialMediaPages[1]->postDetailOne->content }}"
                     class="w-auto mx-auto h-120 sm:h-126" style="border:none;overflow:hidden" scrolling="no"
@@ -82,6 +82,45 @@
                 </div>
             </div>
         </details>
+
+
+        <!-- Tiktok -->
+        <details
+    class="group border border-base-300 rounded-box bg-gray-800 overflow-hidden
+           w-full sm:w-20 open:sm:w-96 h-full transition-[width] duration-500">
+
+    <summary
+        class="py-3 p-2 flex justify-center h-full cursor-pointer list-none">
+        <i class="fa-brands fa-tiktok text-4xl text-white transition group-hover:scale-110"></i>
+    </summary>
+
+    <div class="flex justify-center w-full">
+        <div
+            class="mx-3 sm:mx-auto my-5 w-full max-w-[360px]
+                   h-[500px] bg-white rounded-lg shadow-md
+                   border border-gray-200 overflow-hidden">
+
+            <blockquote
+                class="tiktok-embed"
+                cite="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4"
+                data-unique-id="aycclyemen"
+                data-embed-type="creator"
+                style="max-width: 360px; min-width: 288px;">
+                <section>
+                    <a target="_blank"
+                       title="@aycclyemen"
+                       href="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4">
+                        @aycclyemen
+                    </a>
+                </section>
+            </blockquote>
+
+        </div>
+    </div>
+</details>
+<script async src="https://www.tiktok.com/embed.js" charset="utf-8"></script>
+
+
     </div>
 </div>
 @section('jsafter')
@@ -119,7 +158,7 @@
 
 
         // Close all when clicking outside
-        // document.addEventListener('click', (e) => { 
+        // document.addEventListener('click', (e) => {
         //     if (!accordion.contains(e.target) || !details.contains(e.target)) {
         //         details.forEach((d) => (d.open = false));
         //     }

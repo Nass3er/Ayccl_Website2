@@ -64,5 +64,10 @@ return [
 
 'cementBlogs' => 'مدونة اسمنتية',
 'blog' => 'المدونة',
+'employees' => 'القوى العاملة',
+'ourGuests' => 'ضيوفنا',
+'specifications' => 'المواصفات',
+'inspectionCertificates' => 'شهادات الفحص',
+'electronicServices' => 'الخدمات الإلكترونية',
 
 ];

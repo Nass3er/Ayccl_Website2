@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\HumanResouces;
+namespace App\Http\Controllers\Admin\MediaCenter;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -15,15 +15,16 @@ use Spatie\Image\Image;
 use Spatie\Image\Drivers\GdDriver;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File; // This is the new import
+use Illuminate\Support\Facades\File;
 use PhpParser\Node\Expr\Throw_;
 use Spatie\Image\Drivers\ImageDriver;
 
-class JobApplicaitonController extends Controller
+class SpecificationController extends Controller
 {
-    public $pageId = 42;
-    public $route = 'job-application';
-    public $view = 'admin-panel.human-resources.job-application';
+     public $pageId = 56;
+     public $route = 'specifications';
+     public $view = 'admin-panel.media-center.specifications';
+
     public function index()
     {
         try{
@@ -34,24 +35,6 @@ class JobApplicaitonController extends Controller
         }
         return view("$this->view.index", compact('posts'));
     }
-
-    public function show($locale, $id)
-    {
-        $media = Media::findOrFail($id);
-    
-        // Full path to file
-        $path = public_path($media->link);
-    
-        if (!file_exists($path)) {
-            abort(404, 'File not found.');
-        }
-    
-        return response()->file($path, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . basename($path) . '"'
-        ]);
-    }
-
     public function create()
     {
         try{
@@ -81,8 +64,7 @@ class JobApplicaitonController extends Controller
                 'title_en'   => 'required',
                 'content_ar'    => 'required',
                 'content_en' => 'required',
-                'files'      => 'required', 
-                'link'      => 'required', 
+                'files'      => 'required',
             ],
             [
                 'title.required'      => __('adminlte::adminlte.title_required'),
@@ -90,16 +72,15 @@ class JobApplicaitonController extends Controller
                 'content_ar.required'    => __('adminlte::adminlte.content_required'),
                 'content_en.required' => __('adminlte::adminlte.content_en_required'),
                 'files.required'      => __('adminlte::adminlte.files_required'),
-                'link.required'      => __('adminlte::adminlte.link_required'),
             ]
         );
 
-        
+
         try {
             DB::beginTransaction();
             // 1. Create Post
             $post = new Post();
-            $post->category_id = 1;
+            $post->category_id = 18;
             $post->page_id = $this->pageId; // default page
             if (isset($request->order))
                 $post->order     = $request->order;
@@ -156,7 +137,6 @@ class JobApplicaitonController extends Controller
                             $optimizerChain->optimize($absoluteOriginal);
                         }
                     } catch (\Throwable $e) {
-                        dd($e);
                         // swallow optimization errors (missing binaries, etc.)
                     }
 
@@ -221,24 +201,23 @@ class JobApplicaitonController extends Controller
                         imagedestroy($resized);
                         imagedestroy($src);
                     }
+
+                    // 6) Save DB record
+                    $media                 = new Media();
+                    $media->media_type_id  = 1;
+                    $media->thumbnailpath  = $thumbRel;      // store relative path
+                    $media->filepath       = $originalRel;   // store relative path
+                    $media->alt            = $fileName;
+                    $media->setAltEnAttribute($fileName);
+                    $media->link           = $request->link ?? null;
+                    $media->media_able_id  = $post->id;
+                    $media->media_able_type = Post::class;
+                    $media->save();
                 }
 
+                // Commit after processing all files (do NOT commit inside the loop)
+                DB::commit();
             }
-
-
-            // 6) Save DB record
-            $media                 = new Media();
-            $media->media_type_id  = 1;
-            $media->thumbnailpath  = $thumbRel;      // store relative path
-            $media->filepath       = $originalRel;   // store relative path
-            $media->alt            = $fileName;
-            $media->setAltEnAttribute($fileName);
-            $media->link           = $request->link;
-            $media->media_able_id  = $post->id;
-            $media->media_able_type = Post::class;
-            $media->save();
-            // Commit after processing all files 
-            DB::commit();
 
             return redirect()->route("$this->route.index", app()->getLocale())
                 ->with(['success' => __('adminlte::adminlte.succCreate')]);
@@ -278,7 +257,7 @@ class JobApplicaitonController extends Controller
                 // 'date'       => 'required|date',
                 'content_ar'    => 'required',
                 'content_en' => 'required',
-                'link'      => 'required',
+                // 'files'      => 'required',
             ],
             [
                 'title.required'      => __('adminlte::adminlte.title_required'),
@@ -290,11 +269,11 @@ class JobApplicaitonController extends Controller
                 // 'date.required'       => __('adminlte::adminlte.date_required'),
                 'content_ar.required'    => __('adminlte::adminlte.content_required'),
                 'content_en.required' => __('adminlte::adminlte.content_en_required'),
-                'link.required'      => __('adminlte::adminlte.link_required'),
+                // 'files.required'      => __('adminlte::adminlte.files_required'),
                 ]
         );
 
-        
+
         try {
             $post = Post::findOrFail($id);
             DB::beginTransaction();
@@ -323,14 +302,14 @@ class JobApplicaitonController extends Controller
             $postDetail->content   = $request->content_ar;
             $postDetail->content_en = $request->content_en;
             // $postDetail->color     = $request->color?? '';
-            // $postDetail->order     = $postDetail->order ?? 1;
+            $postDetail->order     = $postDetail->order ?? 1;
             $postDetail->active    = $postDetail->active ?? true;
             $postDetail->save();
 
             // Force Spatie/Image to use GD instead of Imagick
-            $media                 = Media::findOrNew($post->mediaOne->id ?? null);
+
             // 3) Upload Media (if provided)
-            if ($request->hasFile('files')) 
+            if ($request->hasFile('files'))
             {
                 $files = is_array($request->file('files')) ? $request->file('files') : [$request->file('files')];
 
@@ -427,6 +406,7 @@ class JobApplicaitonController extends Controller
                     }
 
                     // 6) Save DB record
+                    $media                 = Media::findOrNew($post->mediaOne->id ?? null);
                     if($post->mediaOne != null){
                         if (Storage::disk('images')->exists($media->filepath)) {
                             Storage::disk('images')->delete($media->filepath);
@@ -436,50 +416,25 @@ class JobApplicaitonController extends Controller
                             Storage::disk('images')->delete($media->thumbnailpath);
                         }
                     }
-
+                    $media->media_type_id  = 1;
+                    $media->thumbnailpath  = $thumbRel;      // store relative path
+                    $media->filepath       = $originalRel;   // store relative path
+                    $media->alt            = $fileName;
+                    $media->setAltEnAttribute($fileName);
+                    $media->link           = $request->link ?? null;
+                    $media->media_able_id  = $post->id;
+                    $media->media_able_type = Post::class;
+                    $media->save();
                 }
 
+                // Commit after processing all files (do NOT commit inside the loop)
             }
-            if ($request->hasFile('files_pdf')) {
-                $filearr = $request->file('files_pdf');
-                $file = $filearr[0];
-                // 1) Get the original file name from the UploadedFile object
-                $originalFileName = Media::getAlt($file->getClientOriginalName());
-                
-                // 2) Define paths based on your requirements
-                $pdfPath = "files/$this->route/{$post->id}/{$originalFileName}";
-                $destinationPath = public_path("files/$this->route/{$post->id}");
-
-                if($post->mediaOne != null){
-                    if (Storage::disk('images')->exists($media->link)) {
-                        Storage::disk('images')->delete($media->link);
-                    }
-                }
-                // 3) Create the directory if it doesn't exist
-                File::makeDirectory($destinationPath, 0755, true, true);
-                
-                // 4) Move the file to the correct location using its original name
-                $file->move($destinationPath, $originalFileName);
-                
-                $media->media_type_id  = 1;
-                $media->thumbnailpath  = $thumbRel;      // store relative path
-                $media->filepath       = $originalRel;   // store relative path
-                $media->alt            = $fileName;
-                $media->setAltEnAttribute($fileName);
-                $media->link           = $pdfPath ;
-                $media->media_able_id  = $post->id;
-                $media->media_able_type = Post::class;
-                $media->save();
-            }
-            
             $media = Media::where('media_able_id', $post->id)->count();
             if ($media == 0) {
                 throw new \Exception(__('adminlte::adminlte.files_required')    );
             }
-
-            // Commit after processing all files 
             DB::commit();
-            
+
             return redirect()->route("$this->route.index", app()->getLocale())
                 ->with(['success' => __('adminlte::adminlte.succEdit')]);
         } catch (\Exception $e) {

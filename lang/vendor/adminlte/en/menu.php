@@ -68,4 +68,9 @@ return [
 
 'cementBlogs' => 'Cement Blogs',
 'blog' => 'Blog',
+'employees' => 'Employees',
+'ourGuests' => 'Our Guests',
+'inspectionCertificates' => 'Inspection Certificates',
+'specifications' => 'Specifications',
+'electronicServices' => 'Electronic Services',
 ];

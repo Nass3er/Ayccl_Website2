@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\HumanResouces;
+namespace App\Http\Controllers\Admin\ElectronicServices;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

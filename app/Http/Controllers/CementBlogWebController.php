@@ -7,7 +7,7 @@ use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
 
-class CementBlogControllerWeb extends Controller
+class CementBlogWebController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,9 +36,8 @@ class CementBlogControllerWeb extends Controller
             $pageId = 9;
             $page = Page::findOrFail($pageId);
             $cementBlogs = Post::where("page_id", $page->id)->where('active', true)
-            ->with(['postDetail' => function ($query) {
-                $query->orderBy('order', 'asc'); // descending
-            }])
+            ->with(['postDetailOne', 'mediaOne'])
+            ->orderBy('order', 'asc')
             ->get();
 
         }catch(Exception $e){

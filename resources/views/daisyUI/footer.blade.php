@@ -62,11 +62,12 @@
                     <span>{{ $address->postDetailOne->title }}</span>
                     <span>{{ $address->postDetailOne->content }}</span>
                 </div>
-        <div class="grid gap-2 sm:gap-4 grid-cols-5 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6">
+        <div class="flex flex-row flex-wrap gap-2 sm:gap-4 mt-2">
             @foreach ($socialLinks as $socialLink)
                 <x-click-icon :icon="$socialLink->mediaOne->thumbnailpath" :url="$socialLink->mediaOne->link" :label="$socialLink->mediaOne->alt" :class="$socialLink->postDetailOne->color" />
             @endforeach
-
+            {{-- for tiktok --}}
+            <x-click-icon icon="images/footer/TikTok-تيك توك.svg" url="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4" label="Tiktok" class="" />
         </div>
     </nav>
 </footer>

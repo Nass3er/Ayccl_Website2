@@ -510,6 +510,32 @@ return [
                     ]
                 ],
                 [
+                    'icon'=>'fas fa-file-contract',
+                    'text' => 'electronicServices',
+                    'route' => 'content.electronicServices',
+                    'active' => ['*Electronic-Services*'],
+                    'submenu' => [
+                        [
+                            'icon'=>'far fa-file-word',
+                            'text' => 'jobApplication',
+                            'route' => 'job-application.index',
+                            'active' => ['*Human-Resources./management-board*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-handshake',
+                            'text' => 'askForVisit',
+                            'route' => 'ask-for-visit.index',
+                            'active' => ['*Human-Resources/vision-and-message*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-school',
+                            'text' => 'internshipRequest',
+                            'route' => 'internship-request.index',
+                            'active' => ['*Human-Resources/vision-and-message*'],
+                        ],
+                    ]
+                ],
+                [
                     'icon'=>'fas fa-money-bill',
                     'text' => 'salesAndManagement',
                     'route' => 'content.salesAndManagement',
@@ -542,29 +568,24 @@ return [
                     'active' => ['*Human-Resources*'],
                     'submenu' => [
                         [
+                            'icon'=>'fas fa-user-tie',
+                            'text' => 'employees',
+                            'route' => 'employees.index',
+                            'active' => ['*Human-Resources/employees*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-user-friends',
+                            'text' => 'ourGuests',
+                            'route' => 'our-guests.index',
+                            'active' => ['*Human-Resources/our-guests*'],
+                        ],
+                        [
                             'icon'=>'fas fa-people-carry',
                             'text' => 'employeeAdvantages',
                             'route' => 'employee-advantages.index',
                             'active' => ['*Human-Resources/news*'],
                         ],
-                        [
-                            'icon'=>'far fa-file-word',
-                            'text' => 'jobApplication',
-                            'route' => 'job-application.index',
-                            'active' => ['*Human-Resources./management-board*'],
-                        ],
-                        [
-                            'icon'=>'fas fa-handshake',
-                            'text' => 'askForVisit',
-                            'route' => 'ask-for-visit.index',
-                            'active' => ['*Human-Resources/vision-and-message*'],
-                        ],
-                        [
-                            'icon'=>'fas fa-school',
-                            'text' => 'internshipRequest',
-                            'route' => 'internship-request.index',
-                            'active' => ['*Human-Resources/vision-and-message*'],
-                        ],
+                        
                     ],
                 ],
                 [
@@ -595,6 +616,18 @@ return [
                             'text' => 'documents',
                             'route' => 'documents.index',
                             'active' => ['*Media-Center/documents*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-certificate',
+                            'text' => 'inspectionCertificates',
+                            'route' => 'inspection-certificates.index',
+                            'active' => ['*Media-Center/inspection-certificates*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-file-contract',
+                            'text' => 'specifications',
+                            'route' => 'specifications.index',
+                            'active' => ['*Media-Center/specifications*'],
                         ],
                     ],
                 ],

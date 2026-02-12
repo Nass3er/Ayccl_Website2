@@ -10,9 +10,9 @@ use App\Http\Controllers\Admin\AboutUs\VisionAndMessageController;
 use App\Http\Controllers\Admin\General\CategoriesController;
 use App\Http\Controllers\Admin\General\PagesController;
 use App\Http\Controllers\Admin\HumanResouces\EmployeeAdvantagesController;
-use App\Http\Controllers\Admin\HumanResouces\InternshipRequestController;
-use App\Http\Controllers\Admin\HumanResouces\JobApplicaitonController;
-use App\Http\Controllers\Admin\HumanResouces\VisitController;
+use App\Http\Controllers\Admin\ElectronicServices\InternshipRequestController;
+use App\Http\Controllers\Admin\ElectronicServices\JobApplicaitonController;
+use App\Http\Controllers\Admin\ElectronicServices\VisitController;
 use App\Http\Controllers\Admin\MediaCenter\DocumentsController;
 use App\Http\Controllers\Admin\MediaCenter\NewsController;
 use App\Http\Controllers\Admin\MediaCenter\PhotosGalaryController;
@@ -32,7 +32,11 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Admin\CementBlog\CementBlogController;
 use App\Http\Controllers\Admin\AboutUs\EnvironmentController;
 use App\Http\Controllers\Admin\AboutUs\OurProjectController;
-use App\Http\Controllers\CementBlogControllerWeb;
+use App\Http\Controllers\Admin\HumanResouces\EmployeeController;
+use App\Http\Controllers\Admin\HumanResouces\OurGuestController;
+use App\Http\Controllers\Admin\MediaCenter\InspectionCertificateController;
+use App\Http\Controllers\Admin\MediaCenter\SpecificationController;
+use App\Http\Controllers\CementBlogWebController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ElectronicServiceController;
 use App\Http\Controllers\HomeController;
@@ -127,6 +131,8 @@ Route::group([
                     Route::resource('videos', VideosController::class);
                     Route::resource('categories', CategoriesController::class);
                     Route::resource('documents',DocumentsController::class);
+                    Route::resource('inspection-certificates',InspectionCertificateController::class);
+                    Route::resource('specifications',SpecificationController::class);
                     Route::get('show-file/{id}', [DocumentsController::class, 'show'])->name('file.show');
                 });
                 Route::prefix('/About-Us')->middleware(['auth'])->group(function () {
@@ -146,6 +152,11 @@ Route::group([
                 });
                 Route::prefix('/Human-Resources')->middleware(['auth'])->group(function () {
                     Route::resource('employee-advantages', EmployeeAdvantagesController::class);
+                    Route::resource('employees',EmployeeController::class);
+                    Route::resource('our-guests',OurGuestController::class);
+                });
+
+                Route::prefix('/electronic-services')->middleware(['auth'])->group(function () {
                     Route::resource('job-application', JobApplicaitonController::class);
                     Route::resource('ask-for-visit', VisitController::class);
                     Route::resource('internship-request',InternshipRequestController::class);
@@ -187,6 +198,7 @@ Route::group([
                     Route::get('/human-resources', [ContentManagementController::class, 'index'])->name('content.humanResources');
                     Route::get('/media-center', [ContentManagementController::class, 'index'])->name('content.mediaCenter');
                     Route::get('/blogs', [ContentManagementController::class, 'index'])->name('content.blogs');
+                    Route::get('/electronic-services', [ContentManagementController::class, 'index'])->name('content.electronicServices');
                     Route::get('/contact-us', [ContentManagementController::class, 'index'])->name('content.contactUs');
                 });
 
@@ -230,7 +242,7 @@ Route::group([
 
 
     //  مدونة اسمنتية
-    Route::get('/cementBlog', [CementBlogControllerWeb::class, 'index'])->name('cementBlog');
+    Route::get('/cementBlog', [CementBlogWebController::class, 'index'])->name('cementBlog');
 
     // الموارد البشرية
     Route::get('/employeesAdvantages', [HumanResourcesController::class, 'employeesAdvantagesIndex'])->name('employeesAdvantages');

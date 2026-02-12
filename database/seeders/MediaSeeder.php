@@ -360,6 +360,17 @@ class MediaSeeder extends Seeder
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                // [
+                //     "media_type_id" => 4,
+                //     "thumbnailpath" => "images/footer/TikTok-تيك توك.svg",
+                //     "filepath" => "images/footer/TikTok-تيك توك.svg",
+                //     "alt" => "TikTok-تيك توك",
+                //     "link" => "https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4",
+                //     "media_able_id" =>  $post_id++,
+                //     "media_able_type" => "App\Models\Post",
+                //     'created_at' => Carbon::now(),
+                //     'updated_at' => Carbon::now(),
+                // ],
             ]
         );
 
