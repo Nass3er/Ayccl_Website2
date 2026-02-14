@@ -44,9 +44,12 @@
 
 <div class="cement-divider">
     <div class="divider-content">
-        <span class="divider-tag">الشركة العربية للإسمنت</span>
+        <span class="divider-tag">{{ __('adminlte::landingpage.ArabCementCompany') }}</span>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-800">{{ $slot }}</h2>
     </div>
 </div>
+
+
+
 
 

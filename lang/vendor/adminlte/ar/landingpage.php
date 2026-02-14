@@ -17,6 +17,9 @@ return array (
   'ess' => 'نظام الخدمة الذاتية للموظفين',
   'latestnews' => 'اخر الاخبار',
 
+  'TogetherWeBuildYemen' => 'معا نبني اليمن',
+  'ArabCementCompany' => 'الشركة العربية للإسمنت',
+
   //  من نحن
   'aboutus' => 'من نحن',
   'aboutcompany' => 'نبذة عن الشركة',
@@ -37,6 +40,7 @@ return array (
   'branches' => 'الفروع',
 
   'sustainableDevelopment' => 'التنمية المستدامة',
+  'css' => 'الخمة الذاتية للعملاء',
 
 
   // الموارد البشرية

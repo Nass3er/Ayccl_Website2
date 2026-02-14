@@ -814,7 +814,8 @@
         const nextBtn = document.getElementById("next-slide");
 
         let current = 0;
-        const typingText = "معاً نبني اليمن";
+        // const typingText = "معاً نبني اليمن";
+        const typingText = "{{ __('adminlte::landingpage.TogetherWeBuildYemen') }}";
         let typingTimer;
         let slideTimer;
         let isTyping = false;

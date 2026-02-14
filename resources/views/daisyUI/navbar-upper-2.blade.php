@@ -140,6 +140,8 @@
                             class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
                     <li> <a href={{ localizedRoute('customerservice') }}
                             class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
+                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXCSS"
+                            class="nav-child">{{ __('adminlte::landingpage.css') }}</a></li>
 
 
                 </ul>
@@ -167,14 +169,14 @@
                     <li> <a href={{ localizedRoute('employees') }}
                             class="nav-child">{{ __('adminlte::landingpage.employees') }}</a> </li>
 
-
-                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXESS"
-                            class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+                    <li> <a href={{ localizedRoute('employeesAdvantages') }}
+                            class="nav-child">{{ __('adminlte::landingpage.employeesAdvantages') }}</a> </li>
 
                      <li> <a href={{ localizedRoute('ourGuests') }}
                             class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
-                    <li> <a href={{ localizedRoute('employeesAdvantages') }}
-                            class="nav-child">{{ __('adminlte::landingpage.employeesAdvantages') }}</a> </li>
+
+                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXESS"
+                            class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
                 </ul>
             </li>
 
@@ -203,6 +205,8 @@
                             class="nav-child">{{ __('adminlte::landingpage.videos') }}</a> </li>
                     <li> <a href={{ localizedRoute('documents') }}
                             class="nav-child">{{ __('adminlte::landingpage.documents') }}</a> </li>
+                            
+                    {{-- added by nasser --}}
                     <li> <a href={{ localizedRoute('inspectionCertificates') }}
                             class="nav-child">{{ __('adminlte::landingpage.inspectionCertificates') }}</a> </li>
                     <li> <a href={{ localizedRoute('specifications') }}

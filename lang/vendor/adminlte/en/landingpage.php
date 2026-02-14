@@ -103,4 +103,8 @@ return array (
     'CurrentInstitution' => 'Name of Current Working/Studing Institution',
     'visitingForm' => 'Visiting Form',
     'fillVisitingForm' => 'Please Fill Out the Visiting Form.',
+
+    'css' => 'Customer self-service',
+    'TogetherWeBuildYemen' => 'Together we build Yemen',
+    'ArabCementCompany' => 'Arab Cement Company',
 );

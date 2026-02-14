@@ -29,6 +29,14 @@
         <a class="link link-hover hover:link-primary"
             href={{ localizedRoute('socialresponsibility') }}>{{ __('adminlte::landingpage.socialResponsibility') }}</a>
 
+            {{-- //// --}}
+        <a class="link link-hover hover:link-primary"
+            href={{ localizedRoute('certificates') }}>{{ __('adminlte::landingpage.prizesAndCertificates') }}</a>
+        <a class="link link-hover hover:link-primary"
+            href={{ localizedRoute('ourprojects') }}>{{ __('adminlte::landingpage.ourprojects') }}</a>
+        <a class="link link-hover hover:link-primary"
+            href={{ localizedRoute('environment') }}>{{ __('adminlte::landingpage.environment') }}</a>
+
     </nav>
     <nav>
         <h1 class="footer-title text-emerald-900">{{ __('adminlte::landingpage.salesAndMarketing') }}</h1>
@@ -38,6 +46,10 @@
             class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.products') }}</a>
         <a href={{ localizedRoute('customerservice') }}
             class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.customerservice') }}</a>
+
+        <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXCSS"
+            class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.css') }}</a>
+
         {{-- <a href={{ localizedRoute('suggestionsandcomplaints') }}
             class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a> --}}
     </nav>
@@ -51,6 +63,11 @@
         <a href={{ localizedRoute('videos') }} class="nav-child">{{ __('adminlte::landingpage.videos') }}</a>
         <a href={{ localizedRoute('documents') }}
             class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.documents') }}</a>
+
+        <a href={{ localizedRoute('inspectionCertificates') }}
+            class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.inspectionCertificates') }}</a>
+        <a href={{ localizedRoute('specifications') }}
+            class="link link-hover hover:link-primary">{{ __('adminlte::landingpage.specifications') }}</a>
 
         {{-- <a href={{ localizedRoute('sustainableDevelopment') }}
             class="link link-hover text-emerald-900 hover:link-primary mt-5">{{ __('adminlte::landingpage.sustainableDevelopment') }}</a> --}}
@@ -67,7 +84,7 @@
                 <x-click-icon :icon="$socialLink->mediaOne->thumbnailpath" :url="$socialLink->mediaOne->link" :label="$socialLink->mediaOne->alt" :class="$socialLink->postDetailOne->color" />
             @endforeach
             {{-- for tiktok --}}
-            <x-click-icon icon="images/footer/TikTok-تيك توك.svg" url="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4" label="Tiktok" class="" />
+            {{-- <x-click-icon icon="images/footer/TikTok-تيك توك.svg" url="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4" label="Tiktok" class="" /> --}}
         </div>
     </nav>
 </footer>

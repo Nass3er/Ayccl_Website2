@@ -108,6 +108,11 @@ class SocialResponsibilityController extends Controller
 
             // 3) Upload Media (if provided)
             if ($request->hasFile('files')) {
+                // Check if GD extension is available
+                if (!extension_loaded('gd')) {
+                    throw new \Exception('GD extension is not installed or enabled on this server. Please install php-gd extension.');
+                }
+
                 $files = is_array($request->file('files')) ? $request->file('files') : [$request->file('files')];
 
                 foreach ($files as $file) {

@@ -82,13 +82,15 @@
                     <details class="details-group group/drawer">
                         <summary>{{ __('adminlte::landingpage.salesAndMarketing') }}</summary>
                         <ul class="border-s-4 border-s-emerald-800">
-                             <li> <a href={{ localizedRoute('hadrami') }}
+
+                            <li> <a href={{ localizedRoute('hadrami') }}
                             class="nav-child">{{ __('adminlte::landingpage.100hadrami') }}</a> </li>
                             <li> <a href={{ localizedRoute('products') }}
                                     class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
                             <li> <a href={{ localizedRoute('customerservice') }}
-                            class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
-
+                                    class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
+                            <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXCSS"
+                            class="nav-child">{{ __('adminlte::landingpage.css') }}</a></li>
                             {{-- <li><a
                                     href="{{ localizedRoute('suggestionsandcomplaints') }}">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a>
                             </li> --}}
