@@ -5,12 +5,12 @@
     $id = 'prizes_and_certificate';
 @endphp
 
-@section('title', __('adminlte::menu.products') . ' - ' . __('adminlte::adminlte.editNews'))
+@section('title', __('adminlte::menu.prizedAndCertificates') . ' - ' . __('adminlte::adminlte.editNews'))
 @section('content_header')
     <div class="row">
         <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a
-                    href="{{ localizedRoute("$route.index") }}">{{ __('adminlte::menu.products') }}</a></li>
+                    href="{{ localizedRoute("$route.index") }}">{{ __('adminlte::menu.prizedAndCertificates') }}</a></li>
             <li class="breadcrumb-item active">{{ __('adminlte::adminlte.editNews') }}</li>
         </ol>
     </div>
@@ -108,7 +108,7 @@
                         </div> --}}
 
 
-                        {{-- 
+                        {{--
                         <div class="form-group">
                             <x-adminlte-select2 name="category_id" :config="['minimumResultsForSearch' => 'Infinity']"
                                 label="{{ __('adminlte::adminlte.postType') }}" label-class="text-olive">

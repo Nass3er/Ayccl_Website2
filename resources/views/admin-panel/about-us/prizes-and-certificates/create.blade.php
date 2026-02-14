@@ -4,13 +4,13 @@
     $route = 'prizes-and-certificates';
 @endphp
 
-@section('title', __('adminlte::menu.products') .' - '. __('adminlte::adminlte.createNewPost'))
+@section('title', __('adminlte::menu.prizedAndCertificates') .' - '. __('adminlte::adminlte.createNewPost'))
 
 @section('content_header')
     <div class="row">
         <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a
-                    href="{{ localizedRoute("$route.index") }}">{{ __('adminlte::menu.products') }}</a></li>
+                    href="{{ localizedRoute("$route.index") }}">{{ __('adminlte::menu.prizedAndCertificates') }}</a></li>
             <li class="breadcrumb-item active">{{ __('adminlte::adminlte.createNewPost') }}</li>
         </ol>
     </div>
@@ -110,9 +110,9 @@
                             <x-adminlte-select2 name="category_id" :config="['minimumResultsForSearch' => 'Infinity']"
                                 label="{{ __('adminlte::adminlte.postType') }}" label-class="text-olive">
                                 @foreach ($categories as $category )
-                                
+
                                 <option {{ $loop->iteration==1?'selected':'' }} value="{{ $category->id }}">{{ $category->name }}</option>
-                                    
+
                                 @endforeach
                             </x-adminlte-select2>
                         </div> --}}
@@ -145,14 +145,14 @@
 
                     <div class="form-group col-12 col-md-6">
                         <x-adminlte-text-editor name="content_ar" label="{{ __('adminlte::adminlte.contentAR') }}"
-                            label-class="text-olive" igroup-size="sm" placeholder="اكتب النص هنا ..." 
+                            label-class="text-olive" igroup-size="sm" placeholder="اكتب النص هنا ..."
                             enable-old-support />
                     </div>
                     {{-- content EN --}}
 
                     <div class="form-group col-12 col-md-6" style="direction: ltr">
                         <x-adminlte-text-editor name="content_en" label="{{ __('adminlte::adminlte.contentEN') }}"
-                            label-class="text-olive" igroup-size="sm" placeholder="Write some text..." 
+                            label-class="text-olive" igroup-size="sm" placeholder="Write some text..."
                             enable-old-support />
                     </div>
                 </div>

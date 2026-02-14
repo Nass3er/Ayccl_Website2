@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', __('adminlte::menu.products'))
+@section('title', __('adminlte::menu.prizedAndCertificates'))
 
 @section('content_header')
-    <h1>{{ __('adminlte::menu.products') }}</h1>
+    <h1>{{ __('adminlte::menu.prizedAndCertificates') }}</h1>
 @stop
 
 @php

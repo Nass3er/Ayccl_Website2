@@ -1,22 +1,22 @@
 @extends('adminlte::page')
-@section('title', __('adminlte::menu.photosGalary'))
+@section('title', __('adminlte::menu.futurePlans'))
 
 @section('content_header')
-    <h1>{{ __('adminlte::menu.photosGalary') }}</h1>
+    <h1>{{ __('adminlte::menu.futurePlans') }}</h1>
 @stop
 
 @section('content')
     @include('admin-panel.modals')
 
-    
+
     <div class="container mx-0  mb-5">
-        <a href="{{ route('photos.create', ['locale', app()->getLocale()]) }}">
+        <a href="{{ route('future-plans.create', ['locale', app()->getLocale()]) }}">
             <x-adminlte-button class="btn-lg mb-10" type="reset" label="{{ __('adminlte::adminlte.createNewPost') }}" theme="outline-success" icon="fas fa-file-far fa-plus-square	"/>
-            
+
         </a>
     </div>
     <!-- Alert for success messages -->
-    
+
     @include('admin-panel.modals')
 
     @if (session('error'))
@@ -52,7 +52,7 @@
 
             $btnEdit =
                 '<a href="' .
-                route('photos.edit', ['photo' => $post->id, 'locale' => app()->getLocale()]) .
+                route('future-plans.edit', ['future_plan' => $post->id, 'locale' => app()->getLocale()]) .
                 '" class="btn btn-warning " data-toggle="tooltip" title=' .
                 __('adminlte::adminlte.edit') .
                 '><i class="	fas fa-edit"></i>'.
@@ -166,7 +166,7 @@
 
                 // Set action for the Delete form
                 var deleteAction =
-                    '{{ route('photos.destroy', ['locale' => app()->getLocale(), 'photo' => '__ID__']) }}';
+                    '{{ route('future-plans.destroy', ['locale' => app()->getLocale(), 'future_plan' => '__ID__']) }}';
                 deleteAction = deleteAction.replace('__ID__', postId);
                 $('#formDelete').attr('action', deleteAction);
 

@@ -29,13 +29,13 @@
     </style>
 @endpush
 
-@section('title', __('adminlte::menu.photosGalary') .' - '. __('adminlte::adminlte.editNews'))
+@section('title', __('adminlte::menu.futurePlans') .' - '. __('adminlte::adminlte.editNews'))
 
 @section('content_header')
     <div class="row">
         <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a
-                    href="{{ localizedRoute('photos.index') }}">{{ __('adminlte::menu.photosGalary') }}</a></li>
+                    href="{{ localizedRoute('future-plans.index') }}">{{ __('adminlte::menu.futurePlans') }}</a></li>
             <li class="breadcrumb-item active">{{ __('adminlte::adminlte.editNews') }}</li>
         </ol>
     </div>
@@ -54,7 +54,7 @@
         </x-adminlte-card>
     </div>
     @endif
-    <form action="{{ localizedRoute('photos.update', ['photo'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ localizedRoute('future-plans.update', ['photo'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card card-default">
@@ -193,7 +193,7 @@
                     {{-- content EN --}}
 
                     <div class="form-group col-12 col-md-6">
-                        <x-adminlte-text-editor name="content_en" label="{{ __('adminlte::adminlte.contentEN') }}"                            
+                        <x-adminlte-text-editor name="content_en" label="{{ __('adminlte::adminlte.contentEN') }}"
                         value="{{ $post->postDetailOne->content_en }}"
                             label-class="text-olive" igroup-size="sm" placeholder="Write some text..." :config="$config"
                             enable-old-support >
@@ -254,7 +254,7 @@
                     @endphp
                     <div class="form-group">
                         {{-- <input type="file" name="files[]"  > --}}
-                        <x-adminlte-input-file-krajee name="files" 
+                        <x-adminlte-input-file-krajee name="files"
                             label="{{ __('adminlte::adminlte.attachmentsUpload') }}"
                             data-msg-placeholder="Choose a text, office or pdf file..." label-class="text-olive"
                             :config="$config" multiple >

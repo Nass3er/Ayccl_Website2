@@ -4,25 +4,46 @@
 @section('content')
 
 <x-hero title="{{ $page->title }}" description="{{ $page->content }}" img="{{ asset($page->background) }}" />
-    
-    {{-- <div class="w-[85%] sm:w-[100%] md:w-[80%] lg:w-[90%] mx-auto " data-aos="fade-up"
-        data-aos-duration="700">
 
-        <div class="card sm:card-side bg-base-100 shadow-lg m-10 lg:w-[90%] justify-center mx-auto">
-            <div class="card-body my-auto space-y-10 w-full sm:w-[40%]">
-                <h2 class="card-title text-5xl text-green-900 text-center">{{ $posts[0]->title }}</h2>
-                <p class="card-title text-xl">{{ $posts[0]->content }}</p>
-            </div>
-            <figure class="w-full sm:w-[60%] relative ">
-                <img src="{{ asset($posts[0]->description) }}" alt="{{ $posts[0]->title }}" />
-                <div
-                    class="absolute 
-                    {{ app()->getlocale() =='ar' ? 'bg-gradient-to-l left-[60%]  ' : 'bg-gradient-to-r right-[60%]  ' }} from-green-900 to-transparent 
-                    rounded-medium">
+    <div class="w-[95%] mx-auto mt-20">
+    @isset($posts)
+        <div class="space-y-30">
+            @foreach ($posts as $index => $post)
+                @php
+                    $isEven = $index % 2 === 0;
+                @endphp
+
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 my-10 shadow-2xl p-6 lg:p-10 py-20 rounded-4xl {{ $isEven ? 'lg:flex-row-reverse' : 'lg:flex-row' }}" data-aos="fade-up" data-aos-duration="400">
+
+                    @if (isset($post->mediaOne->filepath))
+                        <div class="w-full lg:w-1/2 flex justify-center items-center">
+                            <div class="relative inline-block group">
+
+                                <div class="relative z-10 overflow-hidden shadow-lg" style="box-shadow: -20px -18px 4px 1px #2d843d; border-radius: 0px;">
+                                    <img src="{{ asset($post->mediaOne->filepath) }}"
+                                         alt="{{ $post->mediaOne->alt }}"
+                                         class="w-full h-80 sm:h-[400px] object-cover block" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                    @endif
+
+                    <div class="w-full lg:w-1/2 lg:text-start space-y-6">
+                        <h2 class="card-title text-2xl xl:text-5xl text-green-900 text-center">
+                            {{ $post->postDetailOne->title }}
+                        </h2>
+                        <div class="text-md xl:text-xl space-y-4 text-gray-700">
+                            {!! $post->postDetailOne->content !!}
+                        </div>
+                    </div>
+
                 </div>
-            </figure>
+            @endforeach
         </div>
-    </div> --}}
+    @endisset
+</div>
 
 
 @endsection

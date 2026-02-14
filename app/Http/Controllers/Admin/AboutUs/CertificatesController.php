@@ -11,13 +11,9 @@ use App\Models\PostDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Spatie\Image\Image;
-use Spatie\Image\Drivers\GdDriver;
-use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File; // This is the new import
-use PhpParser\Node\Expr\Throw_;
-use Spatie\Image\Drivers\ImageDriver;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class CertificatesController extends Controller
 {
@@ -30,9 +26,14 @@ class CertificatesController extends Controller
             $posts = Post::where('page_id', $this->pageId)->get();
         }
         catch(\Exception $e){
+            Log::error('CertificatesController index error: ' . $e->getMessage(), [
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view($this->view.'index', compact('posts'));
+        return view("$this->view.index", compact('posts'));
     }
 
     public function show($locale, $id)
@@ -67,7 +68,7 @@ class CertificatesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view($this->view.'create', compact( 'categories'));
+        return view("$this->view.create", compact( 'categories'));
     }
 
     /**
@@ -149,16 +150,9 @@ class CertificatesController extends Controller
                     $absoluteOriginal = public_path($originalRel);
                     $file->move($originalDir, $uniqueName);
 
-                    // 4) (Optional) Optimize original with spatie/image-optimizer
-                    try {
-                        if (class_exists(\Spatie\ImageOptimizer\OptimizerChainFactory::class)) {
-                            $optimizerChain = OptimizerChainFactory::create();
-                            $optimizerChain->optimize($absoluteOriginal);
-                        }
-                    } catch (\Throwable $e) {
-                        dd($e);
-                        // swallow optimization errors (missing binaries, etc.)
-                    }
+                    // 4) (Optional) Optimize original - Disabled to avoid cloud server issues
+                    // Image optimization requires external binaries that may not be available on cloud
+                    // The images are already optimized by GD during thumbnail creation
 
                     // 5) Create 200x200 thumbnail with GD
                     $absoluteThumb = public_path($thumbRel);
@@ -276,7 +270,7 @@ class CertificatesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view($this->view.'edit', compact(  'post'));
+        return view("$this->view.edit", compact(  'post'));
     }
 
     /**
@@ -370,15 +364,9 @@ class CertificatesController extends Controller
                     $absoluteOriginal = public_path($originalRel);
                     $file->move($originalDir, $uniqueName);
 
-                    // 4) (Optional) Optimize original with spatie/image-optimizer
-                    try {
-                        if (class_exists(\Spatie\ImageOptimizer\OptimizerChainFactory::class)) {
-                            $optimizerChain = OptimizerChainFactory::create();
-                            $optimizerChain->optimize($absoluteOriginal);
-                        }
-                    } catch (\Throwable $e) {
-                        // swallow optimization errors (missing binaries, etc.)
-                    }
+                    // 4) (Optional) Optimize original - Disabled to avoid cloud server issues
+                    // Image optimization requires external binaries that may not be available on cloud
+                    // The images are already optimized by GD during thumbnail creation
 
                     // 5) Create 200x200 thumbnail with GD
                     $absoluteThumb = public_path($thumbRel);
@@ -534,7 +522,7 @@ class CertificatesController extends Controller
 
             DB::commit();
 
-            return redirect()->route($this->route.'index', app()->getLocale())->with(['success' => __('adminlte::adminlte.succDelete')]);
+            return redirect()->route("$this->route.index", app()->getLocale())->with(['success' => __('adminlte::adminlte.succDelete')]);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with(['error' => $e->getMessage()]);

@@ -28,13 +28,13 @@
         }
     </style>
 @endpush
-@section('title', __('adminlte::menu.photosGalary') .' - '. __('adminlte::adminlte.createNewPost'))
+@section('title', __('adminlte::menu.futurePlans') .' - '. __('adminlte::adminlte.createNewPost'))
 
 @section('content_header')
     <div class="row">
         <ol class="breadcrumb float-sm-left">
             <li class="breadcrumb-item"><a
-                    href="{{ localizedRoute('photos.index') }}">{{ __('adminlte::menu.photosGalary') }}</a></li>
+                    href="{{ localizedRoute('future-plans.index') }}">{{ __('adminlte::menu.futurePlans') }}</a></li>
             <li class="breadcrumb-item active">{{ __('adminlte::adminlte.createNewPost') }}</li>
         </ol>
     </div>
@@ -54,7 +54,7 @@
     </div>
     @endif
 
-    <form action="{{ localizedRoute('photos.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ localizedRoute('future-plans.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="card card-default">
@@ -129,9 +129,9 @@
                             <x-adminlte-select2 name="category_id" :config="['minimumResultsForSearch' => 'Infinity']"
                                 label="{{ __('adminlte::adminlte.postType') }}" label-class="text-olive">
                                 @foreach ($categories as $category )
-                                
+
                                 <option {{ $loop->iteration==1?'selected':'' }} value="{{ $category->id }}">{{ $category->name }}</option>
-                                    
+
                                 @endforeach
                             </x-adminlte-select2>
                         </div>
