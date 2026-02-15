@@ -25,10 +25,6 @@ class AppServiceProvider extends ServiceProvider
         URL::forceRootUrl(config('app.url'));
       }
       
-      \Illuminate\Support\Facades\URL::defaults([
-        'locale' => app()->getLocale()
-    ]);
-
         if (!app()->runningInConsole()) {
         $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $locale = app()->getLocale();

@@ -9,7 +9,7 @@
     @include('admin-panel.modals')
 
     <div class="container mx-0  mb-5">
-        <a href="{{ route('about-company.create', ['locale', app()->getLocale()]) }}">
+        <a href="{{ route('about-company.create', ['locale'=> app()->getLocale()]) }}">
             <x-adminlte-button class="btn-lg mb-10" type="reset" label="{{ __('adminlte::adminlte.createNewPost') }}"
                 theme="outline-success" icon="fas fa-file-far fa-plus-square	" />
         </a>

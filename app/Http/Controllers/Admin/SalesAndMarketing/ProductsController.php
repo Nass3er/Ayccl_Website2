@@ -23,7 +23,7 @@ class ProductsController extends Controller
     public $pageId = 32;
      public $route = 'products';
      public $view = 'admin-panel.sales-and-marketing.products';
- 
+
     public function index()
     {
         try{
@@ -38,14 +38,14 @@ class ProductsController extends Controller
     public function show($locale, $id)
     {
         $media = Media::findOrFail($id);
-    
+
         // Full path to file
         $path = public_path($media->link);
-    
+
         if (!file_exists($path)) {
             abort(404, 'File not found.');
         }
-    
+
         return response()->file($path, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="' . basename($path) . '"'
@@ -94,7 +94,7 @@ class ProductsController extends Controller
             ]
         );
 
-        
+
         try {
             DB::beginTransaction();
             // 1. Create Post
@@ -231,14 +231,14 @@ class ProductsController extends Controller
                 $file = $filearr[0];
                 // 1) Get the original file name from the UploadedFile object
                 $originalFileName = Media::getAlt($file->getClientOriginalName());
-                
+
                 // 2) Define paths based on your requirements
                 $pdfPath = "files/$this->route/{$post->id}/{$originalFileName}";
                 $destinationPath = public_path("files/$this->route/{$post->id}");
-                
+
                 // 3) Create the directory if it doesn't exist
                 File::makeDirectory($destinationPath, 0755, true, true);
-                
+
                 // 4) Move the file to the correct location using its original name
                 $file->move($destinationPath, $originalFileName);
             }
@@ -253,7 +253,7 @@ class ProductsController extends Controller
             $media->media_able_id  = $post->id;
             $media->media_able_type = Post::class;
             $media->save();
-            // Commit after processing all files 
+            // Commit after processing all files
             DB::commit();
 
             return redirect()->route("$this->route.index", app()->getLocale())
@@ -310,7 +310,7 @@ class ProductsController extends Controller
                 ]
         );
 
-        
+
         try {
             $post = Post::findOrFail($id);
             DB::beginTransaction();
@@ -344,9 +344,16 @@ class ProductsController extends Controller
             $postDetail->save();
 
             // Force Spatie/Image to use GD instead of Imagick
-            $media                 = Media::findOrNew($post->mediaOne->id ?? null);
+            $media   = Media::findOrNew($post->mediaOne->id ?? null);
+
+            // Initialize variables with existing values to avoid "undefined variable" if no new files are uploaded
+            $thumbRel    = $media->thumbnailpath;
+            $originalRel = $media->filepath;
+            $fileName    = $media->alt;
+            $pdfPath     = $media->link;
+
             // 3) Upload Media (if provided)
-            if ($request->hasFile('files')) 
+            if ($request->hasFile('files'))
             {
                 $files = is_array($request->file('files')) ? $request->file('files') : [$request->file('files')];
 
@@ -380,7 +387,7 @@ class ProductsController extends Controller
                         // swallow optimization errors (missing binaries, etc.)
                     }
 
-                    // 5) Create 200x200 thumbnail with GD
+                    // 5) Create thumbnail with GD
                     $absoluteThumb = public_path($thumbRel);
 
                     // Load source via GD
@@ -396,7 +403,7 @@ class ProductsController extends Controller
                         $srcW = imagesx($src);
                         $srcH = imagesy($src);
 
-                        // Fit & crop center to 200x200
+                        // Fit & crop center to target
                         $targetW = 500;
                         $targetH = 500;
                         $scale   = max($targetW / $srcW, $targetH / $srcH);
@@ -405,7 +412,6 @@ class ProductsController extends Controller
 
                         $resized = imagecreatetruecolor($newW, $newH);
 
-                        // Preserve transparency for PNG/WebP
                         if (in_array($ext, ['png', 'webp'])) {
                             imagealphablending($resized, false);
                             imagesavealpha($resized, true);
@@ -442,27 +448,23 @@ class ProductsController extends Controller
                         imagedestroy($src);
                     }
 
-                    // 6) Save DB record
+                    // 6) Delete old files if replacing
                     if($post->mediaOne != null){
                         if (Storage::disk('images')->exists($media->filepath)) {
                             Storage::disk('images')->delete($media->filepath);
                         }
-                        // Delete the thumbnail file from storage
                         if (Storage::disk('images')->exists($media->thumbnailpath)) {
                             Storage::disk('images')->delete($media->thumbnailpath);
                         }
                     }
-
                 }
-
             }
+
             if ($request->hasFile('files_pdf')) {
                 $filearr = $request->file('files_pdf');
                 $file = $filearr[0];
-                // 1) Get the original file name from the UploadedFile object
                 $originalFileName = Media::getAlt($file->getClientOriginalName());
-                
-                // 2) Define paths based on your requirements
+
                 $pdfPath = "files/$this->route/{$post->id}/{$originalFileName}";
                 $destinationPath = public_path("files/$this->route/{$post->id}");
 
@@ -471,31 +473,27 @@ class ProductsController extends Controller
                         Storage::disk('images')->delete($media->link);
                     }
                 }
-                // 3) Create the directory if it doesn't exist
                 File::makeDirectory($destinationPath, 0755, true, true);
-                
-                // 4) Move the file to the correct location using its original name
                 $file->move($destinationPath, $originalFileName);
-                
             }
-            
-            $media = Media::where('media_able_id', $post->id)->count();
-            if ($media == 0) {
-                throw new \Exception(__('adminlte::adminlte.files_required')    );
+
+            $mediaCount = Media::where('media_able_id', $post->id)->count();
+            if ($mediaCount == 0 && !$request->hasFile('files') && !$request->hasFile('files_pdf')) {
+                throw new \Exception(__('adminlte::adminlte.files_required'));
             }
 
             $media->media_type_id  = 1;
-            $media->thumbnailpath  = $thumbRel;      // store relative path
-            $media->filepath       = $originalRel;   // store relative path
+            $media->thumbnailpath  = $thumbRel;
+            $media->filepath       = $originalRel;
             $media->alt            = $fileName;
             $media->setAltEnAttribute($fileName);
-            $media->link           = $pdfPath ;
+            $media->link           = $pdfPath;
             $media->media_able_id  = $post->id;
             $media->media_able_type = Post::class;
             $media->save();
-            // Commit after processing all files 
+            // Commit after processing all files
             DB::commit();
-            
+
             return redirect()->route("$this->route.index", app()->getLocale())
                 ->with(['success' => __('adminlte::adminlte.succEdit')]);
         } catch (\Exception $e) {
@@ -526,11 +524,26 @@ class ProductsController extends Controller
                 if (Storage::disk('images')->exists($media->thumbnailpath)) {
                     Storage::disk('images')->delete($media->thumbnailpath);
                 }
+                // Delete the PDF file from storage (stored in 'link' field)
+                if ($media->link && Storage::disk('images')->exists($media->link)) {
+                    Storage::disk('images')->delete($media->link);
+                }
                 // Delete the record from the database
                 $media->delete();
             });
             // 3. Delete the parent post
             $post->delete();
+
+            // 4. Delete the entire directories for this product to keep the filesystem clean
+            $imageDir = public_path("images/$this->route/{$id}");
+            $fileDir  = public_path("files/$this->route/{$id}");
+
+            if (File::isDirectory($imageDir)) {
+                File::deleteDirectory($imageDir);
+            }
+            if (File::isDirectory($fileDir)) {
+                File::deleteDirectory($fileDir);
+            }
 
             DB::commit();
 

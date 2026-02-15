@@ -16,12 +16,12 @@
 
 
     <div class="container mx-0  mb-3">
-        <a href="{{ route("$route.create", ['locale', app()->getLocale()]) }}">
+        <a href="{{ route("$route.create", ['locale' => app()->getLocale()]) }}">
             <x-adminlte-button class="btn-lg mb-10" type="reset" label="{{ __('adminlte::adminlte.createNewPost') }}"
                 theme="outline-success" icon="fas fa-file-far fa-plus-square	" />
         </a>
         <div class="container mx-0  mb-3"></div>
-        <a class="text-info" href="{{ route("external-links.index", ['locale', app()->getLocale()]) }}">
+        <a class="text-info" href="{{ route("external-links.index", ['locale' => app()->getLocale()]) }}">
                 <i class="fas fa-edit"></i> {{ __('adminlte::adminlte.editMapAndSocialPosts') }}
         </a>
         </div>
