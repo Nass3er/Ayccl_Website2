@@ -77,7 +77,7 @@
                             </x-adminlte.form.textarea>
 
                         </div>
-                        
+
 
                         {{-- <div class="form-group">
                             <x-adminlte-input name="slug" label="{{ __('adminlte::adminlte.slug(AR)') }}"
@@ -115,9 +115,9 @@
                             <x-adminlte-select2 name="category_id" :config="['minimumResultsForSearch' => 'Infinity']"
                                 label="{{ __('adminlte::adminlte.postType') }}" label-class="text-olive">
                                 @foreach ($categories as $category )
-                                
+
                                 <option {{ $loop->iteration==1?'selected':'' }} value="{{ $category->id }}">{{ $category->name }}</option>
-                                    
+
                                 @endforeach
                             </x-adminlte-select2>
                         </div> --}}
@@ -146,10 +146,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    
+
                     <!-- File Upload -->
                     @php
-                    
+
                         $config = [
                             'allowedFileTypes' => ['image'],
                             'browseOnZoneClick' => true,

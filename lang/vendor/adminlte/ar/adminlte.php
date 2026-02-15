@@ -98,7 +98,7 @@ return array(
     'notFound' => 'لم يتم العثور عليه !',
     'image' => 'صورة',
     'link' => 'الرابط',
-    'value' => 'القيمة',
+    'value' => 'القيمة او الرابط',
     'createNewSocialMediaIcon' => 'إنشاء أيقونة سوشال ميديا',
     'howtoGetIt' => 'كيفية الحصول عليه؟',
     'getMap' =>    '● أولاً قم بتحديد موقعك في خريطة جوجل.
@@ -133,6 +133,8 @@ return array(
     'activation' => 'التفعيل',
     'createNewUser' => 'إنشاء مستخدم جديد',
     'password_confirmation' => 'تأكيد كلمة المرور',
+    'newPassword' => ' كلمة المرورالجديدة',
+    'newPassword_confirmation' => 'تأكيد كلمة المرور الجديدة',
     'accountDeactivated' => 'لم يعد هذا الحساب قيد التفعيل، يرجى مراجعة مدير موقع.',
     'DoneSucc' => 'تم بنجاح',
     'Activation' => 'التفعيل',
@@ -161,7 +163,9 @@ return array(
     'emailSentSuccessfully' => 'تم إرسال الإيميل بنجاح.',
     'showmore' => 'إعرف أكثر',
 
-    
-
-
+    'file_limit_image' => 'حجم الصورة كبير جداً، الحد الأقصى للملف الواحد هو 2 ميجابايت.',
+    'file_limit_pdf'   => 'حجم ملف الـ PDF كبير جداً، الحد الأقصى هو 10 ميجابايت.',
+    'file_limit_server' => 'حجم الملفات المرفوعة كبير جداً ويتجاوز قدرة السيرفر. يرجى رفع ملفات أصغر أو التواصل مع الإدارة.',
+    'file_type_image'  => 'يجب أن يكون الملف المرفوع صورة (jpeg, png, jpg, gif, webp).',
+    'file_type_pdf'    => 'يجب أن يكون الملف المرفوع من نوع PDF فقط.',
 );

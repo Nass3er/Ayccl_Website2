@@ -5,6 +5,8 @@ return array(
     'full_name' => 'Full name',
     'email' => 'Email',
     'password' => 'Password',
+    'newPassword' => 'New Password',
+    'newPassword_confirmation' => 'New Password Confirmation',
     'retype_password' => 'Retype password',
     'remember_me' => 'Remember Me',
     'register' => 'Register',
@@ -105,7 +107,7 @@ return array(
     'notFound' => 'Not Found !',
     'image' => 'Image',
     'link' => 'Link',
-    'value' => 'Value',
+    'value' => 'Value Or Link',
     'createNewSocialMediaIcon' => 'Create New Social Media Icon',
     'howtoGetIt' => 'How to get it?',
     'getMap' =>    '● First detemine your exact location.
@@ -152,4 +154,10 @@ return array(
     'editPageBackgroundAndDesc' => 'Edit Page Background And Description',
     'emailSentSuccessfully' => 'Email was Sent Successfully',
     'showmore' => 'Show more',
+
+    'file_limit_image' => 'The image size is too large. Each file must not exceed 2MB.',
+    'file_limit_pdf'   => 'The PDF size is too large. It must not exceed 10MB.',
+    'file_limit_server' => 'The uploaded files are too large for the server to process. Please upload smaller files.',
+    'file_type_image'  => 'The uploaded file must be an image (jpeg, png, jpg, gif, webp).',
+    'file_type_pdf'    => 'The uploaded file must be a PDF.',
 );

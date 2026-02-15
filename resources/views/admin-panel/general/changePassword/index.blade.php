@@ -16,8 +16,8 @@
 
     @if (session('error'))
     <div class="container">
-        <x-adminlte-card title="{{ __('adminlte::adminlte.error!') }}" theme="danger" theme-mode="outline" 
-            icon="fas fa-lg fa-exclamation-circle" 
+        <x-adminlte-card title="{{ __('adminlte::adminlte.error!') }}" theme="danger" theme-mode="outline"
+            icon="fas fa-lg fa-exclamation-circle"
             body-class="{{ app()->getLocale() =='ar'? 'text-right' : 'text-left' }}"
             header-class="text-uppercase rounded-bottom border-info text-left" removable >
             <i>{{ session('error') }}</i>
@@ -34,22 +34,22 @@
                     <div class="col-12 col-md-6 mx-auto">
                         <div class="form-group">
                             <x-adminlte.form.input id="old_password" name="old_password" type="password"
-                                label="{{ __('adminlte::adminlte.oldPassword') }}" 
-                                label-class="text-olive" 
+                                label="{{ __('adminlte::adminlte.oldPassword') }}"
+                                label-class="text-olive"
                                 enable-old-support required />
                             <!-- Password strength indicator will appear here -->
                         </div>
                         <div class="form-group">
                             <x-adminlte.form.input id="password" name="password" type="password"
-                                label="{{ __('adminlte::adminlte.password') }}" 
-                                label-class="text-olive" 
+                                label="{{ __('adminlte::adminlte.newPassword') }}"
+                                label-class="text-olive"
                                 enable-old-support required />
                             <!-- Password strength indicator will appear here -->
                         </div>
                         <div class="form-group">
                             <x-adminlte.form.input id="password_confirmation" name="password_confirmation" type="password"
-                                label="{{ __('adminlte::adminlte.password_confirmation') }}" 
-                                label-class="text-olive" 
+                                label="{{ __('adminlte::adminlte.newPassword_confirmation') }}"
+                                label-class="text-olive"
                                 enable-old-support required />
                             <!-- Password match indicator will appear here -->
                         </div>
@@ -76,45 +76,45 @@
 $(document).ready(function() {
     const passwordInput = $('#password');
     const passwordConfirmationInput = $('#password_confirmation');
-    
+
     // Password strength indicator
     function checkPasswordStrength(password) {
         let strength = 0;
         let feedback = [];
-        
+
         if (password.length >= 8) {
             strength++;
         } else {
             feedback.push('At least 8 characters');
         }
-        
+
         if (password.match(/[a-z]/)) {
             strength++;
         } else {
             feedback.push('lowercase letter');
         }
-        
+
         if (password.match(/[A-Z]/)) {
             strength++;
         } else {
             feedback.push('uppercase letter');
         }
-        
+
         if (password.match(/[0-9]/)) {
             strength++;
         } else {
             feedback.push('number');
         }
-        
+
         if (password.match(/[^a-zA-Z0-9]/)) {
             strength++;
         } else {
             feedback.push('special character');
         }
-        
+
         return { strength, feedback };
     }
-    
+
     // Add password strength indicator container
     passwordInput.closest('.form-group').append(`
         <div id="password-strength-container" class="mt-2" style="display: none;">
@@ -122,7 +122,7 @@ $(document).ready(function() {
                 <div class="card-body p-3">
                     <h6 class="mb-2"><i class="fas fa-shield-alt"></i> Password Strength</h6>
                     <div class="progress mb-2" style="height: 8px;">
-                        <div id="strength-bar" class="progress-bar" role="progressbar" style="width: 0%" 
+                        <div id="strength-bar" class="progress-bar" role="progressbar" style="width: 0%"
                              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <small id="strength-text" class="form-text d-block mb-2"></small>
@@ -131,7 +131,7 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    
+
     // Add password confirmation matching indicator container
     passwordConfirmationInput.closest('.form-group').append(`
         <div id="password-match-container" class="mt-2" style="display: none;">
@@ -143,20 +143,20 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    
+
     // Check password strength on input
     passwordInput.on('input', function() {
         const password = $(this).val();
         const strengthDiv = $('#password-strength-container');
-        
+
         if (password.length > 0) {
             strengthDiv.show();
             const result = checkPasswordStrength(password);
-            
+
             let progressClass = '';
             let strengthText = '';
             let progressPercent = 0;
-            
+
             switch(result.strength) {
                 case 0:
                 case 1:
@@ -185,47 +185,47 @@ $(document).ready(function() {
                     progressPercent = 100;
                     break;
             }
-            
+
             $('#strength-bar')
                 .attr('class', 'progress-bar ' + progressClass)
                 .css('width', progressPercent + '%')
                 .attr('aria-valuenow', progressPercent);
-            
+
             $('#strength-text')
                 .removeClass('text-danger text-warning text-info text-primary text-success')
                 .addClass(result.strength >= 3 ? 'text-success' : result.strength >= 2 ? 'text-warning' : 'text-danger')
                 .text(strengthText);
-            
+
             // Show feedback for missing requirements
-            const feedbackHtml = result.feedback.map(item => 
+            const feedbackHtml = result.feedback.map(item =>
                 `<span class="badge badge-secondary mr-1">Missing: ${item}</span>`
             ).join('');
             $('#password-feedback').html(feedbackHtml);
         } else {
             strengthDiv.hide();
         }
-        
+
         // Also check password matching when password changes
         checkPasswordMatch();
     });
-    
+
     // Check password matching on both inputs
     passwordConfirmationInput.on('input', checkPasswordMatch);
-    
+
     function checkPasswordMatch() {
         const password = passwordInput.val();
         const confirmation = passwordConfirmationInput.val();
         const matchDiv = $('#password-match-container');
-        
+
         if (confirmation.length > 0) {
             matchDiv.show();
-            
+
             if (password === confirmation) {
                 $('#match-text')
                     .removeClass('text-danger')
                     .addClass('text-success')
                     .html('<i class="fas fa-check-circle"></i> Passwords match');
-                
+
                 // Remove invalid class
                 passwordConfirmationInput.removeClass('is-invalid').addClass('is-valid');
             } else {
@@ -233,7 +233,7 @@ $(document).ready(function() {
                     .removeClass('text-success')
                     .addClass('text-danger')
                     .html('<i class="fas fa-times-circle"></i> Passwords do not match');
-                
+
                 // Add invalid class
                 passwordConfirmationInput.removeClass('is-valid').addClass('is-invalid');
             }
@@ -242,14 +242,14 @@ $(document).ready(function() {
             passwordConfirmationInput.removeClass('is-invalid is-valid');
         }
     }
-    
+
     // Clear indicators when input is cleared
     passwordInput.on('focusout', function() {
         if ($(this).val().length === 0) {
             $('#password-strength-container').hide();
         }
     });
-    
+
     passwordConfirmationInput.on('focusout', function() {
         if ($(this).val().length === 0) {
             $('#password-match-container').hide();
