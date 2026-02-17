@@ -40,6 +40,8 @@ class FormSubmissionController extends Controller
             return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
         }
 
+        unset($data['g-recaptcha-response']);
+
         $Visitordata = [
             __('adminlte::landingpage.fullName') => $request->input('Full-name'),
             __('adminlte::landingpage.email') => $request->input('email'),
@@ -105,6 +107,8 @@ class FormSubmissionController extends Controller
         if (!$response->json('success') || $response->json('score') < 0.5) {
             return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
         }
+
+        unset($data['g-recaptcha-response']);
 
 
         $officialTo = $this->getSetting('mail_from_address');
