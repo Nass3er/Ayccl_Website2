@@ -17,16 +17,18 @@ class ContactMail extends Mailable
     protected string $viewName;
     protected string $mailSubject;
     protected ?string $replyToEmail;
+    protected array $mailAttachments;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(array $payload, string $viewName, string $mailSubject, ?string $replyToEmail = null)
+    public function __construct(array $payload, string $viewName, string $mailSubject, ?string $replyToEmail = null, array $mailAttachments = [])
     {
         $this->payload = $payload;
         $this->viewName = $viewName;
         $this->mailSubject = $mailSubject;
         $this->replyToEmail = $replyToEmail;
+        $this->mailAttachments = $mailAttachments;
     }
 
     /**
@@ -61,6 +63,6 @@ class ContactMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return $this->mailAttachments;
     }
 }

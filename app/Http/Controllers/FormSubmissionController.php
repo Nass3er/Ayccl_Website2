@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Mail\Mailables\Attachment;
 
 class FormSubmissionController extends Controller
 {
@@ -27,6 +28,25 @@ class FormSubmissionController extends Controller
             'date' => ['nullable','string','max:40'],
             'Reason' => ['required','string','max:5000'],
             'g-recaptcha-response' => ['required'],
+            'attachment' => [
+                'nullable',
+                'file',
+                'mimes:pdf,jpg,jpeg,png',
+                function ($attribute, $value, $fail) {
+                    $extension = $value->getClientOriginalExtension();
+                    $size = $value->getSize() / 1024; // size in KB
+
+                    if (strtolower($extension) === 'pdf') {
+                        if ($size > 5120) {
+                            $fail('حجم ملف PDF يجب ألا يتجاوز 5 ميجا بايت.');
+                        }
+                    } else {
+                        if ($size > 2048) {
+                            $fail('حجم الصورة يجب ألا يتجاوز 2 ميجا بايت.');
+                        }
+                    }
+                },
+            ],
         ]);
 
         // Verify reCAPTCHA
@@ -41,6 +61,17 @@ class FormSubmissionController extends Controller
         }
 
         unset($data['g-recaptcha-response']);
+
+        $mailAttachments = [];
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $mailAttachments[] = Attachment::fromPath($file->getRealPath())
+                ->as($file->getClientOriginalName())
+                ->withMime($file->getClientMimeType());
+            
+            // Remove file object from data array to avoid issues in email views
+            unset($data['attachment']);
+        }
 
         $Visitordata = [
             __('adminlte::landingpage.fullName') => $request->input('Full-name'),
@@ -64,6 +95,7 @@ class FormSubmissionController extends Controller
             viewName: 'emails.visitor-confirmation',
             mailSubject: __('adminlte::landingpage.emailSentSuccessfully'),
             replyToEmail: $officialTo,
+            mailAttachments: $mailAttachments,
         ));
 
         // Send notification to official mailbox
@@ -77,6 +109,7 @@ class FormSubmissionController extends Controller
                 viewName: 'emails.admin-notification',
                 mailSubject: 'New Visit/Inquiry Submission',
                 replyToEmail: $data['email'],
+                mailAttachments: $mailAttachments,
             ));
         }
         return back()->with('status', __('adminlte::landingpage.emailSentSuccessfully'));
@@ -95,6 +128,25 @@ class FormSubmissionController extends Controller
             'internship-period' => ['required','integer','min:1','max:200'],
             'Reason' => ['required','string','max:5000'],
             'g-recaptcha-response' => ['required'],
+            'attachment' => [
+                'nullable',
+                'file',
+                'mimes:pdf,jpg,jpeg,png',
+                function ($attribute, $value, $fail) {
+                    $extension = $value->getClientOriginalExtension();
+                    $size = $value->getSize() / 1024; // size in KB
+
+                    if (strtolower($extension) === 'pdf') {
+                        if ($size > 5120) {
+                            $fail('حجم ملف PDF يجب ألا يتجاوز 5 ميجا بايت.');
+                        }
+                    } else {
+                        if ($size > 2048) {
+                            $fail('حجم الصورة يجب ألا يتجاوز 2 ميجا بايت.');
+                        }
+                    }
+                },
+            ],
         ]);
 
         // Verify reCAPTCHA
@@ -110,6 +162,15 @@ class FormSubmissionController extends Controller
 
         unset($data['g-recaptcha-response']);
 
+        $mailAttachments = [];
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $mailAttachments[] = Attachment::fromPath($file->getRealPath())
+                ->as($file->getClientOriginalName())
+                ->withMime($file->getClientMimeType());
+            
+            unset($data['attachment']);
+        }
 
         $officialTo = $this->getSetting('mail_from_address');
 
@@ -123,6 +184,7 @@ class FormSubmissionController extends Controller
             viewName: 'emails.visitor-confirmation',
             mailSubject: __('adminlte::landingpage.emailSentSuccessfully'),
             replyToEmail: $officialTo,
+            mailAttachments: $mailAttachments,
         ));
 
         // Send notification to official mailbox
@@ -136,6 +198,7 @@ class FormSubmissionController extends Controller
                 viewName: 'emails.admin-notification',
                 mailSubject: 'New Internship Request',
                 replyToEmail: $data['email'],
+                mailAttachments: $mailAttachments,
             ));
         }
 

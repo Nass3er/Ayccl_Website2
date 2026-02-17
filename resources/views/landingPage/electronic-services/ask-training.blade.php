@@ -49,7 +49,7 @@
                     </p>
 
                     <form action="{{ localizedRoute('forms.askTraining') }}" method="POST" id="training-form"
-                        class="bg-white rounded-2xl p-2 sm:p-8 space-y-6 w-full mx-auto border border-gray-200">
+                        class="bg-white rounded-2xl p-2 sm:p-8 space-y-6 w-full mx-auto border border-gray-200" enctype="multipart/form-data">
                         @csrf
 
 
@@ -148,6 +148,15 @@
                                 class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.message') }}</label>
                             <textarea class="textarea textarea-bordered w-full" name="Reason" rows="4"
                                 placeholder="{{ __('adminlte::landingpage.addmessage') }}" required></textarea>
+                        </div>
+
+                        <!-- Attachment -->
+                        <div class="form-control">
+                            <label class="label font-semibold text-gray-600">إرفاق ملف (PDF بحد أقصى 5MB، صور بحد أقصى 2MB)</label>
+                            <input type="file" name="attachment" class="file-input file-input-bordered w-full" />
+                            @if ($errors->has('attachment'))
+                                <span class="text-red-600 text-sm mt-1">{{ $errors->first('attachment') }}</span>
+                            @endif
                         </div>
 
                         <!-- reCAPTCHA v3 -->
