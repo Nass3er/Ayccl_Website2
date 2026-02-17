@@ -107,4 +107,10 @@ return array (
     'css' => 'Customer self-service',
     'TogetherWeBuildYemen' => 'Together we build Yemen',
     'ArabCementCompany' => 'Arab Cement Company',
+    'emailSentSuccessfully' => 'Email sent successfully.',
+    'attachmentLabel' => 'Attach one file (PDF max 5MB, or Image max 2MB)',
+    'pdfSizeError' => 'PDF file size must not exceed 5MB.',
+    'imageSizeError' => 'Image size must not exceed 2MB.',
+    'recaptchaRequired' => 'Please verify that you are not a robot.',
+    'recaptchaFailed' => 'Sorry, you seem to be a robot. Please try again.',
 );

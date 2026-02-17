@@ -73,4 +73,6 @@ return [
 'inspectionCertificates' => 'Inspection Certificates',
 'specifications' => 'Specifications',
 'electronicServices' => 'Electronic Services',
+'settings' => 'Settings',
+'mailSettings' => 'Mail Settings',
 ];

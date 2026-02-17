@@ -52,20 +52,18 @@
             $btnEdit =
                 '<a href="' .
                 route('news.edit', ['news' => $post->id, 'locale' => app()->getLocale()]) .
-                '" class="btn btn-warning " data-toggle="tooltip" title=' .
-                __('adminlte::adminlte.edit') .
-                '><i class="fas fa-edit"></i>'.
+                '" class="btn btn-warning" data-toggle="tooltip" title="' . __('adminlte::adminlte.edit') . '"' .
+                '><i class="fas fa-edit"></i>' .
                 '</a>';
             $btnDelete =
-                '<span style="display: inline-block; " data-toggle="tooltip" title="'.__('adminlte::adminlte.delete').' "><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCustom"  data-id="' .
+                '<span style="display: inline-block;" data-toggle="tooltip" title="' . __('adminlte::adminlte.delete') . '"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCustom" data-id="' .
                 $post->id .
                 '"'  .
-                // __('adminlte::adminlte.delete') .
-                '"><i class="fas fa-trash" ></i>'.
+                '"><i class="fas fa-trash"></i>' .
                 '</button></span>';
 
             $btnActivation =
-                '<span data-toggle="tooltip" title="'.__('adminlte::adminlte.activate').' "><a href="#" class="btn btn-success " data-toggle="modal" data-target="#modalActivate" data-id="' .
+                '<span data-toggle="tooltip" title="' . __('adminlte::adminlte.activate') . '"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalActivate" data-id="' .
                 $post->id .
                 '">' .
                 '<i class="	fas fa-eye"></i>'.

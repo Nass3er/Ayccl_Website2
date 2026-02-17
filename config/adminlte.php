@@ -645,6 +645,18 @@ return [
             'route' => 'external-links.index',
             'active' => ['*external-links*'],
         ],
+        [
+            'text' => 'settings',
+            'icon' => 'fas fa-cog',
+            'active' => ['admin/settings*'],
+            'submenu' => [
+                [
+                    'text' => 'mailSettings',
+                    'route' => 'admin.settings.mail',
+                    'icon' => 'fas fa-envelope',
+                ],
+            ],
+        ],
 
         // ['header' => 'labels'],
         // [

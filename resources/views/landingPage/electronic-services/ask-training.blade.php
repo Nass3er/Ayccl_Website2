@@ -152,8 +152,8 @@
 
                         <!-- Attachment -->
                         <div class="form-control">
-                            <label class="label font-semibold text-gray-600">إرفاق ملف (PDF بحد أقصى 5MB، صور بحد أقصى 2MB)</label>
-                            <input type="file" name="attachment" class="file-input file-input-bordered w-full" />
+                            <label class="label font-semibold text-gray-600">{{ __('adminlte::landingpage.attachmentLabel') }}</label>
+                            <input type="file" name="attachment" accept="application/pdf,image/*" class="file-input file-input-bordered w-full" />
                             @if ($errors->has('attachment'))
                                 <span class="text-red-600 text-sm mt-1">{{ $errors->first('attachment') }}</span>
                             @endif

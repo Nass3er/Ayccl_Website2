@@ -54,6 +54,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\FormSubmissionController;
+use App\Http\Controllers\Admin\Settings\MailSettingController;
 
 
 use Laravel\Pail\ValueObjects\Origin\Console;
@@ -185,6 +186,12 @@ Route::group([
                 // });
 
                 Route::get('/account-settings', [AccountSettingsController::class, 'accountSettings'])->name('accountSettings');
+
+                Route::prefix('/settings')->group(function () {
+                    Route::get('/mail', [MailSettingController::class, 'index'])->name('admin.settings.mail');
+                    Route::get('/mail/{id}/edit', [MailSettingController::class, 'edit'])->name('admin.settings.mail.edit');
+                    Route::put('/mail/{id}', [MailSettingController::class, 'update'])->name('admin.settings.mail.update');
+                });
 
                 Route::group(['prefix' => '/website-management'], function () {
                     Route::get('/website-variables', [WebsiteManagementController::class, 'variables'])->name('webmgt.website_variables');

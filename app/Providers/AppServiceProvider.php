@@ -26,7 +26,32 @@ class AppServiceProvider extends ServiceProvider
       }
       
         if (!app()->runningInConsole()) {
-        $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            // Load mail settings from database
+            try {
+                if (\Schema::hasTable('settings')) {
+                    $mailSettings = \App\Models\Setting::whereIn('para', [
+                        'mail_mailer', 'mail_host', 'mail_port', 'mail_username', 
+                        'mail_password', 'mail_encryption', 'mail_from_address', 'mail_from_name'
+                    ])->get()->keyBy('para');
+
+                    if ($mailSettings->isNotEmpty()) {
+                        config([
+                            'mail.default' => $mailSettings['mail_mailer']->value ?? config('mail.default'),
+                            'mail.mailers.smtp.host' => $mailSettings['mail_host']->value ?? config('mail.mailers.smtp.host'),
+                            'mail.mailers.smtp.port' => $mailSettings['mail_port']->value ?? config('mail.mailers.smtp.port'),
+                            'mail.mailers.smtp.encryption' => $mailSettings['mail_encryption']->value ?? config('mail.mailers.smtp.encryption'),
+                            'mail.mailers.smtp.username' => $mailSettings['mail_username']->value ?? config('mail.mailers.smtp.username'),
+                            'mail.mailers.smtp.password' => $mailSettings['mail_password']->value ?? config('mail.mailers.smtp.password'),
+                            'mail.from.address' => $mailSettings['mail_from_address']->value ?? config('mail.from.address'),
+                            'mail.from.name' => $mailSettings['mail_from_name']->value ?? config('mail.from.name'),
+                        ]);
+                    }
+                }
+            } catch (\Exception $e) {
+                // Fail gracefully if database is not reachable
+            }
+
+            $this->app['events']->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $locale = app()->getLocale();
 
             // Decide which language to show

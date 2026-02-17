@@ -129,4 +129,9 @@ return array (
     'visitingForm' => 'نموذج طلب الزيارة',
     'fillVisitingForm' => 'رجاء قم بتعبئة نموذج طلب الزيارة.',
     'emailSentSuccessfully' => 'تم إرسال الإيميل بنجاح.',
+    'attachmentLabel' => 'إرفاق ملف واحد (PDF بحد أقصى 5MB، أو صورة بحد أقصى 2MB)',
+    'pdfSizeError' => 'حجم ملف PDF يجب ألا يتجاوز 5 ميجا بايت.',
+    'imageSizeError' => 'حجم الصورة يجب ألا يتجاوز 2 ميجا بايت.',
+    'recaptchaRequired' => 'الرجاء التحقق من أنك لست روبوت.',
+    'recaptchaFailed' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.',
 );

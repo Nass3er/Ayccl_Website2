@@ -141,6 +141,9 @@ return array(
     'DeActivation' => 'الغاء التفعيل',
     'passNotMatching' => 'كلمة المرور القديمة غير صحيحة.',
     'oldPassword' => 'كلمة المرور القديمة',
+    'alert_add' => 'تمت الإضافة بنجاح',
+    'alert_edit' => 'تم التعديل بنجاح',
+    'alert_delete' => 'تم الحذف بنجاح',
 
     // Dashboard translations
     'dashboard' => 'لوحة التحكم',

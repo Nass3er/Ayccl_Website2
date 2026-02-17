@@ -69,5 +69,6 @@ return [
 'specifications' => 'المواصفات',
 'inspectionCertificates' => 'شهادات الفحص',
 'electronicServices' => 'الخدمات الإلكترونية',
-
+'settings' => 'الإعدادات',
+'mailSettings' => 'إعدادات البريد',
 ];

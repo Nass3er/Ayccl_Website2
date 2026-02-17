@@ -38,11 +38,11 @@ class FormSubmissionController extends Controller
 
                     if (strtolower($extension) === 'pdf') {
                         if ($size > 5120) {
-                            $fail('حجم ملف PDF يجب ألا يتجاوز 5 ميجا بايت.');
+                            $fail(__('adminlte::landingpage.pdfSizeError'));
                         }
                     } else {
                         if ($size > 2048) {
-                            $fail('حجم الصورة يجب ألا يتجاوز 2 ميجا بايت.');
+                            $fail(__('adminlte::landingpage.imageSizeError'));
                         }
                     }
                 },
@@ -57,7 +57,7 @@ class FormSubmissionController extends Controller
         ]);
 
         if (!$response->json('success') || $response->json('score') < 0.5) {
-            return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
+            return back()->withErrors(['g-recaptcha-response' => __('adminlte::landingpage.recaptchaFailed')])->withInput();
         }
 
         unset($data['g-recaptcha-response']);
@@ -138,11 +138,11 @@ class FormSubmissionController extends Controller
 
                     if (strtolower($extension) === 'pdf') {
                         if ($size > 5120) {
-                            $fail('حجم ملف PDF يجب ألا يتجاوز 5 ميجا بايت.');
+                            $fail(__('adminlte::landingpage.pdfSizeError'));
                         }
                     } else {
                         if ($size > 2048) {
-                            $fail('حجم الصورة يجب ألا يتجاوز 2 ميجا بايت.');
+                            $fail(__('adminlte::landingpage.imageSizeError'));
                         }
                     }
                 },
@@ -157,7 +157,7 @@ class FormSubmissionController extends Controller
         ]);
 
         if (!$response->json('success') || $response->json('score') < 0.5) {
-            return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
+            return back()->withErrors(['g-recaptcha-response' => __('adminlte::landingpage.recaptchaFailed')])->withInput();
         }
 
         unset($data['g-recaptcha-response']);

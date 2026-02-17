@@ -166,9 +166,25 @@
             window.history.back();
         }
     </script>
+    <style>
+        .tooltip { pointer-events: none !important; }
+        /* Fix for DataTables scroll wrapper clipping tooltips or causing jumping */
+        .dataTables_scrollBody { overflow: visible !important; }
+        .dataTables_scroll { overflow-x: auto !important; }
+        /* Prevent layout shifts from tooltips */
+        body.modal-open { overflow: hidden !important; }
+    </style>
     <script>
         $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
+            $('body').tooltip({
+                selector: '[data-toggle="tooltip"]',
+                container: 'body',
+                boundary: 'window',
+                trigger: 'hover',
+                offset: '0, 10',
+                animation: false, // Disabling animation can stop the vibration loop
+                placement: 'auto'
+            });
         });
     </script>
 

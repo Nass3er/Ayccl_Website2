@@ -14,14 +14,7 @@ class SettingsTableSeeder extends Seeder
     public function run(): void
     {
         $settings = [
-            // --- Systems Links ---
-            // ['para' => 'الخدمة الذاتية للموظفين', 'para_en' => 'Employee Self System (ESS)', 'value' => 'link'],   //  1
-            // ['para' => 'الخدمة الذاتية للعملاء', 'para_en' => 'Customer Self System (CSS)', 'value' => 'link'],    //  2
-            
-            // // --- Floating Button---
-            // ['para' => 'رقم الواتساب', 'para_en' => 'Whatsapp', 'value' => '967711003019'],       //  12
-            // ['para' => 'رقم الاتصال المباشر', 'para_en' => 'Call', 'value' => '+967711003019'],    //  13
-            
+
             // --- Email---
             ['para' => 'mail_mailer', 'para_en' =>       'mail_mailer', 'value' => 'smtp'],           //  3
             ['para' => 'mail_host', 'para_en' =>         'mail_host', 'value' => 'smtp.gmail.com'],     //  4
@@ -32,7 +25,6 @@ class SettingsTableSeeder extends Seeder
             ['para' => 'mail_from_address', 'para_en' => 'mail_from_address', 'value' => 'ayccl.notifications@gmail.com'],     //  9
             ['para' => 'mail_from_name', 'para_en' =>    'mail_from_name', 'value' => 'AYCCL Website'],    //  10
             
-
         ];
 
         DB::table('settings')->insert($settings);
