@@ -25,10 +25,10 @@ class StartPage extends Controller
                         ->orderBy('order')
                         ->firstOrFail();
 
-        $slideshows= Post::where('page_id',$page->id)->with('mediaOne', 'PostDetailOne')->get();
-        $isoCertificates= Post::where('page_id',26)->with('mediaOne', 'PostDetailOne')->get();
+        $slideshows= Post::where('page_id',$page->id)->where('active',true)->with('mediaOne', 'PostDetailOne')->get();
+        $isoCertificates= Post::where('page_id',26)->where('active',true)->with('mediaOne', 'PostDetailOne')->get();
 
-        $products = Post::where('page_id',32)->with('mediaOne', 'PostDetailOne')->get();
+        $products = Post::where('page_id',32)->where('active',true)->with('mediaOne', 'PostDetailOne')->get();
 
         return view('welcome', compact('contactDetails','map', 'slideshows', 'isoCertificates', 'products', 'page'));
     }

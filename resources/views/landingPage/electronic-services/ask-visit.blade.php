@@ -4,7 +4,23 @@
 @section('content')
     <x-hero title="{{ $page->title }}" description="{{ $page->content }}" img="{{ asset($page->background) }}" />
 
-    <div class="w-[95%] mx-auto " data-aos="fade-up" data-aos-duration="700">
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+    <script>
+        document.addEventListener('submit', function(e) {
+            if (e.target && e.target.id === 'visit-form') {
+                e.preventDefault();
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'submit_visit'}).then(function(token) {
+                        document.getElementById('g-recaptcha-response').value = token;
+                        e.target.submit();
+                    });
+                });
+            }
+        });
+    </script>
+
+
+<div class="w-[95%] mx-auto " data-aos="fade-up" data-aos-duration="700">
 
         <div class="min-h-screen flex w-full items-center justify-center p-0 sm:p-6">
             <div class="card w-full sm:max-w-4xl shadow-2xl bg-base-100">
@@ -33,7 +49,7 @@
                         {{ __('adminlte::landingpage.fillVisitingForm') }}
                     </p>
 
-                    <form action="{{ localizedRoute('forms.askVisit') }}" method="POST"
+                    <form action="{{ localizedRoute('forms.askVisit') }}" method="POST" id="visit-form"
                         class="bg-white rounded-2xl p-2 sm:p-8 space-y-6 w-full mx-auto border border-gray-200">
                         @csrf
 
@@ -114,6 +130,16 @@
                             <textarea class="textarea textarea-bordered w-full" name="Reason" rows="4"
                                 placeholder="{{ __('adminlte::landingpage.write') . __('adminlte::landingpage.visitingReasonMessage') }}" required></textarea>
                         </div>
+
+                        <!-- reCAPTCHA v3 -->
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        @if ($errors->has('g-recaptcha-response'))
+                            <div class="text-center my-2">
+                                <span class="text-red-600 text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
+                            </div>
+                        @endif
+                        
+
 
                         <!-- Hidden Fields -->
                         <input type="hidden" name="_next" value="{{ localizedRoute('customerservice') }}">

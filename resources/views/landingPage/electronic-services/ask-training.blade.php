@@ -4,6 +4,21 @@
 @section('content')
     <x-hero title="{{ $page->title }}" description="{{ $page->content }}" img="{{ asset($page->background) }}" />
 
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+    <script>
+        document.addEventListener('submit', function(e) {
+            if (e.target && e.target.id === 'training-form') {
+                e.preventDefault();
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'submit_training'}).then(function(token) {
+                        document.getElementById('g-recaptcha-response').value = token;
+                        e.target.submit();
+                    });
+                });
+            }
+        });
+    </script>
+
     <div class="w-[95%] mx-auto " data-aos="fade-up" data-aos-duration="700">
 
         <div class="min-h-screen flex w-full items-center justify-center p-0 sm:p-6">
@@ -33,7 +48,7 @@
                         {{ __('adminlte::landingpage.fillInternshipForm') }}
                     </p>
 
-                    <form action="{{ localizedRoute('forms.askTraining') }}" method="POST"
+                    <form action="{{ localizedRoute('forms.askTraining') }}" method="POST" id="training-form"
                         class="bg-white rounded-2xl p-2 sm:p-8 space-y-6 w-full mx-auto border border-gray-200">
                         @csrf
 
@@ -134,6 +149,14 @@
                             <textarea class="textarea textarea-bordered w-full" name="Reason" rows="4"
                                 placeholder="{{ __('adminlte::landingpage.addmessage') }}" required></textarea>
                         </div>
+
+                        <!-- reCAPTCHA v3 -->
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        @if ($errors->has('g-recaptcha-response'))
+                            <div class="text-center my-2">
+                                <span class="text-red-600 text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
+                            </div>
+                        @endif
 
                         <!-- Hidden Fields -->
                         <input type="hidden" name="_next" value="{{ localizedRoute('customerservice') }}">

@@ -7,6 +7,7 @@ use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
 
 class FormSubmissionController extends Controller
 {
@@ -25,7 +26,20 @@ class FormSubmissionController extends Controller
             'institution' => ['required','string','max:255'],
             'date' => ['nullable','string','max:40'],
             'Reason' => ['required','string','max:5000'],
+            'g-recaptcha-response' => ['required'],
         ]);
+
+        // Verify reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
+        }
+
         $Visitordata = [
             __('adminlte::landingpage.fullName') => $request->input('Full-name'),
             __('adminlte::landingpage.email') => $request->input('email'),
@@ -78,7 +92,20 @@ class FormSubmissionController extends Controller
             'date' => ['nullable','string','max:40'],
             'internship-period' => ['required','integer','min:1','max:200'],
             'Reason' => ['required','string','max:5000'],
+            'g-recaptcha-response' => ['required'],
         ]);
+
+        // Verify reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            return back()->withErrors(['g-recaptcha-response' => 'عذراً، يبدو أنك روبوت. يرجى المحاولة مرة أخرى.'])->withInput();
+        }
+
 
         $officialTo = $this->getSetting('mail_from_address');
 
