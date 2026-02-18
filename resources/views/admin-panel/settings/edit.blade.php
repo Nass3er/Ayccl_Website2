@@ -79,7 +79,13 @@
                                     <x-adminlte-input name="mail_username" label="Username" value="{{ $settings['mail_username']->value ?? '' }}" label-class="text-olive" enable-old-support />
                                 </div>
                                 <div class="col-md-6">
-                                    <x-adminlte-input name="mail_password" type="password" label="Password" value="{{ $settings['mail_password']->value ?? '' }}" label-class="text-olive" enable-old-support />
+                                    <x-adminlte-input id="mail_password" name="mail_password" type="password" label="Password" value="{{ $settings['mail_password']->value ?? '' }}" label-class="text-olive" enable-old-support>
+                                        <x-slot name="appendSlot">
+                                            <div class="input-group-text text-olive">
+                                                <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                                            </div>
+                                        </x-slot>
+                                    </x-adminlte-input>
                                 </div>
                             </div>
                         </div>
@@ -95,4 +101,19 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('adminlte_js')
+    <script>
+        $(document).ready(function() {
+            $('#togglePassword').click(function() {
+                const passwordInput = $('#mail_password');
+                const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+                passwordInput.attr('type', type);
+                
+                // Toggle the eye icon
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
+        });
+    </script>
 @stop

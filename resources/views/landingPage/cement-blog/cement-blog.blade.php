@@ -2,10 +2,11 @@
 @section('css')
 @endsection
 @section('content')
+
     <x-hero title="{{ $page->title }}" description="{{ $page->content }}" img="{{ asset($page->background) }}" />
 
      <div class="w-[95%] mx-auto mt-20">
-    @isset($posts)
+    @isset($cementBlogs)
         <div class="space-y-30">
             @foreach ($cementBlogs as $index => $post)
                 @php
