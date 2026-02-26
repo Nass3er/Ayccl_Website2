@@ -1,17 +1,19 @@
 <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 mt-10  transition duration-300">
-    <aside>
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('/images/footer/Footer_Logo.png') }}" alt="logo" class="mb-4 w-32 " />
-        </a>
+   <aside class="flex flex-col items-center justify-center text-center">
+    <a href="{{ url('/') }}">
+        <img src="{{ asset('/images/footer/Footer_Logo.png') }}" alt="logo" class="mb-4 w-32" />
+    </a>
 
-        <div class=" rounded-md">
-            <p class="font-extrabold">{{ __('adminlte::landingpage.ayccl') }}</p>
-        </div>
-
-        <p class="text-emerald-800 font-extrabold">
-            {{ __('adminlte::landingpage.leadingcompany') }}
+    <div class="rounded-md">
+        <p class="font-extrabold text-center w-full">
+            {{ __('adminlte::landingpage.ayccl') }}
         </p>
-    </aside>
+    </div>
+
+    <p class="text-emerald-800 font-extrabold text-center w-full">
+        {{ __('adminlte::landingpage.leadingcompany') }}
+    </p>
+</aside>
 
     <nav>
         <h1 class="footer-title text-emerald-900">{{ __('adminlte::landingpage.aboutus') }}</h1>

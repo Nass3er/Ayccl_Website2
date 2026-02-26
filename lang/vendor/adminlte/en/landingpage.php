@@ -3,7 +3,7 @@
 return array (
   'clicktomove' => 'Click to Direct to be App',
   'ayccl' => 'Arabic Yemen Cement Company Ltd.',
-  'leadingcompany' => 'Leading Company in Cement Industry in Yemen',
+  'leadingcompany' => 'With us we build Yemen',
   'home' => 'Home',
   'aboutus' => 'About Us',
   'contactus' => 'Contact Us',
@@ -113,4 +113,7 @@ return array (
     'imageSizeError' => 'Image size must not exceed 2MB.',
     'recaptchaRequired' => 'Please verify that you are not a robot.',
     'recaptchaFailed' => 'Sorry, you seem to be a robot. Please try again.',
+    'aycclInNumbers' => 'AYCCL in Numbers',
+    'moreDetails' => 'More Details',
+    
 );

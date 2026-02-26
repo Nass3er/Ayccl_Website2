@@ -21,72 +21,33 @@
 
             <div class="grid md:grid-cols-2 gap-6">
 
-                {{-- CARD 1 --}}
-                <div class="info-card" data-aos="fade-up">
+            @foreach ($companySections as $index => $section)
+                <div class="info-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                     <button class="card-toggle">
-                        🏭 من نحن
+                        {{ $section['icon'] }} {{ $section['title'] }}
                     </button>
                     <div class="card-content">
-                        الشركة العربية اليمنية للأسمنت هي شركة يمنية محدودة برأس مال معلن...
+                        {{ $section['content'] }}
                     </div>
                 </div>
+            @endforeach
 
-                {{-- CARD 2 --}}
-                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
-                    <button class="card-toggle">
-                        📍 الموقع
-                    </button>
-                    <div class="card-content">
-                        تقع الخطوط الإنتاجية للشركة على بعد 60 كم شمال المكلا...
-                    </div>
+            {{-- FULL DETAILS: يعرض المحتوى كاملاً قبل ##### فقط --}}
+            <div class="info-card md:col-span-2" data-aos="fade-up" data-aos-delay="500">
+                <button class="card-toggle">
+                    📖 {{ __('adminlte::landingpage.moreDetails') }}
+                </button>
+                <div class="card-content text-justify">
+                    {!! $mainContentHtml !!}
                 </div>
-
-                {{-- CARD 3 --}}
-                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
-                    <button class="card-toggle">
-                        🧱 المنتجات
-                    </button>
-                    <div class="card-content">
-                        إنتاج الإسمنت البورتلاندي العادي والمقاوم للكبريتات وفق المواصفات...
-                    </div>
-                </div>
-
-                {{-- CARD 4 --}}
-                <div class="info-card" data-aos="fade-up" data-aos-delay="300">
-                    <button class="card-toggle">
-                        ⚙️ التكنولوجيا
-                    </button>
-                    <div class="card-content">
-                        أحدث تقنيات ألمانية وأنظمة تحكم آلي وروبوتات في الإنتاج...
-                    </div>
-                </div>
-
-                {{-- CARD 5 --}}
-                <div class="info-card md:col-span-2" data-aos="fade-up" data-aos-delay="400">
-                    <button class="card-toggle">
-                        📊 الطاقة الإنتاجية
-                    </button>
-                    <div class="card-content text-center">
-                        <span class="text-3xl font-extrabold text-emerald-500">1,500,000 طن سنوياً</span>
-                    </div>
-                </div>
-
-                {{-- FULL DETAILS --}}
-                <div class="info-card md:col-span-2" data-aos="fade-up" data-aos-delay="500">
-                    <button class="card-toggle">
-                        📖 عرض تفاصيل أكثر
-                    </button>
-                    <div class="card-content text-justify">
-                        {!! $posts[0]->postDetailOne->content !!}
-                    </div>
-                </div>
-
             </div>
+
+            </div>{{-- end grid --}}
 
             <section class="max-w-6xl mx-auto mt-20 px-4 text-center" id="stats">
 
                 <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-                    الشركة العربية في أرقام
+                    {{ __('adminlte::landingpage.aycclInNumbers') }}
                 </h3>
 
                 <div
@@ -95,27 +56,35 @@
                 sm:grid-cols-2
                 lg:grid-cols-3">
 
-                    <div class="stat-box">
-                        <div class="stat-number" data-target="250">0</div>
-                        <div class="stat-label">مليون دولار تكلفة المشروع</div>
-                    </div>
-
-                    <div class="stat-box">
-                        <div class="stat-number" data-target="142">0</div>
-                        <div class="stat-label">مليون دولار رأس المال</div>
-                    </div>
-
-                    <div class="stat-box">
-                        <div class="stat-number" data-target="1500000">0</div>
-                        <div class="stat-label">طن إنتاج سنوي</div>
-                    </div>
-
-                    <div class="stat-box">
-                        <div class="stat-number" data-target="60">0</div>
-                        <div class="stat-label">كم عن مدينة المكلا</div>
-                    </div>
-
+                    @forelse ($companyStats as $stat)
+                        <div class="stat-box">
+                            <div class="stat-number" data-target="{{ $stat['value'] }}">0</div>
+                            @if(!empty($stat['suffix']))
+                                <div class="text-sm text-gray-500 mt-1">{{ $stat['suffix'] }}</div>
+                            @endif
+                            <div class="stat-label">{{ $stat['label'] }}</div>
+                        </div>
+                    @empty
+                        {{-- إذا لم تُستخرج أرقام من النص، عرض قيم احتياطية --}}
+                        <div class="stat-box">
+                            <div class="stat-number" data-target="250">0</div>
+                            <div class="stat-label">مليون دولار تكلفة المشروع</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" data-target="142">0</div>
+                            <div class="stat-label">مليون دولار رأس المال</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" data-target="1500000">0</div>
+                            <div class="stat-label">طن إنتاج سنوي</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" data-target="60">0</div>
+                            <div class="stat-label">كم عن مدينة المكلا</div>
+                        </div>
+                    @endforelse
                 </div>
+
             </section>
 
 

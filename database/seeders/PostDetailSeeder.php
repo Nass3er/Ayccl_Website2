@@ -27,13 +27,46 @@ class PostDetailSeeder extends Seeder
                     "title_en" => "About Company",
                     "slug" => "",
                     "color" => "",
-                    "content_en" => "",
-                    "content" => "الشركة العربية اليمنية للأسمنت هي شركة يمنية محدودة برأس مال معلن وقدرة 142,500,000 دولار وبتكلفة إجمالية قدرها 250 مليون دولار أمريكي.جاءت فكرة إقامة مشروع الشركة العربية اليمنية للأسمنت المحدودة في مدينة المكلا لتلبي احتياجات ورغبات المستهلكين في السوق المحلي والإقليمي من الإسمنت. ولتوفر المواد الخام اللازمة لإقامة صناعة الإسمنت بالقرب من مدينة المكلا فقد تبنى فكرة إقامة المشروع المهندس/ عبدالله أحمد بقشان وهو من رجال الأعمال المعروفين في اليمن والمملكة العربية السعودية، وقد عمل على بلورة فكرة إقامة المشروع عبر شركة ذات شهرة وخبرة عالمية في مجال إقامة مشاريع الإسمنت في العالم، وذلك بعمل الدراسات الفنية اللازمة وعلى ضوء ذلك بدء العمل في المشروع في 2/6/2006م والإنتاج التجريبي في ديسمبر 2009م، كأحد المشاريع الأساسية المساهمة في تطوير البنية التحتية والنمو الإقتصادي في المنطقة.
-                    الموقع : تقع الخطوط الإنتاجية للشركة العربية اليمنية للأسمنت وكذا مكاتبها الإدارية على بعد 60 كيلومتراً شمال مدينة المكلا عاصمة محافظة حضرموت في منطقة العيون بمساحة إجمالية تقدر ب 22.150 كيلومترٍ مربع، وقد تم اختيار الموقع لوجود مواد خام عمرها الإفتراضي طويل الأمد و بالنقاوة والنعومة الفائقة والصلابة واقتصادياً في البناء.
-                    المنتجات : يتمثل نشاط الشركة العربية اليمنية للأسمنت الرئيسي في إنتاج الإسمنت البورتلاندي العادي والمقاوم للكبريتات المعبأ والسائب وفقاً للمواصفات القياسية اليمنية والمطابق للمواصفات الأمريكية ASTM-C150 والأوربية EN197CEII، وقد أجتازت المنتجات بنجاح كافة الفحوصات المطلوبة من قبل الهيئة اليمنية للمواصفات والمقاييس وضبط الجودة.
-                    الطاقة الإنتاجية:تقدر طاقة الشركة الإنتاجية من الإسمنت حوالي 1,500,000طن / لسنة.
-                    التكنولوجيا : تمتلك الشركة العربية اليمنية للأسمنت أحدث الآلات والمعدات والأجهزة في عملياتها الإنتاجية والفنية ذات تقنية ألمانية متقدمة في صناعة الإسمنت وتوليد الطاقة وعمليات التحكم، لتحقيق الميزات النوعية للجودة المتميزة للإسمنت بإستخدام أحدث الأنظمة الحاسوبية وأجهزة التحكم الآلي (الروبوت) لأول مرة في صناعة الإسمنت، لضمان أعلى درجات الدقة والتحكم لجودة كافة عمليات إنتاج الإسمنت.",
-                    "order" => 1,
+                    "content_en" => "The Arabian Yemen Cement Company is a Yemeni limited liability company with a declared capital of $142,500,000 and a total project cost of $250 million.
+
+                                    The Beginning: The idea of establishing the Arabian Yemen Cement Company Ltd. in Mukalla was born to meet the needs and demands of consumers for cement in both local and regional markets. Due to the availability of the raw materials necessary for the cement industry near Mukalla, the project was championed by Eng. Abdullah Ahmed Bugshan, a well-known businessman in Yemen and Saudi Arabia. He worked on crystallizing the project through a firm with international renown and expertise in establishing global cement projects, conducting the necessary technical studies. Consequently, work began on June 2, 2006, with pilot production starting in December 2009, marking it as one of the fundamental projects contributing to infrastructure development and economic growth in the region.
+
+                                    Location: The production lines and administrative offices of the Arabian Yemen Cement Company are located 60 kilometers north of Mukalla, the capital of Hadramout Governorate, in the Al-Ayoun area, covering a total area of approximately 22,150 square kilometers. This site was chosen due to the presence of raw materials with a long lifespan, characterized by high purity, fineness, and superior hardness, making it economically efficient for construction.
+
+                                    Products: The primary activity of the Arabian Yemen Cement Company is the production of Ordinary Portland Cement and Sulfate-Resistant Cement (both packed and bulk) in accordance with Yemeni standard specifications and compliant with American ASTM-C150 and European EN197 CE II standards. The products have successfully passed all required tests by the Yemen Standardization, Metrology, and Quality Control Organization.
+
+                                    Production Capacity: The company's annual production capacity is estimated at approximately 1,500,000 tons per year.
+
+                                    Technology: The Arabian Yemen Cement Company utilizes the latest machinery, equipment, and devices in its technical and production operations, featuring advanced German technology in cement manufacturing, power generation, and control systems. To achieve distinguished quality features, the company employs the latest computer systems and automated robotic controls for the first time in the local cement industry, ensuring the highest levels of precision and quality control throughout all stages of cement production.
+
+                                    #####
+
+                                    Project Cost = $250 Million
+
+                                    Capital = $142 Million
+
+                                    Production Capacity = 1,500,000 Tons Annually",
+                    "content" =>" الشركة العربية اليمنية للأسمنت هي شركة يمنية محدودة برأس مال معلن وقدرة 142,500,000 دولار وبتكلفة إجمالية قدرها 250 مليون دولار أمريكي.
+
+                                البداية : جاءت فكرة إقامة مشروع الشركة العربية اليمنية للأسمنت المحدودة في مدينة المكلا لتلبي احتياجات ورغبات المستهلكين في السوق المحلي والإقليمي من الإسمنت. ولتوفر المواد الخام اللازمة لإقامة صناعة الإسمنت بالقرب من مدينة المكلا فقد تبنى فكرة إقامة المشروع المهندس/ عبدالله أحمد بقشان وهو من رجال الأعمال المعروفين في اليمن والمملكة العربية السعودية، وقد عمل على بلورة فكرة إقامة المشروع عبر شركة ذات شهرة وخبرة عالمية في مجال إقامة مشاريع الإسمنت في العالم، وذلك بعمل الدراسات الفنية اللازمة وعلى ضوء ذلك بدء العمل في المشروع في 2/6/2006م والإنتاج التجريبي في ديسمبر 2009م، كأحد المشاريع الأساسية المساهمة في تطوير البنية التحتية والنمو الإقتصادي في المنطقة.
+
+                                الموقع : تقع الخطوط الإنتاجية للشركة العربية اليمنية للأسمنت وكذا مكاتبها الإدارية على بعد 60 كيلومتراً شمال مدينة المكلا عاصمة محافظة حضرموت في منطقة العيون بمساحة إجمالية تقدر ب 22.150 كيلومترٍ مربع، وقد تم اختيار الموقع لوجود مواد خام عمرها الإفتراضي طويل الأمد و بالنقاوة والنعومة الفائقة والصلابة واقتصادياً في البناء.
+
+                                المنتجات : يتمثل نشاط الشركة العربية اليمنية للأسمنت الرئيسي في إنتاج الإسمنت البورتلاندي العادي والمقاوم للكبريتات المعبأ والسائب وفقاً للمواصفات القياسية اليمنية والمطابق للمواصفات الأمريكية ASTM-C150 والأوربية EN197CEII، وقد أجتازت المنتجات بنجاح كافة الفحوصات المطلوبة من قبل الهيئة اليمنية للمواصفات والمقاييس وضبط الجودة.
+
+                                الطاقة الإنتاجية:تقدر طاقة الشركة الإنتاجية من الإسمنت حوالي 1,500,000طن / لسنة.
+
+                                التكنولوجيا : تمتلك الشركة العربية اليمنية للأسمنت أحدث الآلات والمعدات والأجهزة في عملياتها الإنتاجية والفنية ذات تقنية ألمانية متقدمة في صناعة الإسمنت وتوليد الطاقة وعمليات التحكم، لتحقيق الميزات النوعية للجودة المتميزة للإسمنت بإستخدام أحدث الأنظمة الحاسوبية وأجهزة التحكم الآلي (الروبوت) لأول مرة في صناعة الإسمنت، لضمان أعلى درجات الدقة والتحكم لجودة كافة عمليات إنتاج الإسمنت.
+
+                                #####
+
+                                تكلفة المشروع = 250 مليون دولار
+
+                                راس المال = 142 مليون دولار
+
+                                الطاقة الإنتاجية = 1500000 طن سنويا",
+
+                     "order" => 1,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
