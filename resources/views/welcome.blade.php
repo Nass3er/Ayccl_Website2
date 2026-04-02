@@ -16,14 +16,10 @@
     <x-slideshow :slideshows="$slideshows" />
     <div class="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[85%] mx-auto pattern">
 
-        {{-- @include('daisyUI.collapse') --}}
-        <x-divider>{{ __('adminlte::landingpage.isoCertificates') }}</x-divider>
-        <div class="my-10">
 
-            <x-iso-carousel :posts="$isoCertificates" style="" />
-        </div> {{-- <x-slideshow :slideshows="$slideshows" /> --}}
-        {{-- @include('daisyUI.carousel2') --}}
-        {{-- @include('daisyUI.bar') --}}
+        {{-- قسم من نحن --}}
+        <x-divider>{{ __('adminlte::landingpage.aboutus') }}</x-divider>
+        @include('daisyUI.About-us')
 
 
         {{-- products --}}
@@ -42,11 +38,21 @@
             </a>
         </div>
 
+         {{-- @include('daisyUI.collapse') --}}
+        <x-divider>{{ __('adminlte::landingpage.isoCertificates') }}</x-divider>
+        <div class="my-10">
+
+
+            <x-iso-carousel :posts="$isoCertificates" style="" />
+        </div> {{-- <x-slideshow :slideshows="$slideshows" /> --}}
+        {{-- قسم اسمنت حضرموت 100% (أخر المشاريع) --}}
+        @include('daisyUI.hadrami')
+
         {{-- social media --}}
         @include('daisyUI.social-media')
 
         {{-- contact us details --}}
-        @include('daisyUI.address-map')        
+        @include('daisyUI.address-map')
     </div>
 @endsection
 

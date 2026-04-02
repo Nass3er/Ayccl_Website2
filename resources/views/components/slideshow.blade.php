@@ -804,6 +804,38 @@
     </div>
 </section>
 
+<!-- قسم رؤية الشركة والجودة -->
+<section class="relative py-3 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    {{-- خلفية جمالية خفيفة --}}
+    <div class="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+        <div class="flex flex-col items-start gap-3" data-aos="fade-up">
+            <!-- النص -->
+            <div class="w-full text-right">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    {{ app()->getLocale() == 'ar' 
+                        ? 'الشركة العربية اليمنية للأسمنت.. رؤيةٌ تبني وطناً وإرثٌ من الجودة.. إسمنت حضرمي بجودة عالمية… منذ 2006م..' 
+                        : 'The Arab Yemeni Cement Company: A vision that builds a nation and a legacy of quality... Hadrami cement with global quality... since 2006.' }}
+                </p>
+            </div>
+            
+            <!-- الزر -->
+            <div class="w-full text-right" data-aos="zoom-in" data-aos-delay="200">
+                <a href="{{ localizedRoute('products') }}" 
+                    class="inline-flex items-center bg-brand-green text-white px-12 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group pr-2.5">
+                    <span>{{ __('adminlte::landingpage.products') }}</span>
+                    <div class="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ app()->getLocale() == 'ar' ? 'rotate-180' : '' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const images = document.querySelectorAll(".slideshow-image");

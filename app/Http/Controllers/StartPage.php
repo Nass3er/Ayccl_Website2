@@ -30,6 +30,8 @@ class StartPage extends Controller
 
         $products = Post::where('page_id',32)->where('active',true)->with('mediaOne', 'PostDetailOne')->get();
 
-        return view('welcome', compact('contactDetails','map', 'slideshows', 'isoCertificates', 'products', 'page'));
+        $hadramiProjects = Post::where('page_id', 31)->where('active', true)->with(['postDetailOne', 'media'])->orderBy('created_at', 'desc')->take(6)->get();
+
+        return view('welcome', compact('contactDetails','map', 'slideshows', 'isoCertificates', 'products', 'hadramiProjects', 'page'));
     }
 }
