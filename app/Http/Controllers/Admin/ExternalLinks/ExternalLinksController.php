@@ -269,7 +269,7 @@ class ExternalLinksController extends Controller
                     'title'      => 'required',
                     'title_en'   => 'required',
                     'value'   => 'required',
-                    'files'      => 'required',
+                    'files'      => 'nullable',
                 ],
                 [
                     'title.required'      => __('adminlte::adminlte.title_required'),

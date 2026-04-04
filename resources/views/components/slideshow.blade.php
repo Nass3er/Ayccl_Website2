@@ -719,6 +719,12 @@
     .fill-black { fill: #000000; }
     .fill-white { fill: #ffffff; }
     .fill-brand-green { fill: #006b36; }
+
+    /* vision added last */
+    .special_font_nasser {
+       font-family: 'Changa', sans-serif;
+    }
+
 </style>
 
 <section class="relative group flex flex-col mt-24 sm:mt-0 h-100 sm:h-screen w-full justify-center items-center overflow-hidden select-none"
@@ -806,14 +812,10 @@
 
 <!-- قسم رؤية الشركة والجودة -->
 <section class="relative py-3 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
-    {{-- خلفية جمالية خفيفة --}}
-    <div class="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl"></div>
-
     <div class="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
         <div class="flex flex-col items-start gap-3" data-aos="fade-up">
             <!-- النص -->
-            <div class="w-full text-right">
+            <div class="w-full text-right bg-white special_font_nasser">
                 <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
                     {{ app()->getLocale() == 'ar' 
                         ? 'الشركة العربية اليمنية للأسمنت.. رؤيةٌ تبني وطناً وإرثٌ من الجودة.. إسمنت حضرمي بجودة عالمية… منذ 2006م..' 
@@ -824,7 +826,7 @@
             <!-- الزر -->
             <div class="w-full text-right" data-aos="zoom-in" data-aos-delay="200">
                 <a href="{{ localizedRoute('products') }}" 
-                    class="inline-flex items-center bg-brand-green text-white px-12 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group pr-2.5">
+                    class="inline-flex items-center bg-brand-green text-white ps-12 pe-2.5 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group special_font_nasser">
                     <span>{{ __('adminlte::landingpage.products') }}</span>
                     <div class="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ app()->getLocale() == 'ar' ? 'rotate-180' : '' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">

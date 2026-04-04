@@ -89,6 +89,9 @@
             {{-- <x-click-icon icon="images/footer/TikTok-تيك توك.svg" url="https://www.tiktok.com/@aycclyemen?_r=1&_t=ZS-93pxA8snfy4" label="Tiktok" class="" /> --}}
         </div>
     </nav>
+    <aside class="flex flex-col items-center justify-center text-center">
+        <img src="{{ asset('/images/footer/footer_logo2.png') }}" alt="secondary logo" class="mb-4 w-32" />
+    </aside>
 </footer>
 
 <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">

@@ -1,8 +1,8 @@
-<section class="relative py-12 bg-white">
+<section class="relative pt-2 pb-12 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {{-- الجزء العلوي: النص والزر --}}
-        <div class="flex flex-col {{ app()->getLocale() == 'ar' ? 'items-start text-right' : 'items-end text-left' }} mb-12 w-full" data-aos="fade-up">
+        <div class="flex flex-col {{ app()->getLocale() == 'ar' ? 'items-start text-right' : 'items-end text-left' }} mb-6 w-full" data-aos="fade-up">
             <h2 class="text-2xl md:text-4xl font-bold text-brand-green mb-6 w-full">
                 {{ app()->getLocale() == 'ar' ? 'من قلب حضرموت.. انطلقنا..' : 'From the Heart of Hadhramaut.. We Started..' }}
             </h2>
@@ -14,9 +14,9 @@
             </p>
 
             <a href="{{ localizedRoute('aboutus') }}" 
-               class="inline-flex items-center bg-brand-green text-white px-12 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group pr-2.5 mb-3">
+               class="inline-flex items-center bg-brand-green text-white ps-12 pe-2.5 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group mb-3 special_font_nasser">
                 <span>{{ app()->getLocale() == 'ar' ? 'اقرأ قصتنا كاملة' : 'Read Our Full Story' }}</span>
-                <div class="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors mr-4 ml-4">
+                <div class="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors ms-4 me-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ app()->getLocale() == 'ar' ? 'rotate-180' : '' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -25,11 +25,11 @@
         </div>
 
         {{-- الخط الفاصل --}}
-        <hr class="border-gray-100 mb-12">
+        <hr class="border-gray-100 mb-8">
 
         {{-- الجزء السفلي: الإحصائيات --}}
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h3 class="text-2xl md:text-3xl font-bold text-brand-green mb-12" style="margin-bottom: 17px; font-family:none !important; font-size: 1.7rem;  text-transform: uppercase; letter-spacing: 2px;">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-green mb-12 special_font_nasser" style="margin-bottom: 17px; font-size: 1.7rem;  text-transform: uppercase; letter-spacing: 2px;">
                 {{ app()->getLocale() == 'ar' ? 'الأرقام تتحدث' : 'The Numbers Speak' }}
             </h3>
 
