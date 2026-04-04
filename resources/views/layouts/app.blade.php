@@ -52,6 +52,9 @@
     padding: 0 !important;
     margin: 0 !important;
 }
+    .special_font_nasser {
+        font-family: 'Changa', sans-serif !important;
+    }
     </style>
     @yield('css')
 </head>

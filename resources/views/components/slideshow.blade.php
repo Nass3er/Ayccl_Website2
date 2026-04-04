@@ -720,11 +720,6 @@
     .fill-white { fill: #ffffff; }
     .fill-brand-green { fill: #006b36; }
 
-    /* vision added last */
-    .special_font_nasser {
-       font-family: 'Changa', sans-serif;
-    }
-
 </style>
 
 <section class="relative group flex flex-col mt-24 sm:mt-0 h-100 sm:h-screen w-full justify-center items-center overflow-hidden select-none"
@@ -826,7 +821,7 @@
             <!-- الزر -->
             <div class="w-full text-right" data-aos="zoom-in" data-aos-delay="200">
                 <a href="{{ localizedRoute('products') }}" 
-                    class="inline-flex items-center bg-brand-green text-white ps-12 pe-2.5 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group special_font_nasser">
+                    class="inline-flex items-center bg-brand-green text-white rtl:pr-12 rtl:pl-2.5 ltr:pl-12 ltr:pr-2.5 rounded-none text-xl hover:bg-black transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 group special_font_nasser">
                     <span>{{ __('adminlte::landingpage.products') }}</span>
                     <div class="bg-white/20 p-2 rounded-full group-hover:bg-white/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ app()->getLocale() == 'ar' ? 'rotate-180' : '' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
