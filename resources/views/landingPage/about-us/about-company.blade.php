@@ -44,48 +44,7 @@
 
             </div>{{-- end grid --}}
 
-            <section class="max-w-6xl mx-auto mt-20 px-4 text-center" id="stats">
-
-                <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-                    {{ __('adminlte::landingpage.aycclInNumbers') }}
-                </h3>
-
-                <div
-                    class="grid gap-8
-                grid-cols-1
-                sm:grid-cols-2
-                lg:grid-cols-3">
-
-                    @forelse ($companyStats as $stat)
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="{{ $stat['value'] }}">0</div>
-                            @if(!empty($stat['suffix']))
-                                <div class="text-sm text-gray-500 mt-1">{{ $stat['suffix'] }}</div>
-                            @endif
-                            <div class="stat-label">{{ $stat['label'] }}</div>
-                        </div>
-                    @empty
-                        {{-- إذا لم تُستخرج أرقام من النص، عرض قيم احتياطية --}}
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="250">0</div>
-                            <div class="stat-label">مليون دولار تكلفة المشروع</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="142">0</div>
-                            <div class="stat-label">مليون دولار رأس المال</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="1500000">0</div>
-                            <div class="stat-label">طن إنتاج سنوي</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="60">0</div>
-                            <div class="stat-label">كم عن مدينة المكلا</div>
-                        </div>
-                    @endforelse
-                </div>
-
-            </section>
+           
 
 
         </section>
