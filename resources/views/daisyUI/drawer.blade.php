@@ -89,8 +89,14 @@
                                     class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
                             <li> <a href={{ localizedRoute('customerservice') }}
                                     class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
-                            <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXCSS"
-                            class="nav-child">{{ __('adminlte::landingpage.css') }}</a></li>
+
+                            @if(isset($systems) && $systems->count() > 1)
+                            <li> 
+                                <a href="{{ $systems->skip(1)->first()->postDetailOne->content }}" 
+                                class="nav-child">{{ __('adminlte::landingpage.css') }}</a> 
+                            </li>
+                            @endif
+
                             {{-- <li><a
                                     href="{{ localizedRoute('suggestionsandcomplaints') }}">{{ __('adminlte::landingpage.suggestionsAndComplaints') }}</a>
                             </li> --}}
@@ -114,8 +120,13 @@
 
                             <li> <a href={{ localizedRoute('ourGuests') }}
                                     class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
-                            <li> <a href={{ localizedRoute('ess') }}
-                                    class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+                            
+                            @if(isset($systems) && $systems->count() > 0)
+                            <li> 
+                                <a href="{{ $systems->first()->postDetailOne->content }}" 
+                                class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> 
+                            </li>
+                            @endif
                             
                         </ul>
                     </details>
@@ -170,7 +181,7 @@
             </ul>
 
             <!-- Bottom Icons -->
-            <div class="flex justify-center items-center gap-4 p-4 w-full">
+            <!-- <div class="flex justify-center items-center gap-4 p-4 w-full">
 
                 @foreach ($systems as $system)
                 <a href="{{ $system->postDetailOne->content }}" target="_blank">
@@ -179,7 +190,7 @@
                     <div><p class="text-sm text-black">{{ $system->postDetailOne->title}}</p></div>
                 </a>
                 @endforeach
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

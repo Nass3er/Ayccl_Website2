@@ -140,8 +140,12 @@
                             class="nav-child">{{ __('adminlte::landingpage.products') }}</a> </li>
                     <li> <a href={{ localizedRoute('customerservice') }}
                             class="nav-child">{{ __('adminlte::landingpage.customerservice') }}</a></li>
-                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXCSS"
-                            class="nav-child">{{ __('adminlte::landingpage.css') }}</a></li>
+                    @if(isset($systems) && $systems->count() > 1)
+                        <li> 
+                            <a href="{{ $systems->skip(1)->first()->postDetailOne->content }}" 
+                               class="nav-child">{{ __('adminlte::landingpage.css') }}</a> 
+                        </li>
+                    @endif
 
 
                 </ul>
@@ -175,8 +179,13 @@
                      <li> <a href={{ localizedRoute('ourGuests') }}
                             class="nav-child">{{ __('adminlte::landingpage.ourguests') }}</a> </li>
 
-                    <li> <a href="http://ixerpweb.ayccl.com:8189/ixias/F?P=IXESS"
-                            class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> </li>
+                          
+                    @if(isset($systems) && $systems->count() > 0)
+                        <li> 
+                            <a href="{{ $systems->first()->postDetailOne->content }}" 
+                               class="nav-child">{{ __('adminlte::landingpage.ess') }}</a> 
+                        </li>
+                    @endif
                 </ul>
             </li>
 
@@ -266,7 +275,7 @@
                 </li>
             @endif
         </ul>
-        <div class="hidden lg:flex w-fit space-x-3 lg:ms-[10%] xl:ms-[25%]">
+        <!-- <div class="hidden lg:flex w-fit space-x-3 lg:ms-[10%] xl:ms-[25%]">
             @foreach ($systems as $system)
                 <div class="tooltip tooltip-bottom" data-tip="{{ $system->postDetailOne->title }}">
                     <a href="{{ $system->postDetailOne->content }}" target="_blank" class="transition-transform hover:scale-110">
@@ -275,7 +284,7 @@
                     </a>
                 </div>
             @endforeach
-        </div>
+        </div> -->
 
     </div>
 </div>

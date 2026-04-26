@@ -34,7 +34,7 @@
                 {{ $title ?? 'Default Title' }}
             </h1>
             @if (isset($description))
-                <p class="sm:mb-5 mx-0 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+                <p class="sm:mb-5 mx-0 sm:text-xl md:text-2xl lg:text-3xl">
                     {!! nl2br($description) !!}
                 </p>
             @endif
