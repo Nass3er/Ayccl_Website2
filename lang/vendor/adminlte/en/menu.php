@@ -44,6 +44,7 @@ return [
 'documents' => 'Documents and Files',
 
 'aboutCompany' => 'About the Company',
+'aboutCompanySections' => 'About Company Sections',
 'managementBoard' => 'Management Board',
 'visionAndMessage' => 'Vision and Mission',
 'futurePlans' => 'Future Plans',

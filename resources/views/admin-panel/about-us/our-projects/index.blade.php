@@ -109,7 +109,7 @@
     @endphp
 
     {{-- AdminLTE DataTable --}}
-    <x-adminlte-datatable id="table2" :heads="$heads" head-theme="dark" :config="$config" striped hoverable
+    <x-adminlte-datatable id="table2" :heads="$heads" :config="$config" striped hoverable
         with-buttons />
 
     {{-- Custom --}}

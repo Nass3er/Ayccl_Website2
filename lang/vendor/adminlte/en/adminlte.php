@@ -98,6 +98,8 @@ return array(
     'close' => 'Close',
     'updatedAt' => 'Updated At',
     'aboutcompany' => 'About Company',
+    'aboutCompanySections' => 'About Company Sections',
+    'sections' => 'Sections',
     'icon' => 'Icon',
     'managementBoard' => 'Management Board',
     'job' => 'Job',

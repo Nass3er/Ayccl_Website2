@@ -20,6 +20,8 @@ use Spatie\Image\Drivers\ImageDriver;
 
 class NewsController extends Controller
 {
+    public $pageId = 51;
+
     /**
      * Display a listing of the resource.
      */
@@ -29,6 +31,7 @@ class NewsController extends Controller
         try {
             
             $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -39,6 +42,7 @@ class NewsController extends Controller
         try {
             
             $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }

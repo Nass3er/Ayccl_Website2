@@ -28,9 +28,8 @@ class InspectionCertificateController extends Controller
     public function index()
     {
         try{
-            
             $page = Page::findOrFail($this->pageId);
-            $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         }
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);

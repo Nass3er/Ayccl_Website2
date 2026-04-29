@@ -34,9 +34,8 @@ class PhotosGalaryController extends Controller
     {
         // $posts = Post::where('page_id', 52)->latest()->paginate(10);
         try{
-            
             $page = Page::findOrFail($this->pageId);
-            $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         }
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -46,8 +45,8 @@ class PhotosGalaryController extends Controller
     public function show(string $id)
     {
         try{
-            
             $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         }
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);

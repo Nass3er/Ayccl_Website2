@@ -54,7 +54,7 @@
         </x-adminlte-card>
     </div>
     @endif
-    <form action="{{ localizedRoute('future-plans.update', ['photo'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ localizedRoute('future-plans.update', ['future_plan'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card card-default">

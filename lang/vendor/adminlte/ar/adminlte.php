@@ -89,6 +89,8 @@ return array(
     'close' => 'اغلاق',
     'updatedAt' => 'تاريخ التعديل',
     'aboutCompany' => 'نبذة عن الشركة',
+    'aboutCompanySections' => 'أقسام نبذة عن الشركة',
+    'sections' => 'الأقسام',
     'icon' => 'الأيقونة',
     'managementBoard' => 'مجلس الإدارة',
     'job' => 'الوظيفة',

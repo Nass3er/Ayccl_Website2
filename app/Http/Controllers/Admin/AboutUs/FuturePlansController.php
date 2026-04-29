@@ -237,11 +237,19 @@ class FuturePlansController extends Controller
     {
         try{
             $post = Post::findOrFail($id);
+            $categories = Category::whereHas('postDetail', function ($query) {
+                $query->whereHas('post', function ($q) {
+                    $q->where('page_id', $this->pageId);
+                });
+            })
+            ->select('id', 'name','name_en')
+            ->distinct()
+            ->get();
         }
         catch(\Exception $e){
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return view("$this->view.edit", compact(  'post'));
+        return view("$this->view.edit", compact(  'post', 'categories'));
     }
 
     /**

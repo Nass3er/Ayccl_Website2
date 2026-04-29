@@ -19,28 +19,29 @@
 
         <section class="max-w-6xl mx-auto px-4 sm:px-8 mt-10">
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-6 items-start">
 
-            @foreach ($companySections as $index => $section)
-                <div class="info-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                @foreach ($companySections as $index => $section)
+                    <div class="info-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                        <button class="card-toggle">
+                            <span>{{ $section->icon }}
+                                {{ app()->getLocale() == 'ar' ? $section->title : ($section->title_en ?? $section->title) }}</span>
+                        </button>
+                        <div class="card-content">
+                            {{ app()->getLocale() == 'ar' ? $section->content : ($section->content_en ?? $section->content) }}
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- FULL DETAILS: يعرض المحتوى كاملاً --}}
+                <div class="info-card {{ count($companySections) % 2 == 0 ? 'md:col-span-2' : '' }}" data-aos="fade-up" data-aos-delay="500">
                     <button class="card-toggle">
-                        {{ $section['icon'] }} {{ $section['title'] }}
+                        📖 {{ __('adminlte::landingpage.moreDetails') }}
                     </button>
-                    <div class="card-content">
-                        {{ $section['content'] }}
+                    <div class="card-content text-justify">
+                        {!! $mainContentHtml !!}
                     </div>
                 </div>
-            @endforeach
-
-            {{-- FULL DETAILS: يعرض المحتوى كاملاً قبل ##### فقط --}}
-            <div class="info-card md:col-span-2" data-aos="fade-up" data-aos-delay="500">
-                <button class="card-toggle">
-                    📖 {{ __('adminlte::landingpage.moreDetails') }}
-                </button>
-                <div class="card-content text-justify">
-                    {!! $mainContentHtml !!}
-                </div>
-            </div>
 
             </div>{{-- end grid --}}
 

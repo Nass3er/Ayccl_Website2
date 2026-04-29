@@ -25,15 +25,16 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DocumentsController extends Controller
 {
-        /**
+    public $pageId = 54;
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $posts = Post::where('page_id', 54)->latest()->paginate(10);
         try {
-            
             $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -57,13 +58,12 @@ class DocumentsController extends Controller
 }
     public function create()
     {
-    //     try {
-    //         
+        try {
             $page = Page::findOrFail($this->pageId);
-    //     } catch (\Exception $e) {
-    //         return redirect()->back()->with(['error' => $e->getMessage()]);
-    //     }
-        return view('admin-panel.media-center.documents.create');
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
+        return view('admin-panel.media-center.documents.create', compact('page'));
     }
 
     public function store(Request $request)
@@ -100,12 +100,12 @@ class DocumentsController extends Controller
             // 1. Create Post
             $post = new Post();
             $post->category_id = $request->category_id;
-            $post->page_id = 54; // default page
+            $post->page_id = $this->pageId; // default page
             // $post->date = $request->date;
             if (isset($request->order))
                 $post->order     = $request->order;
             else {
-                $maxOrder = Post::where('page_id', 54)->where('active', true)->max('order');
+                $maxOrder = Post::where('page_id', $this->pageId)->where('active', true)->max('order');
                 $post->order = $maxOrder + 1;
             }
             // $post->order = $request->order ?? 1;
@@ -216,12 +216,12 @@ class DocumentsController extends Controller
             $post = Post::findOrFail($id);
             DB::beginTransaction();
             $post->category_id = 3;
-            $post->page_id = 54; // default page
+            $post->page_id = $this->pageId; // default page
             // $post->date = $request->date;
             if (isset($request->order))
                 $post->order     = $request->order;
             else {
-                $maxOrder = Post::where('page_id', 54)->where('active', true)->max('order');
+                $maxOrder = Post::where('page_id', $this->pageId)->where('active', true)->max('order');
                 $post->order = $maxOrder + 1;
             }
             // $post->order = $request->order ?? 1;

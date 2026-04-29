@@ -30,10 +30,10 @@
 @endpush
 @php
     $route = "our-projects";
-    $id = "our-projects";
+    $id = "our_project";
 @endphp
 
-@section('title', __('adminlte::menu.socialReponsibility') .' - '. __('adminlte::adminlte.editNews'))
+@section('title', __('adminlte::menu.ourProjects') .' - '. __('adminlte::adminlte.editNews'))
 @section('content_header')
     <div class="row">
         <ol class="breadcrumb float-sm-left">

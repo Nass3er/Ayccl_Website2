@@ -4,24 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\AboutCompanySection;
 use Illuminate\Http\Request;
-
-
-// Option 3: Overwrite name dynamically in the model
-
-// You can also override the name accessor so that $user->name already gives the correct value:
-
-// public function getNameAttribute($value)
-// {
-//     return app()->getLocale() === 'ar' ? $this->attributes['name'] : $this->attributes['name_english'];
-// }
-
-
-// Then $user->name works automatically.
-
-
-
-
 
 class AboutUsController extends Controller
 {
@@ -49,7 +33,7 @@ class AboutUsController extends Controller
         $page   = Page::findOrFail($pageId);
         $posts  = Post::where("page_id", $page->id)->where('active', true)->get();
 
-        $companySections = [];
+        $companySections = AboutCompanySection::where('active', true)->orderBy('order')->get();
         $companyStats    = [];
         $mainContentHtml = ''; // محتوى "عرض تفاصيل أكثر" (قبل #####)
 
@@ -80,101 +64,7 @@ class AboutUsController extends Controller
             $mainContentHtml = $contentHtml;
 
             // ══════════════════════════════════════════════════════════════
-            // 2. تحليل الكاردات: كل <p>...</p> = سطر = كارد مستقل
-            //    - السطر الأول بدون "عنوان :" → كارد "من نحن"
-            //    - باقي السطور بنمط "عنوان : محتوى"
-            // ══════════════════════════════════════════════════════════════
-            $lines = self::htmlToLines($contentHtml);
-
-            // خريطة الأيقونات للعناوين المعروفة + أيقونة افتراضية للعناوين الجديدة
-            $iconMap = [
-                // العربية
-                'من نحن'            => '🏭',
-                'البداية'           => '🕐',
-                'الموقع'            => '📍',
-                'المنتجات'          => '🧱',
-                'الطاقة الإنتاجية'  => '📊',
-                'التكنولوجيا'       => '⚙️',
-                'الشركاء'           => '🤝',
-                'الجودة'            => '🏅',
-                // الإنجليزية
-                'About Us'          => '🏭',
-                'Beginning'         => '🕐',
-                'Location'          => '📍',
-                'Products'          => '🧱',
-                'Capacity'          => '📊',
-                'Technology'        => '⚙️',
-                'Partners'          => '🤝',
-                'Quality'           => '🏅',
-            ];
-            $defaultIcon   = '📌';
-            $defaultTitle  = $isArabic ? 'من نحن' : 'About Us';
-
-            // foreach ($lines as $index => $line) {
-            //     // نمط "عنوان : محتوى" — العنوان قبل أول نقطتين
-            //     if (preg_match('/^([^:]+?)\s*:\s*(.+)$/us', $line, $m)) {
-            //         $title   = trim($m[1]);
-            //         $content = trim($m[2]);
-            //         $companySections[] = [
-            //             'icon'    => $iconMap[$title] ?? $defaultIcon,
-            //             'title'   => $title,
-            //             'content' => $content,
-            //         ];
-            //     } elseif ($index === 0) {
-            //         // السطر الأول بدون عنوان = "من نحن" أو "About Us"
-            //         $companySections[] = [
-            //             'icon'    => '🏭',
-            //             'title'   => $defaultTitle,
-            //             'content' => $line,
-            //         ];
-            //     }
-            // }
-            foreach ($lines as $index => $line) {
-                // 1. محاولة استخراج العنوان والمحتوى بنمط "عنوان : محتوى"
-                // تم تحسين النمط ليكون أكثر مرونة مع المسافات والرموز
-                if (preg_match('/^(.+?)\s*[:：]\s*(.+)$/us', $line, $m)) {
-                    $title   = trim($m[1]);
-                    $content = trim($m[2]);
-
-                    $companySections[] = [
-                        'icon'    => $iconMap[$title] ?? $defaultIcon,
-                        'title'   => $title,
-                        'content' => $content,
-                    ];
-                }
-                // 2. إذا لم يجد ":"، نتحقق هل السطر يبدأ بكلمة من الكلمات المفتاحية المعروفة (لتحسين دقة الانجليزية)
-                else {
-                    $foundKnownTitle = false;
-                    foreach ($iconMap as $knownTitle => $icon) {
-                        // إذا كان السطر يبدأ بعنوان معروف (مثل Beginning أو Location)
-                        if (stripos($line, $knownTitle) === 0) {
-                            $content = trim(substr($line, strlen($knownTitle)));
-                            // تنظيف أي رموز متبقية في بداية المحتوى
-                            $content = ltrim($content, ': ');
-
-                            $companySections[] = [
-                                'icon'    => $icon,
-                                'title'   => $knownTitle,
-                                'content' => $content,
-                            ];
-                            $foundKnownTitle = true;
-                            break;
-                        }
-                    }
-
-                    // 3. إذا فشل كل ما سبق وكان السطر الأول، نعتبره "من نحن"
-                    if (!$foundKnownTitle && $index === 0) {
-                        $companySections[] = [
-                            'icon'    => '🏭',
-                            'title'   => $defaultTitle,
-                            'content' => $line,
-                        ];
-                    }
-                }
-            }
-
-            // ══════════════════════════════════════════════════════════════
-            // 3. تحليل الإحصائيات بعد #####
+            // 2. تحليل الإحصائيات بعد #####
             //    النمط: "عنوان الإحصائية = 1234 وحدة اختيارية"
             // ══════════════════════════════════════════════════════════════
             if (!empty($statsRaw)) {
@@ -212,7 +102,7 @@ class AboutUsController extends Controller
         }
 
         return view($this->path."about-company", compact(
-            'posts', 'page', 'companySections', 'companyStats', 'mainContentHtml'
+            'posts', 'page', 'companyStats', 'mainContentHtml', 'companySections'
         ));
     }
 

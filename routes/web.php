@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Admin\AboutUs\AboutCompanyController;
+use App\Http\Controllers\Admin\AboutUs\AboutCompanySectionController;
 use App\Http\Controllers\Admin\AboutUs\CertificatesController;
 use App\Http\Controllers\Admin\AboutUs\FuturePlansController;
 use App\Http\Controllers\Admin\AboutUs\ManagementController;
@@ -139,6 +140,8 @@ Route::group([
                 });
                 Route::prefix('/About-Us')->middleware(['auth'])->group(function () {
                     Route::resource('about-company', AboutCompanyController::class);
+                    Route::resource('about-company-sections', AboutCompanySectionController::class);
+                    Route::put('about-company-sections-activation/{id}', [AboutCompanySectionController::class, 'activation'])->name('about-company-sections-activation');
                     Route::resource('management-board', ManagementController::class);
                     Route::resource('vision-and-message',VisionAndMessageController::class);
                     Route::resource('future-plans',FuturePlansController::class);

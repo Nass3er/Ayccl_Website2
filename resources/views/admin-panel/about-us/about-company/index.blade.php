@@ -13,6 +13,10 @@
             <x-adminlte-button class="btn-lg mb-10" type="reset" label="{{ __('adminlte::adminlte.createNewPost') }}"
                 theme="outline-success" icon="fas fa-file-far fa-plus-square	" />
         </a>
+        <a href="{{ route('about-company-sections.index', ['locale'=> app()->getLocale()]) }}">
+            <x-adminlte-button class="btn-lg mb-10" label="{{ __('adminlte::adminlte.aboutCompanySections') }}"
+                theme="outline-info" icon="fas fa-list" />
+        </a>
         @include('admin-panel.general.pages.edit')
     </div>
     <!-- Alert for success messages -->

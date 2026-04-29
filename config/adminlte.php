@@ -449,7 +449,13 @@ return [
                             'icon'=>'fas fa-info',
                             'text' => 'aboutCompany',
                             'route' => 'about-company.index',
-                            'active' => ['*About-Us/news*'],
+                            'active' => ['about-company.*'],
+                        ],
+                        [
+                            'icon'=>'fas fa-list',
+                            'text' => 'aboutCompanySections',
+                            'route' => 'about-company-sections.index',
+                            'active' => ['about-company-sections.*'],
                         ],
                         [
                             'icon'=>'fas fa-chair',

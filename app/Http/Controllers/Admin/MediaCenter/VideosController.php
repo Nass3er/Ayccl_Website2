@@ -21,6 +21,8 @@ use Spatie\Image\Drivers\ImageDriver;
 
 class VideosController extends Controller
 {
+    public $pageId = 53;
+
     /**
      * Display a listing of the resource.
      */
@@ -28,10 +30,9 @@ class VideosController extends Controller
     {
         // $posts = Post::where('page_id', 53)->latest()->paginate(10);
         try {
-            
             $page = Page::findOrFail($this->pageId);
-            $categories = Category::where('type',53 )->get();
-            // dd($posts);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
+            $categories = Category::where('type', $this->pageId)->get();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
@@ -40,8 +41,8 @@ class VideosController extends Controller
     public function show(string $id)
     {
         try {
-            
             $page = Page::findOrFail($this->pageId);
+            $posts = Post::where('page_id', $this->pageId)->latest()->get();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }

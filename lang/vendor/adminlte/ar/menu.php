@@ -40,6 +40,7 @@ return [
 'documents' => 'وثائق ومستندات',
 
 'aboutCompany' => 'عن الشركة',
+'aboutCompanySections' => 'أقسام نبذة عن الشركة',
 'managementBoard' => 'مجلس الإدارة',
 'visionAndMessage' => 'الرؤية والرسالة',
 'futurePlans' => 'خطط مستقبلية',
