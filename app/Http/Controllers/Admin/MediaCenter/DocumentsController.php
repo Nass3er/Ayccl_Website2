@@ -68,30 +68,23 @@ class DocumentsController extends Controller
 
     public function store(Request $request)
     {
-        
+        $fileVal = $this->getFileValidation();
+        // Override rules for Documents module which uses 'files' for PDFs
+        $fileVal['rules']['files.*'] = 'mimes:pdf|max:10240';
+        $fileVal['messages']['files.*.mimes'] = __('adminlte::adminlte.file_type_pdf');
+        $fileVal['messages']['files.*.max'] = __('adminlte::adminlte.file_limit_pdf');
+
         $request->validate(
-            [
+            array_merge($fileVal['rules'], [
                 'title'      => 'required',
                 'title_en'   => 'required',
-                // 'slug'       => 'required|string|unique:post_details,slug',
-                // 'slug_en'    => 'required|string|unique:post_details,slug_en',
-                // 'date'       => 'required|date',
-                // 'content_ar'    => 'required',
-                // 'content_en' => 'required',
                 'files'      => 'required',
-            ],
-            [
+            ]),
+            array_merge($fileVal['messages'], [
                 'title.required'      => __('adminlte::adminlte.title_required'),
                 'title_en.required'   => __('adminlte::adminlte.title_en_required'),
-                // 'slug.required'       => __('adminlte::adminlte.slug_required'),
-                // 'slug.unique'         => __('adminlte::adminlte.slug_unique'),
-                // 'slug_en.required'    => __('adminlte::adminlte.slug_en_required'),
-                // 'slug_en.unique'      => __('adminlte::adminlte.slug_en_unique'),
-                // 'date.required'       => __('adminlte::adminlte.date_required'),
-                // 'content_ar.required'    => __('adminlte::adminlte.content_required'),
-                // 'content_en.required' => __('adminlte::adminlte.content_en_required'),
                 'files.required'      => __('adminlte::adminlte.files_required'),
-            ]
+            ])
         );
 
         
@@ -185,30 +178,21 @@ class DocumentsController extends Controller
 
     public function update(Request $request, $locale, int $id)
     {
-        // dd($request);
+        $fileVal = $this->getFileValidation();
+        // Override rules for Documents module which uses 'files' for PDFs
+        $fileVal['rules']['files.*'] = 'mimes:pdf|max:10240';
+        $fileVal['messages']['files.*.mimes'] = __('adminlte::adminlte.file_type_pdf');
+        $fileVal['messages']['files.*.max'] = __('adminlte::adminlte.file_limit_pdf');
+
         $request->validate(
-            [
+            array_merge($fileVal['rules'], [
                 'title'      => 'required',
                 'title_en'   => 'required',
-                // 'slug'       => 'required|string',
-                // 'slug_en'    => 'required|string',
-                // 'date'       => 'required|date',
-                // 'content_ar'    => 'required',
-                // 'content_en' => 'required',
-                // 'files'      => 'required',
-            ],
-            [
+            ]),
+            array_merge($fileVal['messages'], [
                 'title.required'      => __('adminlte::adminlte.title_required'),
                 'title_en.required'   => __('adminlte::adminlte.title_en_required'),
-                // 'slug.required'       => __('adminlte::adminlte.slug_required'),
-                // // 'slug.unique'         => __('adminlte::adminlte.slug_unique'),
-                // 'slug_en.required'    => __('adminlte::adminlte.slug_en_required'),
-                // // 'slug_en.unique'      => __('adminlte::adminlte.slug_en_unique'),
-                // 'date.required'       => __('adminlte::adminlte.date_required'),
-                // 'content_ar.required'    => __('adminlte::adminlte.content_required'),
-                // 'content_en.required' => __('adminlte::adminlte.content_en_required'),
-                // 'files.required'      => __('adminlte::adminlte.files_required'),
-            ]
+            ])
         );
 
 

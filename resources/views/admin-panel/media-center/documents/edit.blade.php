@@ -56,6 +56,20 @@
             </x-adminlte-card>
         </div>
     @endif
+
+    @if ($errors->any())
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible shadow-sm">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-ban"></i> {{ __('adminlte::adminlte.error!') }}</h5>
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
     <form action="{{ localizedRoute('documents.update', ['document' => $post->id]) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
@@ -258,6 +272,7 @@
                                 'showRotate'=> false,
                             ],
                             'showCancel' => false,
+                            'maxFileSize' => 10240,
                             'maxFileCount' => 1,
                         ];
                     @endphp
@@ -268,6 +283,9 @@
                             data-msg-placeholder="Choose a text, office or pdf file..." label-class="text-olive"
                             :config="$config">
                         </x-adminlte-input-file-krajee>
+                        @error('files.*')
+                            <span class="text-danger small">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -291,4 +309,22 @@
 @section('plugins.Select2', true)
 
 @section('adminlte_js')
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                let isValid = true;
+                let errorMessage = "";
+
+                if ($('#title').val().trim() === "") {
+                    isValid = false;
+                    errorMessage += "• {{ __('adminlte::adminlte.title_required') }}\n";
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                    toastr.error(errorMessage);
+                }
+            });
+        });
+    </script>
 @stop
