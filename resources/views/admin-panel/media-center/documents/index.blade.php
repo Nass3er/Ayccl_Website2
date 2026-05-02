@@ -102,10 +102,19 @@
             $post->id .
             '"><i class="fas fa-eye"></i></a></span>';
 
+        $fileSize = 'none';
+        if ($post->mediaOne && $post->mediaOne->link) {
+            $normalizedPath = str_replace('\\', '/', $post->mediaOne->link);
+            $fullPath = public_path($normalizedPath);
+            if (file_exists($fullPath)) {
+                $fileSize = formatSize(\Illuminate\Support\Facades\File::size($fullPath));
+            }
+        }
+
         $data[] = [
             $post->id,
             \Illuminate\Support\Str::limit(strip_tags($postDetail?->title), limit: 75),
-            isset($post->mediaOne->link)?formatSize(\Illuminate\Support\Facades\File::size($post->mediaOne->link)):'none',
+            $fileSize,
             $btnPreview,
             $btnEdit .' '. ($post->active ? $btnDelete : $btnActivation  . ' ' . $btnDelete),
             ];
