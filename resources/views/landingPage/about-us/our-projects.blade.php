@@ -18,17 +18,14 @@
 
                     @if (isset($post->mediaOne->filepath))
                         <div class="w-full lg:w-1/2 flex justify-center items-center">
-                            <div class="relative inline-block group">
-
-                                <div class="relative z-10 overflow-hidden shadow-lg" style="box-shadow: -20px -18px 4px 1px #2d843d; border-radius: 0px;">
+                            <div class="relative w-full sm:w-[80%] md:w-[90%] lg:w-full group">
+                                <div class="relative w-full z-10 overflow-hidden shadow-lg" style="box-shadow: -20px -18px 4px 1px #2d843d; border-radius: 0px;">
                                     <img src="{{ asset($post->mediaOne->filepath) }}"
                                          alt="{{ $post->mediaOne->alt }}"
                                          class="w-full h-80 sm:h-[400px] object-cover block" />
                                 </div>
                             </div>
                         </div>
-
-
                     @endif
 
                     <div class="w-full lg:w-1/2 lg:text-start space-y-6">
